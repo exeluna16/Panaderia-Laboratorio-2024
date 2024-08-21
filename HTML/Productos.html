@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+    <section>
+        <article>
+            <h2>AGREGAR PRODUCTO</h2>
+            <form action="#">
+                <label for="ID">ID</label>
+                <input type="text" id="ID" value="se genera automaticamente" disabled>
+                <label for="nombre-producto">Nombre del producto</label>
+                <input type="text" id="nombre-producto" placeholder="Ingrese nombre del producto">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria">
+                    <option value="Panificacion">Panificación</option>
+                    <option value="Pasteleria">Pastelería</option>
+                </select>
+                <label for="precio">Precio</label>
+                <input type="number" id="precio" placeholder="$0.00">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" value="0">
+                <input type="submit" value="GUARDAR">
+                <input type="reset" value="CANCELAR">
+            </form>
+        </article>
+    </section>
+    <section>
+        <article>
+            <h2>MODIFICAR PRODUCTO</h2>
+            <form action="#">
+                <label for="modificar-buscar">ID del producto</label>
+                <input type="search" id="modificar-buscar" placeholder="ingrese id del producto">
+                <input type="submit" value="MODIFICAR">
+                <input type="reset" value="CANCELAR">
+            </form>
+        </article>
+    </section>
+    <section>
+        <article>
+            <h2>ELIMINAR PRODUCTO</h2>
+            <form action="#">
+                <label for="eliminar-buscar">ID del producto</label>
+                <input type="search" id="eliminar-buscar" placeholder="ingrese id del producto">
+                <input type="submit" value="ELIMINAR">
+                <input type="reset" value="CANCELAR">
+            </form>
+        </article>
+    </section>
+</body>
+</html>
