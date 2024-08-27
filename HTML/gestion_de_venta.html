@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <div>
+        <main>
+            <div>
+                <h1>Venta</h1>
+            </div>
+            <form action="#">
+                <div>
+                    <label for="vendedor">Vendedor</label>
+                    <select name="usuario_vendedor" id="vendedor">
+                        <option value="usuario1">Vendedor A</option>
+                        <option value="usuario1">Vendedor B</option>
+                        <option value="usuario1">Vendedor C</option>
+                    </select>
+                </div>
+                <label for="producto">Producto</label>
+                <input type="text" id="producto">
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" disabled placeholder="se debe rellenar solo">
+                <label for="precio_unitario">Precio Unitario</label>
+                <input type="number" id="precio_unitario">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" id="descripcion" placeholder="descripcion debe cargarse sola" disabled>
+                <label for="cliente">Cliente</label>
+                <!--puede ser un campo de busqueda-->
+                <input type="text" placeholder="nombre de cliente mayorista" id="cliente">
+                <label for="tipo_venta">Tipo venta</label>
+                <select name="venta" id="tipo_venta">
+                    <option value="contado">Contado</option>
+                    <option value="credito">Crédito</option>
+                </select>
+                <label for="forma_pago">Forma de pago</label>
+                <select name="pago" id="forma_pago">
+                    <option value="efectivo">Efectivo</option>
+                    <option value="transferencia">Transferencia</option>
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="codigo_qr">Codigo QR</option>
+                </select>
+                <label for="tipo_comprobante">Tipo de Comprobante</label>
+                <select name="comporbante" id="tipo_comprobante">
+                    <option value="factura">Factura</option>
+                    <option value="ticket">Ticket</option>
+                </select>
+                <label for="numero_comprobante">Comprobante N°</label>
+                <input type="number" id="numero_comprobante" placeholder="99999999" disabled>
+                <label for="fecha_venta">Fecha</label>
+                <input type="date" id="fecha_venta">
+                <label for="observaciones">Observación</label>
+                <textarea name="observacion" id="observaciones" placeholder="ingrese observaciones"></textarea>
+                <div>
+                    <input type="submit" value="Vender">
+                    <input type="reset" value="Cancelar">
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>
