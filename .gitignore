@@ -1,0 +1,33 @@
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de compilación
+*.class
+*.o
+*.out
+*.log
+*.exe
+*.dll
+
+# Ignorar entornos virtuales y dependencias
+venv/
+env/
+node_modules/
+__pycache__/
+
+# Ignorar archivos de configuración del IDE/editor
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar archivos temporales
+*.tmp
+*.swp
+*.bak
+
+# Ignorar archivos de configuración personal
+*.env
