@@ -1,6 +1,8 @@
 /*estilo de la barra*/
 #barra{
     background-color: #8D493A;
+    display: flex;
+    padding: 3px;
 }
 
 ul{
@@ -14,7 +16,7 @@ li.opcion{
 }
 
 li.login{
-    float:right;
+    margin-left: 1100px;
 }
 
 li a{
@@ -27,5 +29,9 @@ li a{
 
 li a:hover:not(.active) {
     background-color: #D0B8A8;
-  }
+}
 
+  /*fondo de la pagina*/
+  body{
+    background-color: #DFD3C3;
+  }
