@@ -1,37 +1,37 @@
 /*estilo de la barra*/
-#barra{
-    background-color: #8D493A;
-    display: flex;
-    padding: 3px;
-}
-
 ul{
-    
     list-style-type: none;
-    
+    margin: 0;
+    padding: 2px;
+    overflow: hidden;
+    background-color: #8D493A;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
 }
 
-li.opcion{
+li{
     float: left;
-}
-
-li.login{
-    margin-left: 1100px;
 }
 
 li a{
     display: block;
-    text-decoration: none;
+    color: #DFD3C3;
     text-align: center;
-    padding: 10px 12px;
-    color: #F8EDE3;
+    text-decoration: none;
+    padding: 16px 18px;
+    
 }
 
 li a:hover:not(.active) {
-    background-color: #D0B8A8;
+    background-color: #F8EDE3;
+    color: #8D493A;
 }
 
+
+
   /*fondo de la pagina*/
-  body{
+ body{
     background-color: #DFD3C3;
   }
