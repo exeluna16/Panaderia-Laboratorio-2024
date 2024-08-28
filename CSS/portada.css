@@ -1,0 +1,31 @@
+/*estilo de la barra*/
+#barra{
+    background-color: #8D493A;
+}
+
+ul{
+    
+    list-style-type: none;
+    
+}
+
+li.opcion{
+    float: left;
+}
+
+li.login{
+    float:right;
+}
+
+li a{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 12px;
+    color: #F8EDE3;
+}
+
+li a:hover:not(.active) {
+    background-color: #D0B8A8;
+  }
+
