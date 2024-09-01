@@ -1,5 +1,6 @@
 /*estilo de la barra*/
-.barra{
+
+ul{
     list-style-type: none;
     margin: 0;
     padding: 2px;
@@ -8,19 +9,22 @@
     position: fixed;
     top: 0;
     width: 100%;
-
+    z-index: 1000;
 }
 
-.opcion_barra{
+
+li{
     float: left;
 }
+
+
 
 li a{
     display: block;
     color: #DFD3C3;
     text-align: center;
     text-decoration: none;
-    padding: 16px 18px;
+    padding: 14px 16px;
     
 }
 
@@ -37,27 +41,31 @@ li a:hover:not(.active) {
   }
 
 /*estilo del titulo,subtitulo,descripcion*/
-#encabezado{
+
+/*borrar despues*/
+
+
+.encabezado{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: white;
     text-align: center;
-    color: beige;
-    font-size: 24px;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 80%; 
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /
+    
 }
 
-#image-conteiner{
-    width: 100%;
-    max-width: 100%;
-
+.titulo{
+    font-size: 2.5vw; 
+    margin-top: 0px;
 }
 
 .descripcion{
-    text-align: center;
-    position: absolute;
-    top: 60%; /* Ajusta la distancia desde la parte superior */
-    left: 20px; /* Ajusta la distancia desde la izquierda */
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5vw; 
+    margin-top: 10px;
 }
 
 /*estilo pie de pagina*/
