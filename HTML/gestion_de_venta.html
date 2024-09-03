@@ -12,11 +12,11 @@
 
     </header>
     <main>
-        <div class="container-fluid mt-5"><!--contenedor completo-->
+        <div class="container-fluid"><!--contenedor completo-->
             <div class="text-center">
                 <h1 class="display-1">Venta</h1>
             </div>
-            <div class="container-fluid"> <!--barra de busqueda-->
+            <div class="container-fluid mb-5"> <!--barra de busqueda-->
                 <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar producto...">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -24,14 +24,9 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, quas repellendus cumque a impedit quam nostrum non. Explicabo alias natus facilis libero, corporis cupiditate iure ipsa expedita a in ratione?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sunt fugit, consequuntur iure ratione corrupti architecto pariatur quas quo suscipit repellat necessitatibus minima delectus excepturi optio! Officia nobis nisi eveniet.
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex qui voluptates ab a nemo, mollitia aliquam corporis natus doloribus, non placeat minus reiciendis earum explicabo totam quod magni id! Laborum.
-                        </p>
-                    </div>
-                    <div class="col-md-6">  <!--tabla de productos-->
-                        <table class="table table-striped">
+                    <div class="col-md-6">  
+                        <!--TABLA DE PRODUCTOS-->
+                        <table class="table table-hover table-primary">
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
@@ -59,8 +54,66 @@
                                 <td>panificados</td>
                                 <td>$$$</td>
                                 </tr>
+                                <tr>
+                                <th scope="row">4</th>
+                                <td>masas finas</td>
+                                <td>Pasteleria</td>
+                                <td>$$$</td>
+                                </tr>
+                                <td> <!--se usan 2 td para poner el total casi al final-->
+                                    <td>
+                                        <th class="text-center">TOTAL</th>
+                                        <td>$$$</td>
+                                    </td>
+                                </td>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-md-6"> 
+                        <!--FORMULARIO DE VENTA-->
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="cliente" class="form-label">Cliente</label>
+                                <input type="text" disabled placeholder="cliente mayorista" class="form-control" id="cliente">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="comprobante_venta" class="form-label">Comprobante</label>
+                                <select id="comprobante_venta" class="form-select">
+                                <option selected>FACTURA</option>
+                                <option>TICKET</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="num_comprobante" class="form-label">N° Comprobante</label>
+                                <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tipo_venta" class="form-label">Tipo de Venta</label>
+                                <select id="tipo_venta" class="form-select">
+                                <option selected>CONTADO</option>
+                                <option>CRÉDITO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="forma_de_pago" class="form-label">Forma de Pago</label>
+                                <select id="forma_de_pago" class="form-select">
+                                <option selected>EFECTIVO</option>
+                                <option>TARJETA</option>
+                                <option>TRANSFERENCIA</option>
+                                <option>QR</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="observaciones_venta" class="form-label">Observaciones</label>
+                                <textarea class="form-control" id="observaciones_venta" rows="3" placeholder="Ingrese observaciones necesarias..."></textarea>
+                            </div>
+                            <div class="col-6">
+                                <button type="reset" class="btn btn-danger">CANCELAR</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success">VENDER</button>
+                            </div>
+                            </form>
                     </div>
                 </div>
             </div>
