@@ -1,0 +1,17 @@
+#titulo{
+    text-align: center;
+    background-color: #8D493A;
+    color: white;
+    
+}
+
+.proveedor{
+    text-align: center;
+    
+}
+
+.row fieldset{
+    padding: 20px;
+    border: 2px solid #D0B8A8;
+    border-radius: 10px;
+}
