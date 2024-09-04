@@ -1,0 +1,36 @@
+body{
+    background: #DFD3C3;
+}
+
+/*FORMULARIO*/
+#formulario_venta{
+    background: #F8EDE3;
+    border: 3px solid #198754;
+}
+
+/*TABLA*/
+.table {
+width: 100%; /* Hace que todas las tablas tengan el mismo ancho */
+margin: 0; /* Evita márgenes extra que puedan desalinear las tablas */
+border: 3px solid #198754;
+}
+
+.tbody-container {
+overflow-y: auto; /*agrega el scroll*/
+max-height: 250px;
+}
+
+.table thead th, .table tfoot td {
+position: sticky;
+z-index: 1;
+}
+
+/*formato del total de la venta para el us*/
+#p_total_venta{
+    color:#DFD3C3;
+    font-weight: bolder;
+}
+
+footer{
+    background: #8D493A;
+}
