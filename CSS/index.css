@@ -1,74 +1,16 @@
-/*estilo de la barra*/
-
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 2px;
-    overflow: hidden;
-    background-color: #8D493A;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-
-li{
-    float: left;
-}
-
-
-
-li a{
-    display: block;
-    color: #DFD3C3;
-    text-align: center;
-    text-decoration: none;
-    padding: 14px 16px;
-    
-}
-
 li a:hover:not(.active) {
-    background-color: #F8EDE3;
-    color: #8D493A;
+    background-color: #8D493A;
+    color: #F8EDE3;
 }
 
-
-
-  /*fondo de la pagina*/
- body{
-    background-color: #DFD3C3;
-  }
-
-/*estilo del titulo,subtitulo,descripcion*/
-
-/*borrar despues*/
-
-
-.encabezado{
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    color: white;
-    text-align: center;
-    width: 80%; 
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5); /
-    
-}
-
-.titulo{
+#titulo{
     font-size: 2.5vw; 
     margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.descripcion{
+#descripcion{
+    background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.5vw; 
     margin-top: 10px;
-}
-
-/*estilo pie de pagina*/
-.pie_pagina{
-    background-color: #1d1412;
 }
