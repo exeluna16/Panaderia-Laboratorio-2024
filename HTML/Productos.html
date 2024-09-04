@@ -12,13 +12,22 @@
 <body>
     <header>
         <div>
-            HEADER
+            
         </div>
     </header>
     <h1>Stock</h1>
     <main>
-        <div class="container-fluid">
+        <div class="container-fluid mb-5">
             <div class="row">
+                <div class="col-md-12">
+                    <!--buscador de producto-->
+                    <div class="container-fluid mb-2">
+                        <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar producto...">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="container-fluid" id="tabla_productos">
                         <table class="table table-hover table-primary">
@@ -29,15 +38,25 @@
                                 <th>Cantidad Disponible</th>
                                 <th>Precio</th>
                                 <th>Descripción</th>
+                                <th>ACCIÓN</th>
                             </thead>
                             <tbody>
-                                <tr><!--fila-->
+                                <tr><!--filas-->
                                     <td>1</td>
                                     <td>tartas</td>
                                     <td>Pastelería</td>
                                     <td>25</td>
                                     <td>$1900</td>
                                     <td>tartas dulces</td>
+                                    <!--USO: class="btn btn-primary" data-bs-toggle="collapse" href="#nombre de la card a la que quieero acceder"-->
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#card_modificar_producto">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -46,6 +65,14 @@
                                     <td>70</td>
                                     <td>$500</td>
                                     <td>facturas sin relleno</td>
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -54,6 +81,14 @@
                                     <td>60</td>
                                     <td>$2000</td>
                                     <td>bizcochos de grasa</td>
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -62,6 +97,14 @@
                                     <td>90</td>
                                     <td>$2500</td>
                                     <td>bastones elaborados con el queso más rico y nutritivo</td>
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
@@ -70,6 +113,14 @@
                                     <td>70</td>
                                     <td>$500</td>
                                     <td>facturas rellenas de dulce de leche</td>
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
@@ -78,6 +129,14 @@
                                     <td>70</td>
                                     <td>$500</td>
                                     <td>facturas con membrillo</td>
+                                    <td class="project-actions">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                        Modificar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                        Eliminar
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -87,50 +146,62 @@
         </div>
     <div class="container-fluid">
         <section>
-            <article>
-                <h2>AGREGAR PRODUCTO</h2>
-                <form action="#">
-                    <label for="ID">ID</label>
-                    <input type="text" id="ID" value="se genera automaticamente" disabled>
-                    <label for="nombre-producto">Nombre del producto</label>
-                    <input type="text" id="nombre-producto" placeholder="Ingrese nombre del producto">
-                    <label for="categoria">Categoria</label>
-                    <select name="categoria" id="categoria">
-                        <option value="Panificacion">Panificación</option>
-                        <option value="Pasteleria">Pastelería</option>
-                    </select>
-                    <label for="precio">Precio</label>
-                    <input type="number" id="precio" placeholder="$0.00">
-                    <label for="cantidad">Cantidad</label>
-                    <input type="number" id="cantidad" value="0">
-                    <input type="submit" value="GUARDAR">
-                    <input type="reset" value="CANCELAR">
-                </form>
-            </article>
+            <a class="btn btn-success" data-bs-toggle="collapse" href="#card_agregar_producto" role="button" aria-expanded="false" aria-controls="card_agregar_producto">
+                AGREGAR PRODUCTO
+            </a>
+            <div class="collapse" id="card_agregar_producto">
+                <div class="card card-body">
+                    <form action="#">
+                        <label for="ID">ID</label>
+                        <input type="text" id="ID" value="se genera automaticamente" disabled>
+                        <label for="nombre-producto">Nombre del producto</label>
+                        <input type="text" id="nombre-producto" placeholder="Ingrese nombre del producto">
+                        <label for="categoria">Categoria</label>
+                        <select name="categoria" id="categoria">
+                            <option value="Panificacion">Panificación</option>
+                            <option value="Pasteleria">Pastelería</option>
+                        </select>
+                        <label for="precio">Precio</label>
+                        <input type="number" id="precio" placeholder="$0.00">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" id="cantidad" value="0">
+                        <input type="submit" value="GUARDAR">
+                        <input type="reset" value="CANCELAR">
+                    </form>
+                </div>
+            </div>
         </section>
         <section>
-            <article>
-                <h2>MODIFICAR PRODUCTO</h2>
-                <form action="#">
-                    <label for="modificar-buscar">ID del producto</label>
-                    <input type="search" id="modificar-buscar" placeholder="ingrese id del producto">
-                    <input type="submit" value="MODIFICAR">
-                    <input type="reset" value="CANCELAR">
-                </form>
-            </article>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#card_modificar_producto" role="button" aria-expanded="false" aria-controls="card_modificar_producto">
+                MODIFICAR PRODUCTO
+            </a>
+            <div class="collapse" id="card_modificar_producto">
+                <div class="card card-body">
+                    <form action="#">
+                        <label for="modificar-buscar">ID del producto</label>
+                        <input type="search" id="modificar-buscar" placeholder="ingrese id del producto">
+                        <input type="submit" value="MODIFICAR">
+                        <input type="reset" value="CANCELAR">
+                    </form>
+                </div>
+            </div>
         </section>
         <section>
-            <article>
-                <h2>ELIMINAR PRODUCTO</h2>
-                <form action="#">
-                    <label for="eliminar-buscar">ID del producto</label>
-                    <input type="search" id="eliminar-buscar" placeholder="ingrese id del producto">
-                    <input type="submit" value="ELIMINAR">
-                    <input type="reset" value="CANCELAR">
-                </form>
-            </article>
+            <a class="btn btn-danger" data-bs-toggle="collapse" href="#card_eliminar_producto" role="button" aria-expanded="false" aria-controls="card_eliminar_producto">
+                ELIMINAR PRODUCTO
+            </a>
+            <div class="collapse" id="card_eliminar_producto">
+                <div class="card card-body">
+                    <form action="#">
+                        <label for="eliminar-buscar">ID del producto</label>
+                        <input type="search" id="eliminar-buscar" placeholder="ingrese id del producto">
+                        <input type="submit" value="ELIMINAR">
+                        <input type="reset" value="CANCELAR">
+                    </form>
+                </div>
+            </div>
         </section>
-    </div>    
+    </div>
     </main>
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
