@@ -1,0 +1,22 @@
+#titulo{
+    text-align: center;
+    background-color: #8D493A;
+    color: white;
+    
+}
+
+#regisro_mayorista{
+    text-align: center;
+    
+}
+
+.row fieldset{
+    padding: 20px;
+    border: 2px solid #8D493A;
+    border-radius: 10px;
+    background-color:#D0B8A8;
+}
+
+.row{
+    background-color:#F8EDE3;
+}
