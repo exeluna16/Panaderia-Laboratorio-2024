@@ -28,7 +28,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12"> <!--tabla de productos-->
                     <div class="container-fluid" id="tabla_productos">
                         <table class="table table-hover table-primary">
                             <thead> <!--cabecera-->
@@ -36,8 +36,8 @@
                                 <th>Nombre</th>
                                 <th>Categoría</th>
                                 <th>Cantidad Disponible</th>
-                                <th>Precio</th>
                                 <th>Descripción</th>
+                                <th>Precio</th>
                                 <th>ACCIÓN</th>
                             </thead>
                             <tbody>
@@ -46,8 +46,11 @@
                                     <td>tartas</td>
                                     <td>Pastelería</td>
                                     <td>25</td>
+                                    <td>tartas dulces
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime qui voluptates animi similique quisquam quod iste autem sapiente illo expedita atque veritatis, accusamus amet laboriosam in quibusdam! Ex, nostrum amet!
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptate illo deserunt veniam quaerat, dicta quos eligendi nisi, maxime libero odio animi repellat? Dolor enim voluptatibus inventore assumenda earum officia.
+                                    </td>
                                     <td>$1900</td>
-                                    <td>tartas dulces</td>
                                     <!--USO: class="btn btn-primary" data-bs-toggle="collapse" href="#nombre de la card a la que quieero acceder"-->
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#card_modificar_producto">
@@ -63,8 +66,8 @@
                                     <td>facturas</td>
                                     <td>Pastelería</td>
                                     <td>70</td>
-                                    <td>$500</td>
                                     <td>facturas sin relleno</td>
+                                    <td>$500</td>
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" href="#">
                                         Modificar
@@ -79,8 +82,8 @@
                                     <td>bizcochos de grasa</td>
                                     <td>Panificación</td>
                                     <td>60</td>
-                                    <td>$2000</td>
                                     <td>bizcochos de grasa</td>
+                                    <td>$2000</td>
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" href="#">
                                         Modificar
@@ -95,8 +98,8 @@
                                     <td>palitos de queso</td>
                                     <td>Panificación</td>
                                     <td>90</td>
-                                    <td>$2500</td>
                                     <td>bastones elaborados con el queso más rico y nutritivo</td>
+                                    <td>$2500</td>
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" href="#">
                                         Modificar
@@ -111,8 +114,8 @@
                                     <td>facturas Dulce/leche</td>
                                     <td>Pastelería</td>
                                     <td>70</td>
-                                    <td>$500</td>
                                     <td>facturas rellenas de dulce de leche</td>
+                                    <td>$500</td>
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" href="#">
                                         Modificar
@@ -127,8 +130,8 @@
                                     <td>facturas Dulce/Membrillo</td>
                                     <td>Pastelería</td>
                                     <td>70</td>
-                                    <td>$500</td>
                                     <td>facturas con membrillo</td>
+                                    <td>$500</td>
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" href="#">
                                         Modificar
@@ -145,62 +148,64 @@
             </div>
         </div>
     <div class="container-fluid">
-        <section>
-            <a class="btn btn-success" data-bs-toggle="collapse" href="#card_agregar_producto" role="button" aria-expanded="false" aria-controls="card_agregar_producto">
-                AGREGAR PRODUCTO
-            </a>
-            <div class="collapse" id="card_agregar_producto">
-                <div class="card card-body">
-                    <form action="#">
-                        <label for="ID">ID</label>
-                        <input type="text" id="ID" value="se genera automaticamente" disabled>
-                        <label for="nombre-producto">Nombre del producto</label>
-                        <input type="text" id="nombre-producto" placeholder="Ingrese nombre del producto">
-                        <label for="categoria">Categoria</label>
-                        <select name="categoria" id="categoria">
-                            <option value="Panificacion">Panificación</option>
-                            <option value="Pasteleria">Pastelería</option>
-                        </select>
-                        <label for="precio">Precio</label>
-                        <input type="number" id="precio" placeholder="$0.00">
-                        <label for="cantidad">Cantidad</label>
-                        <input type="number" id="cantidad" value="0">
-                        <input type="submit" value="GUARDAR">
-                        <input type="reset" value="CANCELAR">
-                    </form>
+        <div class="row">
+            <div class="col-4">
+                <a class="btn btn-success" data-bs-toggle="collapse" href="#card_agregar_producto" role="button" aria-expanded="false" aria-controls="card_agregar_producto">
+                    AGREGAR PRODUCTO
+                </a>
+                <div class="collapse" id="card_agregar_producto">
+                    <div class="card card-body">
+                        <form action="#">
+                            <label for="ID">ID</label>
+                            <input type="text" id="ID" value="se genera automaticamente" disabled>
+                            <label for="nombre-producto">Nombre del producto</label>
+                            <input type="text" id="nombre-producto" placeholder="Ingrese nombre del producto">
+                            <label for="categoria">Categoria</label>
+                            <select name="categoria" id="categoria">
+                                <option value="Panificacion">Panificación</option>
+                                <option value="Pasteleria">Pastelería</option>
+                            </select>
+                            <label for="precio">Precio</label>
+                            <input type="number" id="precio" placeholder="$0.00">
+                            <label for="cantidad">Cantidad</label>
+                            <input type="number" id="cantidad" value="0">
+                            <input type="submit" value="GUARDAR">
+                            <input type="reset" value="CANCELAR">
+                        </form>
+                    </div>
                 </div>
             </div>
-        </section>
-        <section>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#card_modificar_producto" role="button" aria-expanded="false" aria-controls="card_modificar_producto">
-                MODIFICAR PRODUCTO
-            </a>
-            <div class="collapse" id="card_modificar_producto">
-                <div class="card card-body">
-                    <form action="#">
-                        <label for="modificar-buscar">ID del producto</label>
-                        <input type="search" id="modificar-buscar" placeholder="ingrese id del producto">
-                        <input type="submit" value="MODIFICAR">
-                        <input type="reset" value="CANCELAR">
-                    </form>
+            <div class="col-4">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#card_modificar_producto" role="button" aria-expanded="false" aria-controls="card_modificar_producto">
+                    MODIFICAR PRODUCTO
+                </a>
+                <div class="collapse" id="card_modificar_producto">
+                    <div class="card card-body">
+                        <form action="#">
+                            <label for="modificar-buscar">ID del producto</label>
+                            <input type="search" id="modificar-buscar" placeholder="ingrese id del producto">
+                            <input type="submit" value="MODIFICAR">
+                            <input type="reset" value="CANCELAR">
+                        </form>
+                    </div>
                 </div>
             </div>
-        </section>
-        <section>
-            <a class="btn btn-danger" data-bs-toggle="collapse" href="#card_eliminar_producto" role="button" aria-expanded="false" aria-controls="card_eliminar_producto">
-                ELIMINAR PRODUCTO
-            </a>
-            <div class="collapse" id="card_eliminar_producto">
-                <div class="card card-body">
-                    <form action="#">
-                        <label for="eliminar-buscar">ID del producto</label>
-                        <input type="search" id="eliminar-buscar" placeholder="ingrese id del producto">
-                        <input type="submit" value="ELIMINAR">
-                        <input type="reset" value="CANCELAR">
-                    </form>
+            <div class="col-4">
+                <a class="btn btn-danger" data-bs-toggle="collapse" href="#card_eliminar_producto" role="button" aria-expanded="false" aria-controls="card_eliminar_producto">
+                    ELIMINAR PRODUCTO
+                </a>
+                <div class="collapse" id="card_eliminar_producto">
+                    <div class="card card-body">
+                        <form action="#">
+                            <label for="eliminar-buscar">ID del producto</label>
+                            <input type="search" id="eliminar-buscar" placeholder="ingrese id del producto">
+                            <input type="submit" value="ELIMINAR">
+                            <input type="reset" value="CANCELAR">
+                        </form>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     </main>
     <!--Bootstrap JS-->

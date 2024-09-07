@@ -5,7 +5,7 @@ body{
 /*Tabla de productos*/
 #tabla_productos{
     overflow-y: auto;
-    max-height: 250px;
+    max-height: 300px;
     padding: 0;
     margin-bottom: 5px;
 }
@@ -15,5 +15,18 @@ body{
     top:0;
     z-index: 1;
     background-color: #D0B8A8;
+    max-width: 15%;
 }
 
+.table tbody td{
+    max-width: 15%; /*campos ocupan el 15% del contenedor*/
+}
+
+/*Espacio de la descripcion y categoria*/
+/*media query para ocultarlo en resoluciones pequeñas*/
+@media(max-width:768px){
+    .table td:nth-child(3), .table td:nth-child(5), .table th:nth-child(5),
+    .table th:nth-child(3){
+        display:none;
+    }
+}
