@@ -1,3 +1,12 @@
+.fondo_de_portada{
+    background-image: url(../IMG/pan3.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 li a:hover:not(.active) {
     background-color: #8D493A;
     color: #F8EDE3;
@@ -8,7 +17,7 @@ li a:hover:not(.active) {
     font-size: 3.5vw; 
     margin-top: 0px;
     color: #F8EDE3;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(85, 28, 5, 0.7);
 }
 
 #descripcion{
