@@ -1,6 +1,6 @@
 
 .fondo_de_pagina{
-    background-image: url(../IMG/panaderia1.jpg);
+    background-image: url(../IMG/pan3.jpg);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,6 +14,10 @@
     color: #F8EDE3;
     background-color: rgba(0, 0, 0, 0.7);
     
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    text-shadow: 3px 3px black;
 }
 
 
@@ -22,5 +26,10 @@
     background-color:#D0B8A8;
     max-width: 880px;
 
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+
 }
+
 
