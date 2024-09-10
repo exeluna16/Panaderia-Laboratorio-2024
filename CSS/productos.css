@@ -1,14 +1,26 @@
 body{
-    background: #DFD3C3;
     margin:0;
+    background: #DFD3C3;
+    scrollbar-color: #8D493A #D0B8A8;
+}
+
+.contenedor_titulo{
+    font-family:'Times New Roman', Times, serif;
+    background:url("../IMG/326.jpg");
+    background-size:cover;
+    background-repeat: none;
+    background-position: center;
 }
 
 /*Tabla de productos*/
 #tabla_productos{
+    font-family:'Times New Roman', Times, serif;
     overflow-y: auto;
     max-height: 300px;
     padding: 0;
     margin-bottom: 5px;
+    box-shadow: 0px 0px 20px #111;
+    border-radius: 10px;
 }
 
 .table thead th{
@@ -16,11 +28,10 @@ body{
     top:0;
     z-index: 1;
     background-color: #D0B8A8;
-    max-width: 15%;
 }
 
 .table tbody td{
-    max-width: 15%; /*campos ocupan el 15% del contenedor*/
+    box-sizing: content-box;/*campos ocupan el 15% del contenedor*/
 }
 
 /*Espacio de la descripcion y categoria*/
@@ -30,4 +41,10 @@ body{
     .table th:nth-child(3){
         display:none;
     }
+}
+
+form{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bolder;
+    background: transparent;
 }
