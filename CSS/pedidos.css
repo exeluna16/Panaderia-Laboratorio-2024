@@ -1,10 +1,20 @@
-#titulo{
-    text-align: center;
-    background-color: #8D493A;
-    color: white;
-    
+
+.fondo_de_pagina{
+    background-image: url(../IMG/panaderia1.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
+
+#titulo{
+    text-align: center;
+    color: #F8EDE3;
+    background-color: rgba(0, 0, 0, 0.7);
+    
+}
 
 
 #contenedor_formulario{
@@ -13,3 +23,4 @@
     max-width: 880px;
 
 }
+
