@@ -5,20 +5,11 @@
     
 }
 
-.form_proveedor{
-    text-align: center;
-    
-}
 
-.row fieldset{
-    padding: 20px;
-    border: 2px solid #8D493A;
-    border-radius: 10px;
-    background-color:#D0B8A8;
-}
 
 #contenedor_formulario{
 
     background-color:#D0B8A8;
+    max-width: 880px;
 
 }
