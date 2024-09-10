@@ -1,11 +1,23 @@
 body{
     background: #DFD3C3;
+    scrollbar-color: #198754 #F8EDE3;
+}
+
+main{
+    font-family:'Times New Roman', Times, serif;
+    background: url(../IMG/fondo_minimal.jpg);
+    background-size: cover;
+    background-repeat: none;
 }
 
 /*FORMULARIO*/
 #formulario_venta{
     background: #F8EDE3;
     border: 3px solid #198754;
+}
+
+#observaciones_venta{
+    resize: none; 
 }
 
 /*TABLA*/
@@ -23,14 +35,14 @@ max-height: 250px;
 .table thead th, .table tfoot td {
 position: sticky;
 z-index: 1;
+background: #D0B8A8;
 }
 
+td{
+    text-align: center;
+}
 /*formato del total de la venta para el us*/
 #p_total_venta{
     color:#DFD3C3;
     font-weight: bolder;
-}
-
-footer{
-    background: #8D493A;
 }
