@@ -1,9 +1,10 @@
-.fondo_de_portada{
-    background-image: url(../IMG/pan3.jpg);
+.fondo_pagina{
+    background-image: url(../IMG/pan6.jpg);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
 }
 
@@ -28,6 +29,7 @@ li a:hover:not(.active) {
     margin-top: 10px;
 }
 
-body{
+html, body{
     background-color: #F8EDE3;
+    overflow: hidden;
 }
