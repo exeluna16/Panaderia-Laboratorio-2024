@@ -37,11 +37,17 @@ p{
 }
 
 #descripcion{
-    background-color: rgba(85, 28, 5, 0.7);
+    background-color: rgba(139, 69, 19, 0.5);
     color: #F8EDE3;
     font-size: 2vw; 
     margin-top: 10px;
 }
+
+.contenedor_cards{
+    
+    background-color: rgba(139, 69, 19, 0.5);
+}
+
 
 
 
