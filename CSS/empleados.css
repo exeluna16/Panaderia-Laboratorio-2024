@@ -1,5 +1,4 @@
 body{
-    font-family: 'Times New Roman', Times, serif;
     background: #DFD3C3;
     scrollbar-color: #8D493A #D0B8A8;
 }
@@ -25,7 +24,7 @@ body{
     background: #D0B8A8;
 }
 
-img{
+#img-empleados{
     box-shadow: 0px 10px 30px #111;
 }
 

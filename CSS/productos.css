@@ -5,7 +5,7 @@ body{
 }
 
 .contenedor_titulo{
-    font-family:'Times New Roman', Times, serif;
+    
     background:url("../IMG/326.jpg");
     background-size:cover;
     background-repeat: none;
@@ -14,7 +14,7 @@ body{
 
 /*Tabla de productos*/
 #tabla_productos{
-    font-family:'Times New Roman', Times, serif;
+    
     overflow-y: auto;
     max-height: 300px;
     padding: 0;
@@ -44,7 +44,7 @@ body{
 }
 
 form{
-    font-family:'Times New Roman', Times, serif;
+    
     font-weight: bolder;
     background: transparent;
 }
