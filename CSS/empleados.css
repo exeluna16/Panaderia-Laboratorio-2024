@@ -1,0 +1,50 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background: #DFD3C3;
+    scrollbar-color: #8D493A #D0B8A8;
+}
+
+#titulo_empleados{
+    background: url(../IMG/326.jpg);
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+}
+
+
+#tabla_empleados{
+    overflow-y: auto;
+    max-height: 200px;
+    width: 100%;
+    padding: 0;
+}
+
+.table thead th{
+    position: sticky;
+    top:0;
+    background: #D0B8A8;
+}
+
+img{
+    box-shadow: 0px 10px 30px #111;
+}
+
+a{  
+    text-align: center;
+    color:#111;
+    text-decoration: none;
+}
+
+a h3{
+    background:#D0B8A8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #111;
+}
+
+a:hover{
+    color:#8D493A;
+}
+
+a h3:hover{
+    box-shadow: 0px 2px 12px #111;
+}
