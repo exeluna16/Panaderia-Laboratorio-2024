@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../CSS/gestion_de_venta.css">
 </head>
 <body>
-    <header>
+    <div id="header">
         
-    </header>
+    </div>
     <main>
         <div class="container-fluid"><!--contenedor completo-->
             <div class="text-center">
@@ -21,7 +21,7 @@
             <div class="container-fluid mb-5"> <!--barra de busqueda-->
                 <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar producto...">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                <button class="btn btn-success" type="submit">Buscar</button>
                 </form>
             </div>
             <div class="container-fluid">
@@ -122,8 +122,8 @@
                             <table class="table">
                                 <tfoot>
                                 <tr>
-                                    <td><p class="fs-2">Total:</p></td>
-                                    <td class="bg-success text-center"><p class="fs-2" id="p_total_venta">$35</p></td>
+                                    <td><section class="fs-2">Total:</section></td>
+                                    <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -185,14 +185,30 @@
         </div>
     </main>
     <footer>
-        <div class="container">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam impedit velit omnis quisquam, nesciunt corrupti voluptatum recusandae porro quibusdam illum beatae? Adipisci dicta nam commodi provident quibusdam consequuntur laudantium cupiditate.
-            </p>
+        <div id="footer">
+            
         </div>
     </footer>
 
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        fetch('../layout/header.html')
+            .then(response =>response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+
+            })
+            .catch(error=>console.error('Error al cargar el Header',error));
+    </script>
+    <script>
+        fetch('../layout/footer.html')
+            .then(response =>response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+
+            })
+            .catch(error=>console.error('Error al cargar el Footer',error));
+    </script>
 </body>
 </html>
