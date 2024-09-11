@@ -1,4 +1,6 @@
-
+body{
+    scrollbar-color: #D0B8A8 #F8EDE3;
+}
 .fondo_de_pagina{
     background-image: url(../IMG/pan3.jpg);
     height: 100%;
@@ -32,4 +34,24 @@
 
 }
 
+/*TABLA*/
+.table {
+    width: 100%; /* Hace que todas las tablas tengan el mismo ancho */
+    margin: 0; /* Evita márgenes extra que puedan desalinear las tablas */
+}
+
+.tbody-container {
+    overflow-y: auto; /*agrega el scroll*/
+    max-height: 250px;
+}
+
+.table thead th, .table tfoot td {
+    position: sticky;
+    z-index: 1;
+    background: #F8EDE3;
+}
+
+td{
+    text-align: center;
+}
 
