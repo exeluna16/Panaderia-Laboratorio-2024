@@ -1,0 +1,28 @@
+body{
+    background: #D0B8A8;
+}
+svg{
+    width: 100px;
+    height: 100px;
+    padding: 2%;
+}
+
+a svg{
+    color:#111;
+}
+
+a svg:hover{
+    color:#8D493A;
+}
+
+#cartas{
+    text-align: center;
+}
+
+.small-box{
+    background:radial-gradient(#DFD3C3,#D0B8A8);
+}
+
+.nav-link{
+    color:#DFD3C3;
+}

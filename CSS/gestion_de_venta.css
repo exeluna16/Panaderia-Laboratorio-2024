@@ -4,7 +4,6 @@ body{
 }
 
 main{
-    font-family:'Times New Roman', Times, serif;
     background: url(../IMG/fondo_minimal.jpg);
     background-size: cover;
     background-repeat: none;
