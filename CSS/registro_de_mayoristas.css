@@ -1,8 +1,17 @@
+.fondo_pagina{
+    background-image: url(../IMG/pan3.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+
+}
+
 #titulo{
     text-align: center;
-    background-color: #8D493A;
     color: white;
-    
+    background-color: rgba(139, 69, 19, 0.712);
 }
 
 #regisro_mayorista{
@@ -10,13 +19,13 @@
     
 }
 
-.row fieldset{
-    padding: 20px;
-    border: 2px solid #8D493A;
-    border-radius: 10px;
-    background-color:#D0B8A8;
-}
 
-.row{
-    background-color:#F8EDE3;
+.container{
+    max-width: 880px;
+    margin-top: 60px;
+    background-color: #D0B8A8;
+
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
 }
