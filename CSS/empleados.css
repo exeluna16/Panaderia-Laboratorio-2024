@@ -35,9 +35,9 @@ a{
 }
 
 a h3{
+    padding: 2%;
     background:#D0B8A8;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #111;
 }
 
 a:hover{
@@ -45,7 +45,8 @@ a:hover{
 }
 
 a h3:hover{
-    box-shadow: 0px 2px 12px #111;
+    background: linear-gradient(#D0B8A8,transparent);
+    /*box-shadow: 0px 2px 12px #111;*/
 }
 
 /*header*/

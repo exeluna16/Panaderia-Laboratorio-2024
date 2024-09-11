@@ -5,7 +5,6 @@ body{
 }
 
 .contenedor_titulo{
-    
     background:url("../IMG/326.jpg");
     background-size:cover;
     background-repeat: none;
@@ -14,13 +13,11 @@ body{
 
 /*Tabla de productos*/
 #tabla_productos{
-    
     overflow-y: auto;
     max-height: 300px;
     padding: 0;
     margin-bottom: 5px;
     box-shadow: 0px 0px 20px #111;
-    border-radius: 10px;
 }
 
 .table thead th{
