@@ -48,3 +48,16 @@ a:hover{
 a h3:hover{
     box-shadow: 0px 2px 12px #111;
 }
+
+/*header*/
+nav{
+    background: #8D493A;
+}
+
+.navbar-brand{
+    color:#DFD3C3;
+}
+
+.nav-link{
+    color:#DFD3C3;
+}
