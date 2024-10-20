@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,11 +73,14 @@ WSGI_APPLICATION = 'panaderia.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+os.environ['PGSERVICEFILE']=os.path.join(os.environ['APPDATA'],'postgresql','.pg_service.conf')
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'service': 'servicio_postgres',
+            'passfile': os.path.join(os.environ['APPDATA'],'postgresql','.pgpass.conf')
+        }
     }
 }
 
@@ -103,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-AR'
 
 TIME_ZONE = 'UTC'
 
