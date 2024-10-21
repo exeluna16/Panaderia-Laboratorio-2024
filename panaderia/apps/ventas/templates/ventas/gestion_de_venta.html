@@ -1,5 +1,5 @@
-{%extends "base/base.html"%} <!--HERENCIA-->
-
+{% extends 'base.html' %} <!--HERENCIA-->
+{% load static %}
 {% block title %}Venta{% endblock %} <!--copia y pega el titulo-->
 <!--busca el css correspondiente-->
 {% block extra_css %}
@@ -7,111 +7,111 @@
 {% endblock %}
 <!--Se referencian los archivos en /static-->
 
-{% block content %} <!--HERENCIA de contenido variable-->
-    <main>
-        <div class="container-fluid"><!--contenedor completo-->
-            <div class="text-center">
-                <h1 class="display-1">Venta</h1>
-            </div>
-            <div class="container-fluid mb-5"> <!--barra de busqueda-->
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar producto...">
-                <button class="btn btn-success" type="submit">Buscar</button>
-                </form>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="container mb-3">
-                            <h3>Detalles de la Venta</h3>
-                            <!-- Tabla con el encabezado fijo -->
-                            <table class="table text-center">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Producto</th>
-                                    <th>Cant</th>
-                                    <th>Categoría</th>
-                                    <th>Precio</th>
-                                </tr>
-                                </thead>
-                            </table>
-                            <!-- Contenedor con scroll para el cuerpo de la tabla -->
-                            <div class="tbody-container">
-                                <table class="table text-center table-hover table-primary">
-                                <tbody>
-
+    {% block content %} <!--HERENCIA de contenido variable-->
+        <main>
+            <div class="container-fluid"><!--contenedor completo-->
+                <div class="text-center">
+                    <h1 class="display-1">Venta</h1>
+                </div>
+                <div class="container-fluid mb-5"> <!--barra de busqueda-->
+                    <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar producto...">
+                    <button class="btn btn-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="container mb-3">
+                                <h3>Detalles de la Venta</h3>
+                                <!-- Tabla con el encabezado fijo -->
+                                <table class="table text-center">
+                                    <thead>
                                     <tr>
-                                        <td>hola</td>
+                                        <th>#</th>
+                                        <th>Producto</th>
+                                        <th>Cant</th>
+                                        <th>Categoría</th>
+                                        <th>Precio</th>
                                     </tr>
+                                    </thead>
+                                </table>
+                                <!-- Contenedor con scroll para el cuerpo de la tabla -->
+                                <div class="tbody-container">
+                                    <table class="table text-center table-hover table-primary">
+                                    <tbody>
 
-                                </tbody>
+                                        <tr>
+                                            <td>hola</td>
+                                        </tr>
+
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <!-- Tabla con el pie de la tabla fijo -->
+                                <table class="table">
+                                    <tfoot>
+                                    <tr>
+                                        <td><section class="fs-2">Total:</section></td>
+                                        <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
+                                    </tr>
+                                    </tfoot>
                                 </table>
                             </div>
-                            <!-- Tabla con el pie de la tabla fijo -->
-                            <table class="table">
-                                <tfoot>
-                                <tr>
-                                    <td><section class="fs-2">Total:</section></td>
-                                    <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
-                                </tr>
-                                </tfoot>
-                            </table>
                         </div>
-                    </div>
-                    <div class="col-md-6" id="formulario_venta">
-                        <!--FORMULARIO DE VENTA-->
-                        <h3>Datos Generales</h3>
-                        <form class="row g-3 fs-4">
-                            <div class="col-md-6">
-                                <label for="cliente" class="form-label">Cliente</label>
-                                <input type="text" disabled placeholder="cliente mayorista" class="form-control" id="cliente">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="comprobante_venta" class="form-label">Comprobante</label>
-                                <select id="comprobante_venta" class="form-select">
-                                <option selected>FACTURA</option>
-                                <option>TICKET</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="num_comprobante" class="form-label">N° Comprobante</label>
-                                <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="fecha_venta" class="form-label">Fecha</label>
-                                <input type="date" class="form-control" name="numero_de_comprobante" id="fecha_venta" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="tipo_venta" class="form-label">Tipo de Venta</label>
-                                <select id="tipo_venta" class="form-select">
-                                <option selected>CONTADO</option>
-                                <option>CRÉDITO</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="forma_de_pago" class="form-label">Forma de Pago</label>
-                                <select id="forma_de_pago" class="form-select">
-                                <option selected>EFECTIVO</option>
-                                <option>TARJETA</option>
-                                <option>TRANSFERENCIA</option>
-                                <option>QR</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="observaciones_venta" class="form-label">Observaciones</label>
-                                <textarea class="form-control" id="observaciones_venta" rows="3" placeholder="Ingrese observaciones necesarias..."></textarea>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <button type="reset" class="btn btn-danger">CANCELAR</button>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <button type="submit" class="btn btn-success">VENDER</button>
-                            </div>
-                            </form>
+                        <div class="col-md-6" id="formulario_venta">
+                            <!--FORMULARIO DE VENTA-->
+                            <h3>Datos Generales</h3>
+                            <form class="row g-3 fs-4">
+                                <div class="col-md-6">
+                                    <label for="cliente" class="form-label">Cliente</label>
+                                    <input type="text" disabled placeholder="cliente mayorista" class="form-control" id="cliente">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="comprobante_venta" class="form-label">Comprobante</label>
+                                    <select id="comprobante_venta" class="form-select">
+                                    <option selected>FACTURA</option>
+                                    <option>TICKET</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="num_comprobante" class="form-label">N° Comprobante</label>
+                                    <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="fecha_venta" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" name="numero_de_comprobante" id="fecha_venta" disabled>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="tipo_venta" class="form-label">Tipo de Venta</label>
+                                    <select id="tipo_venta" class="form-select">
+                                    <option selected>CONTADO</option>
+                                    <option>CRÉDITO</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="forma_de_pago" class="form-label">Forma de Pago</label>
+                                    <select id="forma_de_pago" class="form-select">
+                                    <option selected>EFECTIVO</option>
+                                    <option>TARJETA</option>
+                                    <option>TRANSFERENCIA</option>
+                                    <option>QR</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="observaciones_venta" class="form-label">Observaciones</label>
+                                    <textarea class="form-control" id="observaciones_venta" rows="3" placeholder="Ingrese observaciones necesarias..."></textarea>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button type="reset" class="btn btn-danger">CANCELAR</button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button type="submit" class="btn btn-success">VENDER</button>
+                                </div>
+                                </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-{% endblock %}
+        </main>
+    {% endblock %}
