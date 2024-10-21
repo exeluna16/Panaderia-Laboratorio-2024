@@ -3,5 +3,55 @@
 {% block title %}pagina hija{% endblock %}
 {% block content %}
   <h1>pagina de venta</h1>
-    <p>{{venta.comprador}}</p>
+    <form class="row g-3 fs-4" method="post">
+      {% csrf_token %}
+        <div class="col-md-6">
+            <label for="cliente" class="form-label">Cliente</label>
+            <input type="text" disabled placeholder="cliente mayorista" class="form-control" id="cliente">
+        </div>
+        <div class="col-md-4">
+            <label for="comprobante_venta" class="form-label">Comprobante</label>
+            <select id="comprobante_venta" class="form-select">
+            <option selected>FACTURA</option>
+            <option>TICKET</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="num_comprobante" class="form-label">N° Comprobante</label>
+            <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
+        </div>
+        <div class="col-md-4">
+            <label for="fecha_venta" class="form-label">Fecha</label>
+            <input type="date" class="form-control" name="numero_de_comprobante" id="fecha_venta" disabled>
+        </div>
+        <div class="col-md-4">
+            <label for="tipo_venta" class="form-label">Tipo de Venta</label>
+            <select id="tipo_venta" class="form-select">
+            <option selected>CONTADO</option>
+            <option>CRÉDITO</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="forma_de_pago" class="form-label">Forma de Pago</label>
+            <select id="forma_de_pago" class="form-select">
+            <option selected>EFECTIVO</option>
+            <option>TARJETA</option>
+            <option>TRANSFERENCIA</option>
+            <option>QR</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="{{ venta.codigo.id_for_label }}">CODIGO SOLO PARA PROBAR</label>
+            {{venta.codigo}}
+            <label for="{{ venta.observaciones.id_for_label }}" class="form-label">Observaciones</label>
+            <!--<textarea class="form-control" id="observaciones_venta" rows="3" placeholder="Ingrese observaciones necesarias..."></textarea>-->
+            {{venta.observaciones}}
+        </div>
+        <div class="col-6 mb-3">
+            <button type="reset" class="btn btn-danger">CANCELAR</button>
+        </div>
+        <div class="col-6 mb-3">
+            <button type="submit" class="btn btn-success">VENDER</button>
+        </div>
+    </form>
 {% endblock %}
