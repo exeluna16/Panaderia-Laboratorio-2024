@@ -13,6 +13,8 @@ class Venta(models.Model):
     observaciones = models.CharField(max_length=150,blank=True)
     total_venta = models.DecimalField(decimal_places=2,max_digits=10)
 
+
+#una venta puede tener muchos items, la idea es que se carguen dinamicamente en la vista
 class ItemVenta(models.Model):
     venta = models.ForeignKey(Venta,on_delete=models.SET_NULL,null=True,related_name='venta')
     producto = models.ForeignKey(Producto,on_delete=models.SET_NULL,null=True)
