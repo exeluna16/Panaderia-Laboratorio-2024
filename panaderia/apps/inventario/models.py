@@ -22,11 +22,11 @@ class Insumo(models.Model):
     nombre = models.CharField(max_length=150)
     cantidad = models.IntegerField()
     cantidad_minima = models.IntegerField()
-    unidad_de_medida = models.ForeignKey(UnidadDeMedida,on_delete=models.CASCADE)
+    unidad_de_medida = models.ForeignKey(UnidadDeMedida,on_delete=models.CASCADE,related_name='unidad_medida')
     estado = models.BooleanField()
 
 '''Insumo y producto comparten atributos asi que se optará por una relacion de herencia'''
 class Producto(Insumo):
     precio = models.DecimalField(decimal_places=2,max_digits=10)
     precio_mayorista = models.DecimalField(decimal_places=2,max_digits=10)
-    categoria = models.ForeignKey(Categoria,on_delete=models.SET_NULL,null=True)
+    categoria = models.ForeignKey(Categoria,on_delete=models.SET_NULL,null=True,related_name='categoria')
