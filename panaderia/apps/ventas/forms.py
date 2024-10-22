@@ -16,4 +16,4 @@ class VentaForm(forms.ModelForm):
 
     class Meta:
         model = Venta
-        fields = ['empleado','forma_de_pago','tipo_comprobante','comprador','observaciones']
+        fields = ['codigo','empleado','forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta']
