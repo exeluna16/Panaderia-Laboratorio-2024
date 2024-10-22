@@ -6,7 +6,7 @@ class Cargo(models.Model):
     descripcion = models.CharField(max_length=30)
 # Create your models here.
 class Empleado(Persona):
-    cuil = models.IntegerField(unique=True)
+    cuit = models.IntegerField(unique=True)
     cargo = models.ForeignKey(Cargo,on_delete=models.CASCADE,related_name='cargo')
     fecha_ingreso = models.DateTimeField()
 
