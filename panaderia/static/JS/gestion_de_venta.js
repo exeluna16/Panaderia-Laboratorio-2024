@@ -1,6 +1,6 @@
 let productos = [];
 let productoSeleccionado = null;
-
+let item_numero = 0;
 //cuando el HTML se cargue envia por el metodo GET una solicitud a la vista de 'listar_prpoductos'
 //la vista devuelve un JSON que será usado a lo largo de esta implementación
 document.addEventListener('DOMContentLoaded', function() {
@@ -41,32 +41,51 @@ function seleccionarProducto(producto) {
     document.getElementById('search').value = ''; // Limpiar la barra búsqueda
 }
 
+//Funcion para calcular el total de la venta
+function totalVenta(){
+
+}
+
 // Función para agregar producto a la tabla de ventas
 function agregarProducto() {
     if (!productoSeleccionado) return;
 
     const cantidad = document.getElementById('cantidad').value;
-
+    item_numero++;
     // Agregar fila a la tabla
-    const tabla = document.getElementById('tablaVentas');
+    const tabla = document.getElementById('cuerpo_tabla_ventas');
     const fila = document.createElement('tr');
+    /* CAMPOS DE LA CABECERA DE LA TABLA
+    <th>#</th>
+    <th>Producto</th>
+    <th>Cant</th>
+    <th>Unidad de medida</th>
+    <th>Precio</th>
+    <th>Accion</th>
+    */
 
     fila.innerHTML = `
+        <td>${item_numero}</td>
         <td>${productoSeleccionado.nombre}</td>
         <td>${cantidad}</td>
+        <td>${productoSeleccionado.unidad_de_medida}</td>
+        <td>$${productoSeleccionado.precio}</td>
         <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
     `;
 
     tabla.appendChild(fila);
 
-    // Limpiar la selección
+    // Limpiar la cantidad
     productoSeleccionado = null;
     document.getElementById('productoSeleccionado').style.display = 'none';
-    document.getElementById('cantidad').value = 1;
+    document.getElementById('cantidad').value = 0;
 }
+
+
 
 // Función para eliminar una fila de la tabla
 function eliminarFila(boton) {
     const fila = boton.closest('tr');
     fila.remove();
+    item_numero--;
 }

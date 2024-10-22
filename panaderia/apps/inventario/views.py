@@ -1,11 +1,12 @@
 from django.http import JsonResponse
 from .models import Producto
-
+from django.shortcuts import render
 
 # Create your views here.
+def agregar_producto(request):
+    return render(request,'inventario/agregar_producto.html')
 
-
-##Esta vista enviará al Frontend todos los productos
+##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request):
 
     #obtengo todos los productos y los trasformo en un diccionario
