@@ -3,6 +3,10 @@ from .models import Producto
 from django.shortcuts import render
 
 # Create your views here.
+def stock_productos(request):
+    return render(request,'inventario/stock_productos.html')
+
+
 def agregar_producto(request):
     return render(request,'inventario/agregar_producto.html')
 
