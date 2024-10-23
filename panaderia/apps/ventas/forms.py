@@ -12,7 +12,7 @@ class ItemVentaForm(forms.ModelForm):
         widgets = {
             'venta': forms.HiddenInput(),
             'producto': forms.HiddenInput(),
-            'subtotal': forms.HiddenInput(),
+            'sub_total': forms.HiddenInput(),
         }
 
 #Formulario DE VENTA

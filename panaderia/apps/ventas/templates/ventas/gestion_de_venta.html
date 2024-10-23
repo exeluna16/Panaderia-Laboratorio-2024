@@ -3,7 +3,7 @@
 {% block title %}Venta{% endblock %} <!--copia y pega el titulo-->
 <!--busca el css correspondiente-->
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'CSS/gestion_de_venta.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'CSS/gestion_de_venta.css' %}">-->
 {% endblock %}
 <!--Se referencian los archivos en /static-->
 
@@ -29,12 +29,16 @@
                 <div>
                     <form method="POST">
                         {{ form_item_venta.management_form }}
-                        {% for form in form_item_venta %}
-                        <label>CANTIDAD</label>
-                        <div class="container-fluid mb-2" id="item_contenedor">
-                            {{form.cantidad}}
+                        <div id="formset-container">
+                            {% for form in form_item_venta %}
+                            <label>CANTIDAD</label>
+                            <div class="container-fluid mb-2" id="item_contenedor">
+                                {{form.cantidad}}
+                                {{form.producto}}
+                                {{form.sub_total}}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </form>
                     <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
                 </div>
@@ -133,4 +137,5 @@
         {% block extra_js %}
             <script src="{% static 'JS/gestion_de_venta.js' %}"></script>
         {% endblock %}
+
     {% endblock %}

@@ -33,32 +33,49 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
 
 
 //
+const nodo_base_cantidad = document.querySelector('#id_form-0-cantidad').cloneNode(true);
+const nodo_base_producto = document.querySelector('#id_form-0-producto').cloneNode(true);
+const nodo_base_sub_total = document.querySelector('#id_form-0-sub_total').cloneNode(true);
 function agregarItem(){
 
     //EL PRODUCTO SE DEBE AGREGARA A LA TABLA AL HACER CLICK
-    agregarProducto()
+    //le asigno valores a los campos
+    if(item_numero===0){ //en la primera iteracion
+        nodo_base_producto.value = productoSeleccionado.nombre;
+        document.querySelector('#id_form-0-sub_total').value = document.querySelector('#id_form-0-cantidad').value * productoSeleccionado.precio
+    }
+
 
     //CAMPOS QUE SE AGREGAN
     cantidad_formularios = document.querySelector('#id_form-TOTAL_FORMS');
-    //let nuevo_producto = document.querySelector('#id_form-0-producto').cloneNode(true); //clonamos el nodo completo
-    let nueva_cantidad = document.querySelector('#id_form-0-cantidad').cloneNode(true);
-    console.log(nueva_cantidad)
+
+    let nueva_cantidad = nodo_base_cantidad.cloneNode(true)//document.querySelector('#id_form-0-cantidad').cloneNode(true); /// copio el campo completo
+    let campo_prod = nodo_base_producto.cloneNode(true);
+    let campo_sub_total = nodo_base_sub_total.cloneNode(true);
+
     //CAMPO PRODUCTO
-    //nuevo_producto.name='form-'+cantidad_formularios.value+'-producto';
-    //nuevo_producto.id = 'id_form'+cantidad_formularios.value+'-producto';
+    campo_prod.name='form-'+cantidad_formularios.value+'-producto';
+    campo_prod.id = 'id_form'+cantidad_formularios.value+'-producto';
     //CAMPO CANTIDAD
     nueva_cantidad.name='form-'+cantidad_formularios.value+'-cantidad';
     nueva_cantidad.id = 'id_form-'+cantidad_formularios.value+'-cantidad';
-
-    //<label for="id_form-0-cantidad">Cantidad:</label>
-    //document.querySelector('#item_contenedor').innerHTML='';
+    //Campo Subtotal
+    campo_sub_total.name='form-'+cantidad_formularios.value+'-sub_total';
+    campo_sub_total.id = 'id_form-'+cantidad_formularios.value+'sub_total';
     //
-    //document.querySelector('#item_contenedor').appendChild(nuevo_producto);
+    campo_prod.value = productoSeleccionado.nombre
+
+    //campo_sub_total.value = productoSeleccionado.precio * nueva_cantidad.value
+
+
+    document.querySelector('#item_contenedor').appendChild(campo_prod);
     document.querySelector('#item_contenedor').appendChild(nueva_cantidad);
+    document.querySelector('#item_contenedor').appendChild(campo_sub_total);
 
     //aumento la cantidad de formularios en 1
     cantidad_formularios.value = parseInt(cantidad_formularios.value) + 1;
 
+    agregarProducto() //al final se agrega el producto a la lista
 }
 
 
@@ -138,7 +155,7 @@ function agregarProducto() {
 
 
 // Función para eliminar una fila de la tabla
-function eliminarFila(boton) {
+function eliminarFila(boton) { //{{ form.DELETE.id }}
     const fila = boton.closest('tr');
     fila.remove();
     item_numero--;

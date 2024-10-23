@@ -8,6 +8,7 @@ from django.contrib import messages
 # Create your views here.
 def primera_vista(request): ##CAMBIARLE EL NOMBRE
     productos = Producto.objects.all()
+
     if request.method == 'POST': ## ---> se reazlia la venta
         venta = VentaForm(request.POST) ##--> se mandan los datos de la pagina al formulario de la venta para ver si coincide con el modelo
         if venta.is_valid(): # --> si la venta es valida
@@ -31,7 +32,7 @@ def principal(request):
 
     productos = Producto.objects.all() ##se traen todos los productos de la base de datos.
     # aca voy a crear tantos items de venta como productos ingrese el usuario
-    form_item_venta = formset_factory(ItemVentaForm, extra=1)
+    form_item_venta = formset_factory(ItemVentaForm, extra=1,can_delete=True)
 
     if request.method == 'POST': ## ---> se reazlia la venta
         venta = VentaForm(request.POST) ##--> se mandan los datos de la pagina al formulario de la venta para ver si coincide con el modelo
@@ -60,5 +61,6 @@ def principal(request):
         venta = VentaForm() ##crea un nuevo formulario
         print('no pasa nada')
     return render(request,'ventas/gestion_de_venta.html',{'venta':venta ,'productos':productos, 'form_item_venta':form_item_venta})
+
 
 
