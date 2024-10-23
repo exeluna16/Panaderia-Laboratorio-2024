@@ -22,28 +22,26 @@
                     </div>
                 </div>
                 <div class="col-md-12"> <!--tabla de productos-->
-                    <div class="container-fluid" id="tabla_productos">
+                    <div class="container-fluid text-center" id="tabla_productos">
                         <table class="table table-hover table-primary">
                             <thead> <!--cabecera-->
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Categoría</th>
-                                <th>Cantidad Disponible</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
+                                <th>CÓDIGO</th>
+                                <th>NOMBRE</th>
+                                <th>CATEGORÍA</th>
+                                <th>CANTIDAD DISPONIBLE</th>
+                                <th>PRECIO</th>
+                                <th>PRECIO MAYORISTA</th>
                                 <th>ACCIÓN</th>
                             </thead>
                             <tbody>
+                                {% for producto in productos %}
                                 <tr><!--filas-->
-                                    <td>1</td>
-                                    <td>tartas</td>
-                                    <td>Pastelería</td>
-                                    <td>25</td>
-                                    <td>tartas dulces
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime qui voluptates animi similique quisquam quod iste autem sapiente illo expedita atque veritatis, accusamus amet laboriosam in quibusdam! Ex, nostrum amet!
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptate illo deserunt veniam quaerat, dicta quos eligendi nisi, maxime libero odio animi repellat? Dolor enim voluptatibus inventore assumenda earum officia.
-                                    </td>
-                                    <td>$1900</td>
+                                    <td>{{producto.codigo}}</td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.categoria.descripcion}}</td>
+                                    <td>{{producto.cantidad}}</td>
+                                    <td>${{producto.precio}}</td>
+                                    <td>${{producto.precio_mayorista}}</td>
                                     <!--USO: class="btn btn-primary" data-bs-toggle="collapse" href="#nombre de la card a la que quieero acceder"-->
                                     <td class="project-actions">
                                         <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#card_modificar_producto">
@@ -54,86 +52,12 @@
                                         </a>
                                     </td>
                                 </tr>
+                                {% empty %} <!--si no hay productos-->
                                 <tr>
-                                    <td>2</td>
-                                    <td>facturas</td>
-                                    <td>Pastelería</td>
-                                    <td>70</td>
-                                    <td>facturas sin relleno</td>
-                                    <td>$500</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                        Modificar
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                        Eliminar
-                                        </a>
-                                    </td>
+                                    <td><p>Aún no hay productos cargados :/</p></td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>bizcochos de grasa</td>
-                                    <td>Panificación</td>
-                                    <td>60</td>
-                                    <td>bizcochos de grasa</td>
-                                    <td>$2000</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                        Modificar
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                        Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>palitos de queso</td>
-                                    <td>Panificación</td>
-                                    <td>90</td>
-                                    <td>bastones elaborados con el queso más rico y nutritivo</td>
-                                    <td>$2500</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                        Modificar
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                        Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>facturas Dulce/leche</td>
-                                    <td>Pastelería</td>
-                                    <td>70</td>
-                                    <td>facturas rellenas de dulce de leche</td>
-                                    <td>$500</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                        Modificar
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                        Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>facturas Dulce/Membrillo</td>
-                                    <td>Pastelería</td>
-                                    <td>70</td>
-                                    <td>facturas con membrillo</td>
-                                    <td>$500</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                        Modificar
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                        Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
+                                {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
