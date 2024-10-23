@@ -8,6 +8,7 @@
 <!--Se referencian los archivos en /static-->
 
     {% block content %} <!--HERENCIA de contenido variable-->
+
         <main>
             <div class="container-fluid"><!--contenedor completo-->
                 <div class="text-center">
@@ -18,17 +19,27 @@
                     <input type="text" id="search" class="form-control" placeholder="Buscar producto..." onkeyup="buscarProducto()">
                     <button class="btn btn-outline-secondary" type="button">Buscar</button>
                 </div>
+
                 <!-- Lista de resultados -->
                 <ul id="resultados" class="list-group"></ul>
                 <!-- Sección para ingresar cantidad y agregar a la tabla -->
+
                 <div id="productoSeleccionado" class="mt-4">
                 <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Cantidad</span>
-                    <input type="number" id="cantidad" class="form-control" min="1" value="1">
-                    <button class="btn btn-success" onclick="agregarProducto()">Agregar a la venta</button>
+                <div>
+                    <form method="POST">
+                        {{ form_item_venta.management_form }}
+                        {% for form in form_item_venta %}
+                        <label>CANTIDAD</label>
+                        <div class="container-fluid mb-2" id="item_contenedor">
+                            {{form.cantidad}}
+                        </div>
+                        {% endfor %}
+                    </form>
+                    <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
                 </div>
                 </div>
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
@@ -60,7 +71,7 @@
                                     <tfoot>
                                     <tr>
                                         <td><section class="fs-2">Total:</section></td>
-                                        <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
+                                        <td class="bg-success"><p class="fs-2 text-center" id="p_total_venta">$0.00</p></td>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -69,7 +80,7 @@
                         <div class="col-md-6" id="formulario_venta">
                             <!--FORMULARIO DE VENTA-->
                             <h3>Datos Generales</h3>
-                            <form class="row g-3 fs-4" method="post">
+                            <form class="row g-3 fs-4" method="post" id="formulario_de_venta">
                                 {% csrf_token%}
                                 <div class="col-md-6">
                                     <label for="{{ venta.comprador.id_forlable }}" class="form-label">Cliente</label>
@@ -77,7 +88,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label">Comprobante</label>
-                                    {{ venta.tipo_compobante }}
+                                    {{ venta.tipo_comprobante }}
                                 </div>
                                 <div class="col-md-4">
                                     <label for="num_comprobante" class="form-label">N° Comprobante</label>
@@ -102,20 +113,23 @@
                                     <label for="{{venta.observaciones.id_for_label}}" class="form-label">Observaciones</label>
                                     {{venta.observaciones}}
                                 </div>
+                                    {{venta.total_venta}}
                                 <div class="col-6 mb-3">
                                     <button type="reset" class="btn btn-danger">CANCELAR</button>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <button type="submit" class="btn btn-success">VENDER</button>
                                 </div>
-                                </form>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        <!--JS-->
+        <script>
 
+        </script>
+        <!--JS-->
         {% block extra_js %}
             <script src="{% static 'JS/gestion_de_venta.js' %}"></script>
         {% endblock %}

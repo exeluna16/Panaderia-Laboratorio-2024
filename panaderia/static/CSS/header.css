@@ -1,5 +1,11 @@
+
 nav{
     background: #8D493A;
+}
+
+#logo{
+    width: 30px;
+    height: 30px;
 }
 
 .navbar-brand{

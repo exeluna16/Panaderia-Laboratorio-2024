@@ -1,19 +1,26 @@
 from django import forms
-from .models import Venta
+from .models import Venta, ItemVenta
 from ..inventario.models import Producto
 
-class AgregarItemVentaForm(forms.ModelForm):
+class ItemVentaForm(forms.ModelForm):
 
     #acá se dice que modelo de la BD usar
     class Meta:
+        model = ItemVenta
+        fields = ['venta','cantidad','producto','sub_total']
 
-        model = Producto
-        fields = [ 'nombre' ,'unidad_de_medida', 'precio']
+        widgets = {
+            'venta': forms.HiddenInput(),
+            'producto': forms.HiddenInput(),
+            'subtotal': forms.HiddenInput(),
+        }
 
-
-#MODELO DE VENTA
+#Formulario DE VENTA
 class VentaForm(forms.ModelForm):
 
     class Meta:
         model = Venta
-        fields = ['codigo','empleado','forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta']
+        fields = ['forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta']
+        widgets = {
+            'total_venta': forms.HiddenInput(),
+        }

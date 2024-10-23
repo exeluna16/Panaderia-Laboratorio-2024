@@ -4,7 +4,6 @@ from ..inventario.models import Producto
 '''Esta es la version de prueba de la venta, hay datos que deben ser claves foraneas para poder
 hacer referencia a modelos que se encuentran en otras apps'''
 class Venta(models.Model):
-    codigo = models.IntegerField(unique=True)
     empleado = models.IntegerField() # debe llevar una clave foranea
     fecha_venta = models.DateTimeField(auto_now_add=True) # esto guarda la fheca actual de la venta
     forma_de_pago= models.CharField(max_length=20) #debe ser clave foranea
