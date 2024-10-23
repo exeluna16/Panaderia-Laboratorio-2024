@@ -25,7 +25,7 @@ class Articulo(models.Model):
     cantidad = models.IntegerField()
     cantidad_minima = models.IntegerField()
     unidad_de_medida = models.ForeignKey(UnidadDeMedida,on_delete=models.CASCADE)
-    estado = models.BooleanField()
+    estado = models.BooleanField(default=True)
 
     #esta clase hace que el modelo no persista en la BD pero sus hijos si lo harán
     class Meta:
