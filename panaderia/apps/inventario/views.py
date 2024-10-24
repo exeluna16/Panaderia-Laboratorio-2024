@@ -10,7 +10,7 @@ def stock_productos(request):
     productos = Producto.objects.all()
     return render(request,'inventario/stock_productos.html', {'productos': productos})
 
-
+#
 def agregar_producto(request):
 
     form_producto = AgregarProductoForm() #formulario para producto
@@ -27,6 +27,7 @@ def agregar_producto(request):
             messages.success(request,'Producto agregado exitosamente')
             return redirect('agregar_producto')
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
+
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request):

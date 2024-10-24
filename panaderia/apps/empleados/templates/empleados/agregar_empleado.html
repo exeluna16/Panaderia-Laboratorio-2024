@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Agregar Empleado{% endblock %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+                <div class="row" id="titulo_empleados">
+                    <div class="col-12">
+                        <h1 class="text-center display-1">Empleados</h1>
+                    </div>
+                </div>
+        </div>
+        <div>
+            <div class="col-12"><h3>Ingrese los datos del empleado</h3></div>
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="{{formulario.nombre.id_label}}" class="form-label">Nombre</label>
+                        {{formulario.nombre}}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{formulario.cuit.id_label}}" class="form-label">CUIT</label>
+                        {{formulario.cuit}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.mail.id_label}}" class="form-label">MAIL</label>
+                        {{formulario.mail}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.fecha_nacido.id_label}}" class="form-label">Fecha de nacimiento</label>
+                        {{formulario.fecha_nacido}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.localidad.id_label}}" class="form-label">Localidad</label>
+                        {{formulario.localidad}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.calle.id_label}}" class="form-label">Calle</label>
+                        {{formulario.calle}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.numero_calle.id_label}}" class="form-label">N° Calle</label>
+                        {{formulario.numero_calle}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{formulario.cargo.id_label}}" class="form-label">Cargo</label>
+                        {{formulario.cargo}}
+                    </div>
+                    <input class="btn btn-danger" type="reset" value="CANCELAR">
+                    <input class="btn btn-success" type="submit" value="GUARDAR">
+                </form>
+        </div>
+    </main>
+{% endblock %}
