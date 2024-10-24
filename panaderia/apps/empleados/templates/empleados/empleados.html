@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Emplados{% endblock %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="row" id="titulo_empleados">
+                <div class="col-12">
+                    <h1 class="text-center display-1">Empleados</h1>
+                </div>
+            </div>
+                <div class="col-12">
+                    {% if empleados|length == 0 %}
+                    <h2 class="text-center">Aún no hay empleados cargados :/</h2>
+                    {% else %}
+                        <h2 class="text-center">Empleados Registrados</h2>
+                        <div class="container-fluid mb-3" id="tabla_empleados">
+                            <table class="table table-hover table-primary">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Cuit</th>
+                                        <th>Nombre</th>
+                                        <th>Telefono</th>
+                                        <th>Domicilio</th>
+                                        <th>Fecha de Nacimiento</th>
+                                        <th>Fecha de ingreso</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for emplado in empleados %}
+                                        <tr>
+                                            <td>{{empleado.id}}</td>
+                                            <td>{{empleado.nombre}}</td>
+                                            <td>{{empleado.cuit}}</td>
+                                            <td>se tiene que agregar</td>
+                                            <td>{{empleado.localidad}},{{empleado.calle}},{{empleado.numero_calle}}</td>
+                                            <td>{{empleado.fecha_nacido}}</td>
+                                            <td>{{empleado.fecha_ingreso}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            <section class="content">
+                    <a class="btn btn-success col-2 m-1" href="{% url 'empleados:agregar_empleado' %}" role="button" id="btn_cargar_empleado"><span>Cargar Empleado</span></a>
+                    <a class="btn btn-primary col-2 m-1" href="#card_agregar_empleado" role="button" id="btn_modificar_empleado"><span>Modificar Empelado</span></a>
+            </section>
+        </div>
+    </main>
+
+{% endblock %}
