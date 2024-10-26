@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.http import JsonResponse
-from .forms import AgregarProductoForm
+from .forms import AgregarProductoForm, AgregarInsumoForm
 from .models import Producto, Categoria, UnidadDeMedida
 from django.shortcuts import render, redirect
 
@@ -37,3 +37,14 @@ def listar_productos(request):
     productos = Producto.objects.all().values('codigo','nombre','cantidad','cantidad_minima','unidad_de_medida','estado','precio','precio_mayorista','categoria')
     lista_productos = list(productos)
     return JsonResponse(lista_productos,safe=False)
+
+def agregar_insumo(request):
+    form = AgregarInsumoForm()
+    if request.method=='POST':
+        form = AgregarInsumoForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            print('el insumo se guardo correctamente')
+
+    return render(request,'inventario/agregar_insumo.html',{'form':form})
