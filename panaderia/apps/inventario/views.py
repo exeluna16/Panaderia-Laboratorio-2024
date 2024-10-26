@@ -24,8 +24,9 @@ def agregar_producto(request):
             medida = request.POST.get('unidad_de_medida')
 
             form_producto.save()#se guarda el producto
-            messages.success(request,'Producto agregado exitosamente')
-            return redirect('agregar_producto')
+            #messages.success(request,'Producto agregado exitosamente')
+
+            #return redirect('agregar_producto')
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
 
 

@@ -23,119 +23,115 @@
                 <!-- Lista de resultados -->
                 <ul id="resultados" class="list-group"></ul>
                 <!-- Sección para ingresar cantidad y agregar a la tabla -->
-
                 <div id="productoSeleccionado" class="mt-4">
-                <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
-                <div>
-                    <form method="POST">
-                        {{ form_item_venta.management_form }}
+                    <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
+                </div>
+                <form method="POST">{% csrf_token %}
                         <div id="formset-container">
-                            {% for form in form_item_venta %}
+                            {{ form_item_venta.management_form }}
+                            {% for f in form_item_venta %}
                             <label>CANTIDAD</label>
                             <div class="container-fluid mb-2" id="item_contenedor">
-                                {{form.cantidad}}
-                                {{form.producto}}
-                                {{form.sub_total}}
+                                {{f.as_p}}
+                                <br>
                             </div>
                             {% endfor %}
                         </div>
-                    </form>
-                    <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
-                </div>
-                </div>
+                        <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="container mb-3">
-                                <h3>Detalles de la Venta</h3>
-                                <!-- Tabla con el encabezado fijo -->
-                                <table class="table text-center">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Producto</th>
-                                        <th>Cant</th>
-                                        <th>Unidad</th>
-                                        <th>Precio</th>
-                                        <th>Accion</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                                <!-- Contenedor con scroll para el cuerpo de la tabla -->
-                                <div class="tbody-container">
-                                    <table class="table text-center table-hover table-primary">
-                                    <tbody id="cuerpo_tabla_ventas">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="container mb-3">
+                                    <h3>Detalles de la Venta</h3>
+                                    <!-- Tabla con el encabezado fijo -->
+                                    <table class="table text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Producto</th>
+                                            <th>Cant</th>
+                                            <th>Unidad</th>
+                                            <th>Precio</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    <!-- Contenedor con scroll para el cuerpo de la tabla -->
+                                    <div class="tbody-container">
+                                        <table class="table text-center table-hover table-primary">
+                                        <tbody id="cuerpo_tabla_ventas">
 
-                                    </tbody>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Tabla con el pie de la tabla fijo -->
+                                    <table class="table">
+                                        <tfoot>
+                                        <tr>
+                                            <td><section class="fs-2">Total:</section></td>
+                                            <td class="bg-success"><p class="fs-2 text-center" id="p_total_venta">$0.00</p></td>
+                                        </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
-                                <!-- Tabla con el pie de la tabla fijo -->
-                                <table class="table">
-                                    <tfoot>
-                                    <tr>
-                                        <td><section class="fs-2">Total:</section></td>
-                                        <td class="bg-success"><p class="fs-2 text-center" id="p_total_venta">$0.00</p></td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                            </div>
+                            <div class="col-md-6" id="formulario_venta">
+                                <!--FORMULARIO DE VENTA-->
+                                    <h3>Datos Generales</h3>
+                                    <div class="col-md-6">
+                                        <label for="{{ venta.comprador.id_forlable }}" class="form-label">Cliente</label>
+                                        {{ venta.comprador }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label">Comprobante</label>
+                                        {{ venta.tipo_comprobante }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="num_comprobante" class="form-label">N° Comprobante</label>
+                                        <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="fecha_venta" class="form-label">Fecha</label>
+                                        <input type="date" class="form-control" name="fecha_venta" id="fecha_venta" disabled>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="tipo_venta" class="form-label">Tipo de Venta</label>
+                                        <select id="tipo_venta" class="form-select">
+                                        <option selected>CONTADO</option>
+                                        <option>CRÉDITO</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label">Forma de Pago</label>
+                                        {{venta.forma_de_pago}}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="{{venta.observaciones.id_for_label}}" class="form-label">Observaciones</label>
+                                        {{venta.observaciones}}
+                                    </div>
+                                    <div><h3>vendedor</h3>
+                                        {{venta.empleado}}
+                                    </div>
+                                    <div>
+                                        <h3>total venta</h3>
+                                        {{venta.total_venta}}
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <button type="reset" class="btn btn-danger">CANCELAR</button>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <button type="submit" class="btn btn-success">VENDER</button>
+                                    </div>
                             </div>
                         </div>
-                        <div class="col-md-6" id="formulario_venta">
-                            <!--FORMULARIO DE VENTA-->
-                            <h3>Datos Generales</h3>
-                            <form class="row g-3 fs-4" method="post" id="formulario_de_venta">
-                                {% csrf_token%}
-                                <div class="col-md-6">
-                                    <label for="{{ venta.comprador.id_forlable }}" class="form-label">Cliente</label>
-                                    {{ venta.comprador }}
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label">Comprobante</label>
-                                    {{ venta.tipo_comprobante }}
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="num_comprobante" class="form-label">N° Comprobante</label>
-                                    <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="{{venta.fecha_venta.id_for_label}}" class="form-label">Fecha</label>
-                                    <input type="date" class="form-control" name="numero_de_comprobante" id="fecha_venta" disabled>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="tipo_venta" class="form-label">Tipo de Venta</label>
-                                    <select id="tipo_venta" class="form-select">
-                                    <option selected>CONTADO</option>
-                                    <option>CRÉDITO</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label">Forma de Pago</label>
-                                    {{venta.forma_de_pago}}
-                                </div>
-                                <div class="mb-3">
-                                    <label for="{{venta.observaciones.id_for_label}}" class="form-label">Observaciones</label>
-                                    {{venta.observaciones}}
-                                </div>
-                                    {{venta.total_venta}}
-                                <div class="col-6 mb-3">
-                                    <button type="reset" class="btn btn-danger">CANCELAR</button>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <button type="submit" class="btn btn-success">VENDER</button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </main>
-        <script>
-
-        </script>
         <!--JS-->
-        {% block extra_js %}
-            <script src="{% static 'JS/gestion_de_venta.js' %}"></script>
-        {% endblock %}
-
+    {% block extra_js %}
+        <!--<script src="{% static 'JS/gestion_de_venta.js' %}"></script>-->
     {% endblock %}
+
+{% endblock %}

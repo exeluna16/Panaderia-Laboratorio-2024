@@ -2,13 +2,14 @@
 
 {% block title %}pagina hija{% endblock %}
 {% block content %}
-  {% for producto in productos %}
-      <h1>{{producto.nombre}}</h1>
-  {% endfor %}
   <h1>pagina de venta</h1>
     <form class="row g-3 fs-4" method="post">
       {% csrf_token %}
-        {{venta.as_p}}
+       {{ formset.management_form }}
+        {% for v in formset %}
+            {{v}}
+            <br>
+        {% endfor %}
         <button type="submit" class="btn btn-primary">Guardar Venta</button>
     </form>
 

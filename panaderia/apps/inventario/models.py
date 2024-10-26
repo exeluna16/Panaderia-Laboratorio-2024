@@ -30,10 +30,14 @@ class Articulo(models.Model):
     #esta clase hace que el modelo no persista en la BD pero sus hijos si lo harán
     class Meta:
         abstract = True
+    def __str__(self):
+        return f'{self.nombre}'
 
 '''Se define el modelo de insumo'''
 class Insumo(Articulo):
     ultimo_precio = models.DecimalField(decimal_places=2,max_digits=10,blank=True)
+
+
 
 '''Se define el modelo Producto'''
 class Producto(Articulo):

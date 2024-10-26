@@ -4,9 +4,11 @@ let item_numero = 0;
 let total_venta = 0.00;
 let cantidad_formularios = 0;
 
+
 //cuando el HTML se cargue envia por el metodo GET una solicitud a la vista de 'listar_prpoductos'
 //la vista devuelve un JSON que será usado a lo largo de esta implementación
 document.addEventListener('DOMContentLoaded', function() {
+
     fetch('../inventario/listar_productos') //se envia la peticion a la url correcpondiente
     .then(response => response.json()) //la respuesta se trasnforma en un JSON por si acaso, es una validacion
     .then(data => {
@@ -14,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error('Error:', error));
 });
-
+//
+document.addEventListener('DOMContentLoaded', function() {
+    checkbox = document.getElementById('id_form-0-DELETE').hidden = true
+    console.log(checkbox)
+});
 //Cargar datos venta
 document.getElementById('formulario_de_venta').addEventListener('submit',function(event){
 
@@ -30,12 +36,14 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
      // Al final de se envia el formulario a la vista, rezemos para que se guarde
     this.submit();
 });
+//
 
 
 //
 const nodo_base_cantidad = document.querySelector('#id_form-0-cantidad').cloneNode(true);
 const nodo_base_producto = document.querySelector('#id_form-0-producto').cloneNode(true);
 const nodo_base_sub_total = document.querySelector('#id_form-0-sub_total').cloneNode(true);
+const checkbox_base = document.getElementById('id_form-0-DELETE')
 function agregarItem(){
 
     //EL PRODUCTO SE DEBE AGREGARA A LA TABLA AL HACER CLICK
@@ -52,16 +60,20 @@ function agregarItem(){
     let nueva_cantidad = nodo_base_cantidad.cloneNode(true)//document.querySelector('#id_form-0-cantidad').cloneNode(true); /// copio el campo completo
     let campo_prod = nodo_base_producto.cloneNode(true);
     let campo_sub_total = nodo_base_sub_total.cloneNode(true);
+    let checkbox = checkbox_base.cloneNode(true);
 
     //CAMPO PRODUCTO
     campo_prod.name='form-'+cantidad_formularios.value+'-producto';
-    campo_prod.id = 'id_form'+cantidad_formularios.value+'-producto';
+    campo_prod.id = 'id_form-'+cantidad_formularios.value+'-producto';
     //CAMPO CANTIDAD
     nueva_cantidad.name='form-'+cantidad_formularios.value+'-cantidad';
     nueva_cantidad.id = 'id_form-'+cantidad_formularios.value+'-cantidad';
     //Campo Subtotal
     campo_sub_total.name='form-'+cantidad_formularios.value+'-sub_total';
-    campo_sub_total.id = 'id_form-'+cantidad_formularios.value+'sub_total';
+    campo_sub_total.id = 'id_form-'+cantidad_formularios.value+'-sub_total';
+    //Campo check box
+    checkbox.name = 'form-'+cantidad_formularios.value+'-DELETE';
+    checkbox.id = 'id_form-'+cantidad_formularios.value+'-DELETE';
     //
     campo_prod.value = productoSeleccionado.nombre
 
@@ -71,11 +83,14 @@ function agregarItem(){
     document.querySelector('#item_contenedor').appendChild(campo_prod);
     document.querySelector('#item_contenedor').appendChild(nueva_cantidad);
     document.querySelector('#item_contenedor').appendChild(campo_sub_total);
+    document.querySelector('#item_contenedor').appendChild(checkbox); //agrega el campo checkbox
 
     //aumento la cantidad de formularios en 1
     cantidad_formularios.value = parseInt(cantidad_formularios.value) + 1;
 
     agregarProducto() //al final se agrega el producto a la lista
+    console.log(document.getElementById('id_form-0-DELETE').checked)
+
 }
 
 
@@ -155,7 +170,8 @@ function agregarProducto() {
 
 
 // Función para eliminar una fila de la tabla
-function eliminarFila(boton) { //{{ form.DELETE.id }}
+function eliminarFila(boton) {
+
     const fila = boton.closest('tr');
     fila.remove();
     item_numero--;
