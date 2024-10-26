@@ -16,7 +16,7 @@ class Persona(models.Model):
     ]
 
     nombre = models.CharField(max_length=150)
-    mail = models.EmailField(max_length=150)
+    mail = models.EmailField(max_length=150,null=True,default='ejemplo@ejemplo.com')
     tipo_persona = models.CharField(max_length=20,choices=TIPO_PERSONA)
     estado = models.BooleanField(default=True)
     calle=models.CharField(max_length=150)
