@@ -34,7 +34,7 @@ def agregar_producto(request):
 def listar_productos(request):
 
     #obtengo todos los productos y los trasformo en un diccionario
-    productos = Producto.objects.all().values('codigo','nombre','cantidad','cantidad_minima','unidad_de_medida','estado','precio','precio_mayorista','categoria')
+    productos = Producto.objects.all().values('id','codigo','nombre','cantidad','cantidad_minima','unidad_de_medida','estado','precio','precio_mayorista','categoria')
     lista_productos = list(productos)
     return JsonResponse(lista_productos,safe=False)
 

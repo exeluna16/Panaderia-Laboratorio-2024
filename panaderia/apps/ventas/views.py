@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import FormView
 
 from .models import Venta, ItemVenta
@@ -37,18 +37,18 @@ def principal(request):
 
             venta = venta_form.save()  # Se guarda la venta y se intancia un modelo
 
-            print(venta.total_venta)
             venta.save() #se guarda nuevamente la venta
             form_item_venta = ItemVentaFormSet(request.POST, instance=venta) #se le envia al formset la clase padre de la que debe heredar
             print('venta valida')
-
+            print(form_item_venta.data)
             if form_item_venta.is_valid(): #si los formset son validos ingresara
                 print('items son validos')
                 form_item_venta.save() #se guardan todos los formset
                 #se guarda la venta
                 #messages.success(request, 'La venta se guardó correctamente')  #puedo hacer que el mensaje salga en la esquina
                 print('se guardo la venta')
-
+                
+            return redirect('ventas:principal') #RECARGA LA PAGINA
         else:
             print('la venta es no valida')
 

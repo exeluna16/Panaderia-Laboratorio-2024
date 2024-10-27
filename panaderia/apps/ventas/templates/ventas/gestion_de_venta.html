@@ -26,13 +26,16 @@
                 <div id="productoSeleccionado" class="mt-4">
                     <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
                 </div>
-                <form method="POST">{% csrf_token %}
+                <form method="POST" id='formulario_de_venta'>{% csrf_token %}
                         <div id="formset-container">
                             {{ form_item_venta.management_form }}
                             {% for f in form_item_venta %}
                             <label>CANTIDAD</label>
                             <div class="container-fluid mb-2" id="item_contenedor">
-                                {{f.as_p}}
+                                {{f.producto}}
+                                {{f.cantidad}}
+                                {{f.sub_total}}
+                                {{f.DELETE}}
                                 <br>
                             </div>
                             {% endfor %}
@@ -96,13 +99,6 @@
                                         <input type="date" class="form-control" name="fecha_venta" id="fecha_venta" disabled>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="tipo_venta" class="form-label">Tipo de Venta</label>
-                                        <select id="tipo_venta" class="form-select">
-                                        <option selected>CONTADO</option>
-                                        <option>CRÉDITO</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
                                         <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label">Forma de Pago</label>
                                         {{venta.forma_de_pago}}
                                     </div>
@@ -131,7 +127,7 @@
         </main>
         <!--JS-->
     {% block extra_js %}
-        <!--<script src="{% static 'JS/gestion_de_venta.js' %}"></script>-->
+        <script src="{% static 'JS/gestion_de_venta.js' %}"></script>
     {% endblock %}
 
 {% endblock %}
