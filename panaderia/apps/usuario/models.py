@@ -4,6 +4,7 @@ from django.db import models
 '''Se define al usuario'''
 class Usuario(models.Model):
     nombre = models.CharField(max_length=150)
+    cuit = models.CharField(unique=True,max_length=11,default='01234567890')
 
     def __str__(self):
         return f'{self.nombre}'
