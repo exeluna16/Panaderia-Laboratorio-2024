@@ -1,7 +1,9 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block title %}Panadería El Maná{% endblock %}
-    <link rel="stylesheet" href="{% static 'CSS/home.css' %}">  
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'CSS/home.css' %}"> 
+{% endblock %}
 {% block content %}
 
   <div class="fondo_pagina container-fluid">
