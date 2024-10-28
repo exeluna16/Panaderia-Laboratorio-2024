@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.http import JsonResponse
-from .forms import AgregarProductoForm, AgregarInsumoForm
+from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm
 from .models import Producto, Categoria, UnidadDeMedida
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 
 
 # Create your views here.
@@ -29,6 +29,17 @@ def agregar_producto(request):
             #return redirect('agregar_producto')
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
 
+def modificar_producto(request,pk):
+    #Se pasa como dato el modelo (Producto) y se comprara el id con la pk(primary key)
+    producto = get_object_or_404(Producto,id=pk)
+    if request.method =='POST':
+        formulario = ModificarProductoForm(request.POST,instance=producto)
+        if formulario.is_valid():
+            formulario.save()
+            print('se guardo correctamente')
+            return redirect('inventario:stock_productos')
+    formulario = ModificarProductoForm(instance=producto)
+    return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request):

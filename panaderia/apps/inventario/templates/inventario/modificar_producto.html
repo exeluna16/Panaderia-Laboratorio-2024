@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Agregar Producto{% endblock %}
+{% block title %}Modificar Producto{% endblock %}
 {% block content %}
 <div class="container-fluid mt-3">
 
@@ -13,7 +13,7 @@
         </div>
         {% endif %}
 
-        <h2 class="mb-4">Carga de Productos</h2>
+        <h2 class="mb-4">Modificación</h2>
         <form method="post" > {% csrf_token %}
             <!-- Código -->
             <div class="mb-3">
@@ -28,7 +28,7 @@
 
             <!-- Cantidad -->
             <div class="mb-3">
-                <label for="{{form_producto.cantidad.id_label}}" class="form-label">Cantidad</label>
+                <label for="{{form_producto.cantidad.id_label}}" class="form-label">Cantidad Actual</label>
                 {{form_producto.cantidad}}
             </div>
 
@@ -60,7 +60,13 @@
                 <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Categoría</label>
                 {{form_producto.categoria}}
             </div>
-
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Estado</label>
+                    {{form_producto.estado}}                    
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
+                </div>
+            </div>
             <!-- Botón de envío -->
             <div class="container-fluid">
                 <button type="reset" class="btn btn-danger">Cancelar</button>
