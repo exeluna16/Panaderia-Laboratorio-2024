@@ -12,9 +12,10 @@ class ItemVentaForm(forms.ModelForm):
         fields = ['venta','cantidad','producto','sub_total']
 
         widgets = {
+            'cantidad':forms.NumberInput(attrs={'class':'form-control cantidad-producto'}),
             'venta': forms.HiddenInput(),
-            'producto': forms.HiddenInput(),
-            'sub_total': forms.HiddenInput(),
+            'producto': forms.HiddenInput(attrs={'class':'producto-seleccionado'}),
+            'sub_total': forms.HiddenInput(attrs={'class':'sub-total'}),
         }
 
 #Formulario DE VENTA

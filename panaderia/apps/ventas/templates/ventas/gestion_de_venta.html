@@ -27,11 +27,10 @@
                     <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
                 </div>
                 <form method="POST" id='formulario_de_venta'>{% csrf_token %}
+                    {{ form_item_venta.management_form }}
                         <div id="formset-container">
-                            {{ form_item_venta.management_form }}
                             {% for f in form_item_venta %}
-                            <label>CANTIDAD</label>
-                            <div class="container-fluid mb-2" id="item_contenedor">
+                            <div class="section-form mb-2" id="item_contenedor" >
                                 {{f.producto}}
                                 {{f.cantidad}}
                                 {{f.sub_total}}
@@ -56,6 +55,7 @@
                                             <th>Cant</th>
                                             <th>Unidad</th>
                                             <th>Precio</th>
+                                            <th>Subtotal</th>
                                             <th>Accion</th>
                                         </tr>
                                         </thead>

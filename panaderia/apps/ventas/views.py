@@ -32,30 +32,21 @@ def principal(request):
 
         venta_form = VentaForm(request.POST) ##--> se mandan los datos de la pagina al formulario de la venta para ver si coincide con el modelo
 
-
         if venta_form.is_valid(): # --> si la venta es valida
 
             venta = venta_form.save()  # Se guarda la venta y se intancia un modelo
 
-            venta.save() #se guarda nuevamente la venta
             form_item_venta = ItemVentaFormSet(request.POST, instance=venta) #se le envia al formset la clase padre de la que debe heredar
-            print('venta valida')
-            print(form_item_venta.data)
+            
             if form_item_venta.is_valid(): #si los formset son validos ingresara
-                print('items son validos')
+
+                print(form_item_venta.data)
                 form_item_venta.save() #se guardan todos los formset
                 #se guarda la venta
                 #messages.success(request, 'La venta se guardó correctamente')  #puedo hacer que el mensaje salga en la esquina
                 print('se guardo la venta')
                 
             return redirect('ventas:principal') #RECARGA LA PAGINA
-        else:
-            print('la venta es no valida')
-
-            print(venta_form.data)
-            print('')
-
-
-
+        
     return render(request,'ventas/gestion_de_venta.html',{'venta':venta_form ,'form_item_venta':form_item_venta})
 
