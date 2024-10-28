@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 #necesito acceder a la carpeta apps
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',TemplateView.as_view(template_name='home.html'),name='home'),
     path('ventas/',include('apps.ventas.urls')),
     path('inventario/',include('apps.inventario.urls')),
     path('empleados/',include('apps.empleados.urls')),
