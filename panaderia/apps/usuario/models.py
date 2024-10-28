@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 '''Se define al usuario'''
-class Usuario(models.Model):
+class Usuario(AbstractUser):
     nombre = models.CharField(max_length=150)
     cuit = models.CharField(unique=True,max_length=11,default='01234567890')
 

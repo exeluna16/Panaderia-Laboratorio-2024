@@ -26,5 +26,5 @@ urlpatterns = [
     path('inventario/',include('apps.inventario.urls')),
     path('empleados/',include('apps.empleados.urls')),
     path('cliente_mayorista/',include('apps.cliente_mayorista.urls')),
-    path('pedido/',include('apps.pedido.urls'))
+    path('pedido/',include('apps.pedido.urls')),
 ]
