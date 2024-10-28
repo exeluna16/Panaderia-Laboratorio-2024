@@ -36,6 +36,17 @@
                             <a class="nav-link" href="#">Link-3</a>
                         </li>
                     </ul>
+                    <!--inicio de sesion-->
+                    <span class="navbar-text ms-auto">
+                        {% if user.is_authenticated %}
+                        {{ user.username }}
+                        <a class="btn btn-outline-success me-2"
+                        href="{% url 'usuario:logout' %}">Cerrar sesión</a>
+                        {% else %}
+                        <a class="btn btn-outline-success me-2"
+                        href="{% url 'usuario:login' %}">Iniciar sesión</a>
+                        {% endif %}
+                    </span>
                 </div>
             </div>
         </nav>

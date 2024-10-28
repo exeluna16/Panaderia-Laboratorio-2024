@@ -24,7 +24,7 @@ class Persona(models.Model):
     calle=models.CharField(max_length=150)
     localidad = models.CharField(max_length=150)
     numero_calle = models.IntegerField(null=True)
-    fecha_nacido = models.DateTimeField()
+    fecha_nacido = models.DateField()
 
     class Meta:
         abstract = True
