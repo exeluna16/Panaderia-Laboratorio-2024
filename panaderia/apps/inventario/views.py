@@ -34,7 +34,6 @@ def agregar_producto(request):
 def listar_productos(request):
     # Obtiene todos los productos y sus datos de unidad de medida usando select_related()
     productos = Producto.objects.select_related('unidad_de_medida').all()
-    print(productos.dates)
     # creo un diccionario con los datos de los productos para porder enviarlos como un JSON.
     #
     lista_productos = [

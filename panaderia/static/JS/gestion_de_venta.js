@@ -3,6 +3,7 @@ let productoSeleccionado = null;
 let item_numero = 0;
 let total_venta = 0.00;
 let cantidad_formularios = document.getElementById('id_venta-TOTAL_FORMS').value;
+let productosEnTabla = [];  // Array para almacenar los IDs de productos en la tabla
 //cuando el HTML se cargue envia por el metodo GET una solicitud a la vista de 'listar_prpoductos'
 //la vista devuelve un JSON que será usado a lo largo de esta implementación
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,19 +37,35 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
     this.submit();
 });
 
+//Funcion para comprobar desde el Front-End si hay suficiente cantidad de un producto ingresado
+function existeSuficienteCantidad(cantidad){
+    if (productoSeleccionado.cantidad < cantidad){
+        alert('NO hay suficiente cantidadad');
+        return false;
+    }
+    return true;
+}
+
 function agregarItem(){
-    console.log(productoSeleccionado.unidad_de_medida)
-    guardarValores()
-    //e.preventDefault();
-    const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true); //copia el primer nodo     
-    ///del nodo clonado tengo que limpiar sus campos
-    nodo_base.querySelectorAll('input').forEach(input =>input.value='');
-    nodo_base.querySelectorAll('input[type="checkbox"]').forEach(checkbox =>checkbox.hidden=false);
-    
-    document.getElementById('formset-container').appendChild(nodo_base); //se agrega el nuevo nodo
-    actualizarIndiceFormulario(); ///actaulizamos los indices dle formulario base
-    
-    agregarProducto() //al final se agrega el producto a la tabla
+    //le resto uno a la cantidad de formularios totales porque al agregar estamos sumando 1 pero nos interesa la cantidad del anterior
+    let cantidad_ingresada = document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-cantidad').value;
+
+    if(existeSuficienteCantidad(cantidad_ingresada)){
+        //guardo los valores ingresados por el usuario
+        guardarValores()
+        
+        const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true); //copia el primer nodo     
+        ///del nodo clonado tengo que limpiar sus campos
+        nodo_base.querySelectorAll('input').forEach(input =>input.value='');
+        nodo_base.querySelectorAll('input[type="checkbox"]').forEach(checkbox =>checkbox.hidden=false);
+        
+        console.log(nodo_base);
+        document.getElementById('formset-container').appendChild(nodo_base); //se agrega el nuevo nodo
+        actualizarIndiceFormulario(); ///actaulizamos los indices dle formulario base
+        
+        agregarProducto(); //al final se agrega el producto a la tabla
+
+    }
 }
 ///guarda las cantidades en el formulario corresponidente, el cual siempre es uno menor a la cantidad total de formularios
 function guardarValores() {
@@ -57,14 +74,42 @@ function guardarValores() {
     document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-sub_total').value = productoSeleccionado.precio * cantidad_ingresada;
 }
 
-// Esta función para busca productos en el archivo JSON recibido
+//
 function buscarProducto() {
     const query = document.getElementById('search').value.toLowerCase();
     const resultados = document.getElementById('resultados');
     resultados.innerHTML = '';
 
-    // Filtro los productos que coincidan con la búsqueda
+    // Filtrar productos que coincidan con la búsqueda
     const productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(query));
+
+    // Mostrar los productos disponibles con ícono o mensaje si ya están seleccionados
+    productosFiltrados.forEach(producto => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'list-group-item-action');
+        li.textContent = producto.nombre;
+
+        // Comprobar si el producto ya ha sido seleccionado
+        if (productosSeleccionados.includes(producto.id)) {
+            li.classList.add('disabled'); // Deshabilitar si ya fue seleccionado
+            const icono = document.createElement('span');
+            icono.textContent = " (seleccionado)"; // Indicador
+            li.appendChild(icono);
+        } else {
+            li.onclick = () => seleccionarProducto(producto);
+        }
+
+        resultados.appendChild(li);
+    });
+}
+// Esta función para busca productos en el archivo JSON recibido
+function buscarProducto() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const resultados = document.getElementById('resultados');//me trae la lista de resultados
+    resultados.innerHTML = '';
+
+    // Filtro los productos que coincidan con la búsqueda
+    const productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(query) && !productosEnTabla.includes(p.id));
 
     // Muestro los productos
     productosFiltrados.forEach(producto => {
@@ -74,6 +119,7 @@ function buscarProducto() {
         li.onclick = () => seleccionarProducto(producto); //Se pasa el OBJETO producto
         resultados.appendChild(li);
     });
+
 }
 
 // Función para seleccionar un producto
@@ -126,13 +172,15 @@ function agregarProducto() {
         <td>${productoSeleccionado.unidad_de_medida}</td>
         <td>$${productoSeleccionado.precio}</td>
         <td class='fila_sub_total'>$${productoSeleccionado.precio*cantidad}</td>
-        <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+        <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this, ${productoSeleccionado.id})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
         </svg></button></td>
     `;
 
     tabla.appendChild(fila);
     totalVenta()
+    //agrego el producto elegido en la lista de ya elegidos
+    productosEnTabla.push(productoSeleccionado.id);
     // limpio el resultado
     document.getElementById('nombreProducto').textContent = '';
     productoSeleccionado = null;
@@ -140,12 +188,15 @@ function agregarProducto() {
 }
 
 // Función para eliminar una fila de la tabla
-function eliminarFila(boton) {
+function eliminarFila(boton,productoId) {
 
     const fila = boton.closest('tr');
     fila.remove();
     item_numero--;
     totalVenta(); ///como se elimino un producto se debe actualizar el total
+
+    // Eliminamos el ID del producto de productosEnTabla para que se pueda volver a seleccionar
+    productosEnTabla = productosEnTabla.filter(id => id !== productoId);
 }
 
 function actualizarIndiceFormulario(){
