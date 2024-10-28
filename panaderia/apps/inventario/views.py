@@ -32,11 +32,29 @@ def agregar_producto(request):
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request):
+    # Obtiene todos los productos y sus datos de unidad de medida usando select_related()
+    productos = Producto.objects.select_related('unidad_de_medida').all()
+    print(productos.dates)
+    # creo un diccionario con los datos de los productos para porder enviarlos como un JSON.
+    #
+    lista_productos = [
+        {
+            'id': producto.id,
+            'codigo': producto.codigo,
+            'nombre': producto.nombre,
+            'cantidad': producto.cantidad,
+            'cantidad_minima': producto.cantidad_minima,
+            'unidad_de_medida': producto.unidad_de_medida.unidad_medida_nombre,
+            'estado': producto.estado,
+            'precio': producto.precio,
+            'precio_mayorista': producto.precio_mayorista,
+            'categoria': producto.categoria.id
+        }
+        #acá recorro cada instancia del Qeryset de productos
+        for producto in productos #Este tipo de bucle es una lista por comprensión que crea una nueva lista en el mismo paso en que recorre los productos.
+    ]
+    return JsonResponse(lista_productos, safe=False)
 
-    #obtengo todos los productos y los trasformo en un diccionario
-    productos = Producto.objects.all().values('id','codigo','nombre','cantidad','cantidad_minima','unidad_de_medida','estado','precio','precio_mayorista','categoria')
-    lista_productos = list(productos)
-    return JsonResponse(lista_productos,safe=False)
 
 def agregar_insumo(request):
     form = AgregarInsumoForm()

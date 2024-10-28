@@ -26,6 +26,7 @@ class VentaForm(forms.ModelForm):
         fields = ['empleado','forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
         widgets = {
             'total_venta': forms.HiddenInput(),
+            'empleado' : forms.HiddenInput(),
         }
 
 ItemVentaFormSet = inlineformset_factory(
