@@ -4,12 +4,6 @@ body{
     scrollbar-color: #8D493A #D0B8A8;
 }
 
-.contenedor_titulo{
-    background:url("../IMG/326.jpg");
-    background-size:cover;
-    background-repeat: none;
-    background-position: center;
-}
 
 /*Tabla de productos*/
 #tabla_productos{
@@ -34,7 +28,7 @@ body{
 /*Espacio de la descripcion y categoria*/
 /*media query para ocultarlo en resoluciones pequeñas*/
 @media(max-width:768px){
-    .table td:nth-child(3), .table td:nth-child(5), .table th:nth-child(5),
+    .table td:nth-child(3), .table td:nth-child(6), .table th:nth-child(6),
     .table th:nth-child(3){
         display:none;
     }
