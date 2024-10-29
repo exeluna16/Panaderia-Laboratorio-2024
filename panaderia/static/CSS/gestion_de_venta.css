@@ -3,16 +3,21 @@ body{
     scrollbar-color: #198754 #F8EDE3;
 }
 
-/*main{
-    background: url(../IMG/fondo_minimal.jpg);
+
+main{
+    background: url(../IMG/pan1.jpeg);
     background-size: cover;
     background-repeat: none;
+}
+
+#productoSeleccionado h4 span{
+    background: #aaa
 }
 
 #formset-container{
     display: none;
 }
-*/
+
 
 /*FORMULARIO de venta*/
 #formulario_venta{

@@ -27,7 +27,7 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
     //Ingreso el empleado
     document.getElementById('id_empleado').value=1;
      // Al final de se envia el formulario a la vista, rezemos para que se guarde
-    //this.submit();
+    this.submit();
 });
 
 // Función para seleccionar un producto
@@ -198,23 +198,30 @@ function guardarValores(){
     
     //TRAIGO EL SUBTOTAL DE LA TABLA, PERO COMO TIENE EL SIGNO '$' SE UTILIZA .replace para porner un espacio en blanco que despues se elimina con .trim()
     nodo_base.querySelector('.sub-total').value = filas[0].querySelector('td.fila_sub_total').textContent.replace('$', '').trim();
-    
+
+     // Limpio el contenedor de formularios y agrego el nodo base como primer elemento
+    const formsetContainer = document.getElementById('formset-container');
+    formsetContainer.innerHTML = '';  // Borra el contenido previo
+    formsetContainer.appendChild(nodo_base);
+
     for(let i = 1 ; i < productosEnTabla.length;i++){    
         // Clonamos el nodo base con los valores que le dimos antes
-        nuevo_nodo = nodo_base.cloneNode(true);
+        const nuevo_nodo = nodo_base.cloneNode(true);
 
         //llenamos el nuevo nodo con cada valor que viene de la fila actual en la que estamos iterando
         nuevo_nodo.querySelector('.producto-seleccionado').value = productosEnTabla[i];
-        console.log(nuevo_nodo.querySelector('.producto-seleccionado').value)
+
         nuevo_nodo.querySelector('.cantidad-producto').value = filas[i].querySelector('td.fila_cantidad').textContent.trim();
-        console.log(nuevo_nodo.querySelector('.cantidad-producto').value)
+
         nuevo_nodo.querySelector('.sub-total').value = filas[i].querySelector('td.fila_sub_total').textContent.replace('$', '').trim();
-        console.log(nuevo_nodo.querySelector('.sub-total').value)
-        
-        ///se agrega el nuevo nodo
-        document.getElementById('formset-container').appendChild(nodo_base); //se agrega el nuevo nodo pero esta oculto para el usuario
+
+
+        // Agrego el nuevo nodo al contenedor
+        formsetContainer.appendChild(nuevo_nodo);
+
         //actualizo los indices de los formularios
         actualizarIndiceFormulario()
-        
     }
+
 }
+

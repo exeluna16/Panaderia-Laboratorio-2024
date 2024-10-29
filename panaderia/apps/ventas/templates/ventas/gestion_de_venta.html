@@ -17,14 +17,14 @@
                 <!--BUSCADOR-->
                 <div class="input-group mb-3">
                     <input type="text" id="search" class="form-control" placeholder="Buscar producto..." onkeyup="buscarProducto()">
-                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                    <button class="btn btn-secondary" type="button">Buscar</button>
                 </div>
 
                 <!-- Lista de resultados -->
                 <ul id="resultados" class="list-group"></ul>
                 <!-- Sección para ingresar cantidad y agregar a la tabla -->
                 <div id="productoSeleccionado" class="mt-4">
-                    <h4>Producto seleccionado: <span id="nombreProducto"></span></h4>
+                    <h4><span>Producto seleccionado: </span><span id="nombreProducto"></span></h4>
                 </div>
                 <form method="POST" id='formulario_de_venta'>{% csrf_token %}
                     {{ form_item_venta.management_form }}
@@ -39,7 +39,7 @@
                             </div>
                             {% endfor %}
                         </div>
-                        <input type="number" id="cantidad_seleccionada">
+                        <input type="number" id="cantidad_seleccionada" class="form-control mb-1">
                         <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
 
                     <div class="container-fluid">
