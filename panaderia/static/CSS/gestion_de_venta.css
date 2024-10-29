@@ -3,13 +3,18 @@ body{
     scrollbar-color: #198754 #F8EDE3;
 }
 
-main{
+/*main{
     background: url(../IMG/fondo_minimal.jpg);
     background-size: cover;
     background-repeat: none;
 }
 
-/*FORMULARIO*/
+#formset-container{
+    display: none;
+}
+*/
+
+/*FORMULARIO de venta*/
 #formulario_venta{
     background: #F8EDE3;
     border: 3px solid #198754;

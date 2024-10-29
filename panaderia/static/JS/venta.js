@@ -16,29 +16,93 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error:', error));
 });
 //
+
+
 //Cargar datos venta
 document.getElementById('formulario_de_venta').addEventListener('submit',function(event){
+
     //Pauso el envio del formulario
     event.preventDefault();
+
     //EN ESTA PARTE ELIMINO LOS ITEMS VACIOS
-    guardarValores();
+    console.log(document.getElementById('id_venta-TOTAL_FORMS').value)
+
     ///en esta parte del codigo se esta guardando el precio de la venta
     document.getElementById('id_total_venta').value = total_venta;
     //Ingreso el empleado
     document.getElementById('id_empleado').value=1;
+    
+
      // Al final de se envia el formulario a la vista, rezemos para que se guarde
-    //this.submit();
+    this.submit();
 });
 
-// Función para seleccionar un producto
-function seleccionarProducto(producto) {
-    productoSeleccionado = producto;
-    document.getElementById('nombreProducto').textContent = producto.nombre; //muestra el nombre del producto en la pagina
-    document.getElementById('productoSeleccionado');//
-    document.getElementById('resultados').innerHTML = ''; // Limpia los campos
-    document.getElementById('search').value = ''; // Limpiar la barra búsqueda
-
+//Funcion para comprobar desde el Front-End si hay suficiente cantidad de un producto ingresado
+function existeSuficienteCantidad(cantidad){
+    if (productoSeleccionado.cantidad < cantidad){
+        alert('NO hay suficiente cantidadad');
+        return false;
+    }
+    return true;
 }
+
+function agregarItem(){
+    //le resto uno a la cantidad de formularios totales porque al agregar estamos sumando 1 pero nos interesa la cantidad del anterior
+    let cantidad_ingresada = document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-cantidad').value;
+
+    if(existeSuficienteCantidad(cantidad_ingresada)){ 
+        //guardo los valores ingresados por el usuario
+        guardarValores()
+        
+        const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true); //copia el primer nodo     
+        ///del nodo clonado tengo que limpiar sus campos
+        nodo_base.querySelectorAll('input').forEach(input =>input.value='');
+        nodo_base.querySelectorAll('input[type="checkbox"]').forEach(checkbox =>checkbox.style.display='block');
+        
+        
+        document.getElementById('formset-container').appendChild(nodo_base); //se agrega el nuevo nodo
+        actualizarIndiceFormulario(); ///actaulizamos los indices dle formulario base
+        
+        agregarProducto(); //al final se agrega el producto a la tabla
+
+    }
+}
+///guarda las cantidades en el formulario corresponidente, el cual siempre es uno menor a la cantidad total de formularios
+function guardarValores() {
+    //cantidad_ingresada = document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-cantidad').value;
+    //document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-producto').value = productoSeleccionado.id;
+    //document.getElementById('id_venta-'+(cantidad_formularios - 1)+'-sub_total').value = productoSeleccionado.precio * cantidad_ingresada;
+}
+
+/*/
+function buscarProducto() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const resultados = document.getElementById('resultados');
+    resultados.innerHTML = '';
+
+    // Filtrar productos que coincidan con la búsqueda
+    const productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(query));
+
+    // Mostrar los productos disponibles con ícono o mensaje si ya están seleccionados
+    productosFiltrados.forEach(producto => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'list-group-item-action');
+        li.textContent = producto.nombre;
+
+        // Comprobar si el producto ya ha sido seleccionado
+        if (productosSeleccionados.includes(producto.id)) {
+            li.classList.add('disabled'); // Deshabilitar si ya fue seleccionado
+            const icono = document.createElement('span');
+            icono.textContent = " (seleccionado)"; // Indicador
+            li.appendChild(icono);
+        } else {
+            li.onclick = () => seleccionarProducto(producto);
+        }
+
+        resultados.appendChild(li);
+    });
+}
+*/
 
 // Esta función para busca productos en el archivo JSON recibido
 function buscarProducto() {
@@ -60,6 +124,16 @@ function buscarProducto() {
 
 }
 
+// Función para seleccionar un producto
+function seleccionarProducto(producto) {
+    productoSeleccionado = producto;
+    document.getElementById('nombreProducto').textContent = producto.nombre; //muestra el nombre del producto en la pagina
+    document.getElementById('productoSeleccionado');//
+    document.getElementById('resultados').innerHTML = ''; // Limpia los campos
+    document.getElementById('search').value = ''; // Limpiar la barra búsqueda
+
+}
+
 //Funcion para calcular el total de la venta
 function totalVenta(){
     let list_sub_total = document.getElementsByClassName('fila_sub_total');
@@ -73,28 +147,13 @@ function totalVenta(){
     document.getElementById('p_total_venta').textContent = '$' + total_venta.toFixed(2)
 
 }
-//Funcion para comprobar desde el Front-End si hay suficiente cantidad de un producto ingresado
-function existeSuficienteCantidad(cantidad){
-    if (productoSeleccionado.cantidad < cantidad){
-        alert('NO hay suficiente cantidadad');
-        return false;
-    }
-    return true;
-}
-
-function agregarItem(){
-    //le resto uno a la cantidad de formularios totales porque al agregar estamos sumando 1 pero nos interesa la cantidad del anterior
-    let cantidad_ingresada = document.getElementById('cantidad_seleccionada').value;
-    if(existeSuficienteCantidad(cantidad_ingresada)){ 
-        agregarProducto(); //al final se agrega el producto a la tabla
-    }
-}
 
 // Función para agregar producto a la tabla de ventas
 function agregarProducto() {
     if (!productoSeleccionado) return;
     
-    const cantidad = document.getElementById('cantidad_seleccionada').value;
+    const cantidad = document.getElementById('id_venta-'+item_numero+'-cantidad').value;
+
     item_numero++;
     // Agregar fila a la tabla
     const tabla = document.getElementById('cuerpo_tabla_ventas');
@@ -111,7 +170,7 @@ function agregarProducto() {
     fila.innerHTML = `
         <td>${item_numero}</td>
         <td>${productoSeleccionado.nombre}</td>
-        <td class='fila_cantidad'>${cantidad}</td>
+        <td>${cantidad}</td>
         <td>${productoSeleccionado.unidad_de_medida}</td>
         <td>$${productoSeleccionado.precio}</td>
         <td class='fila_sub_total'>$${productoSeleccionado.precio*cantidad}</td>
@@ -130,7 +189,6 @@ function agregarProducto() {
 
 }
 
-
 // Función para eliminar una fila de la tabla
 function eliminarFila(boton,productoId) {
 
@@ -141,6 +199,7 @@ function eliminarFila(boton,productoId) {
 
     // Eliminamos el ID del producto de productosEnTabla para que se pueda volver a seleccionar
     productosEnTabla = productosEnTabla.filter(id => id !== productoId);
+    console.log(productosEnTabla)
 }
 
 function actualizarIndiceFormulario(){
@@ -169,8 +228,8 @@ function actualizarIndiceFormulario(){
         }
     }
     //actualizo la cantidad directamente en el DOM porque sino se enviaria unicamente el primer item_venta
-    //document.getElementById('id_venta-TOTAL_FORMS').value = items_formularios.length;
-    //cantidad_formularios = items_formularios.length; //obtenemos la cantidad de formularios
+    document.getElementById('id_venta-TOTAL_FORMS').value = items_formularios.length;
+    cantidad_formularios = items_formularios.length; //obtenemos la cantidad de formularios
     
 }
 
@@ -183,38 +242,3 @@ function ActualizarIndiceElemento(elemento,prefijo,indice_actual){
 }
 
 
-function guardarValores(){
-    //la cantidad de formsets debe ser iguala la cantidad de productos en la tabla
-    document.getElementById('id_venta-TOTAL_FORMS').value = productosEnTabla.length;//funciona
-    ///traigo una lista de las filas cargadas dinamicamente
-    const filas = document.querySelectorAll('#cuerpo_tabla_ventas tr');
-    //copiamos el primer nodo
-    const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true); 
-    //Lenamos el primer formset
-    nodo_base.querySelector('.producto-seleccionado').value = productosEnTabla[0];
-    
-    //TRAIGO LA CANTIDAD DE PRODUCTO INGRESADA EN DICHA FILA
-    nodo_base.querySelector('.cantidad-producto').value = filas[0].querySelector('td.fila_cantidad').textContent.trim();
-    
-    //TRAIGO EL SUBTOTAL DE LA TABLA, PERO COMO TIENE EL SIGNO '$' SE UTILIZA .replace para porner un espacio en blanco que despues se elimina con .trim()
-    nodo_base.querySelector('.sub-total').value = filas[0].querySelector('td.fila_sub_total').textContent.replace('$', '').trim();
-    
-    for(let i = 1 ; i < productosEnTabla.length;i++){    
-        // Clonamos el nodo base con los valores que le dimos antes
-        nuevo_nodo = nodo_base.cloneNode(true);
-
-        //llenamos el nuevo nodo con cada valor que viene de la fila actual en la que estamos iterando
-        nuevo_nodo.querySelector('.producto-seleccionado').value = productosEnTabla[i];
-        console.log(nuevo_nodo.querySelector('.producto-seleccionado').value)
-        nuevo_nodo.querySelector('.cantidad-producto').value = filas[i].querySelector('td.fila_cantidad').textContent.trim();
-        console.log(nuevo_nodo.querySelector('.cantidad-producto').value)
-        nuevo_nodo.querySelector('.sub-total').value = filas[i].querySelector('td.fila_sub_total').textContent.replace('$', '').trim();
-        console.log(nuevo_nodo.querySelector('.sub-total').value)
-        
-        ///se agrega el nuevo nodo
-        document.getElementById('formset-container').appendChild(nodo_base); //se agrega el nuevo nodo pero esta oculto para el usuario
-        //actualizo los indices de los formularios
-        actualizarIndiceFormulario()
-        
-    }
-}

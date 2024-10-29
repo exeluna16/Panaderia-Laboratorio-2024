@@ -38,7 +38,7 @@ def principal(request):
             form_item_venta = ItemVentaFormSet(request.POST, instance=venta) #se le envia al formset la clase padre de la que debe heredar
             
             if form_item_venta.is_valid(): #si los formset son validos ingresara
-                
+                print(form_item_venta.data)
                 #AHORA SE EVITA QUE SE GUARDE EL FORMULARIO HASTA QUE SE ACTUALICEN LAS CANTIDADES DE LOS PRODUCTOS
                 items = form_item_venta.save(commit=False) 
                 for item in items:

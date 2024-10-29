@@ -3,7 +3,7 @@
 {% block title %}Venta{% endblock %} <!--copia y pega el titulo-->
 <!--busca el css correspondiente-->
 {% block extra_css %}
-    <!--<link rel="stylesheet" href="{% static 'CSS/gestion_de_venta.css' %}">-->
+    <link rel="stylesheet" href="{% static 'CSS/gestion_de_venta.css' %}">
 {% endblock %}
 <!--Se referencian los archivos en /static-->
 
@@ -39,6 +39,7 @@
                             </div>
                             {% endfor %}
                         </div>
+                        <input type="number" id="cantidad_seleccionada">
                         <button class="btn btn-success" onclick="agregarItem()" type="button">Agregar a la venta</button>
 
                     <div class="container-fluid">
@@ -110,7 +111,6 @@
                                         {{venta.empleado}}
                                     </div>
                                     <div>
-                                        <h3>total venta</h3>
                                         {{venta.total_venta}}
                                     </div>
                                     <div class="col-6 mb-3">
