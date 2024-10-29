@@ -27,5 +27,5 @@ urlpatterns = [
     path('empleados/',include('apps.empleados.urls')),
     path('cliente_mayorista/',include('apps.cliente_mayorista.urls')),
     path('pedido/',include('apps.pedido.urls')),
-    path('usuario/',include('apps.usuario.urls'),namespace='usuario'),
+    path('usuario/',include('apps.usuario.urls')),
 ]

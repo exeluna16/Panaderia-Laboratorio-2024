@@ -13,7 +13,7 @@ def login_view(request):
             return redirect(reverse('home'))
         else:
             return render(request, 'usuario/login.html', {"msj": "Credenciales incorrectas"})
-    return render(request, 'usuario/login.html') 
+    return render(request,'usuario/login.html') 
 
 #vista de deslogueo
 def logout_view(request):
