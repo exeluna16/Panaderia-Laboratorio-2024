@@ -1,14 +1,26 @@
 from django.db import models
 from ..inventario.models import Producto
+from ..cliente_mayorista.models import ClienteMayorista
+from ..empleados.models import Empleado
 # Create your models here.
 '''Esta es la version de prueba de la venta, hay datos que deben ser claves foraneas para poder
 hacer referencia a modelos que se encuentran en otras apps'''
 class Venta(models.Model):
-    empleado = models.IntegerField() # debe llevar una clave foranea
-    fecha_venta = models.DateTimeField(auto_now_add=True) # esto guarda la fheca actual de la venta
-    forma_de_pago= models.CharField(max_length=20) #debe ser clave foranea
-    tipo_comprobante = models.CharField(max_length=20) #debe ser clave foranea
-    comprador = models.CharField(max_length=20) #debe ser clave foranea
+    FORMA_PAGO = [
+        ('EFECTIVO','EFECTIVO'),
+        ('TRASNFERENCIA','TRASNFERENCIA'),
+        ('TARJETA','TARJETA'),
+        ('QR','QR'),          
+    ]
+    TIPO_COMPROBANTE=[
+        ('TICKET','TICKET'),
+        ('FACTURA','FACTURA'),
+    ]
+    empleado = models.ForeignKey(Empleado,on_delete=models.CASCADE) # debe llevar una clave foranea
+    fecha_venta = models.DateField(auto_now_add=True) # esto guarda la fheca actual de la venta
+    forma_de_pago= models.CharField(max_length=20,choices=FORMA_PAGO)
+    tipo_comprobante = models.CharField(max_length=20,choices=TIPO_COMPROBANTE)
+    comprador = models.ForeignKey(ClienteMayorista,on_delete=models.CASCADE) #debe ser clave foranea
     observaciones = models.CharField(max_length=150,blank=True)
     total_venta = models.DecimalField(decimal_places=2,max_digits=10)
 

@@ -25,6 +25,11 @@ class VentaForm(forms.ModelForm):
         model = Venta
         fields = ['empleado','forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
         widgets = {
+            'comprador': forms.TextInput(attrs={'class': 'form-control'}),
+            'tipo_comprobante': forms.TextInput(attrs={'class': 'form-control'}),
+            'forma_de_pago': forms.TextInput(attrs={'class': 'form-control'}),
+            'comporbante': forms.TextInput(attrs={'class': 'form-control'}),
+            'observaciones': forms.Textarea(attrs={'class': 'form-control'}),
             'total_venta': forms.HiddenInput(),
             'empleado' : forms.HiddenInput(),
         }
