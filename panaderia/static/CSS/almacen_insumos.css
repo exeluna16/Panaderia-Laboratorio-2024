@@ -1,0 +1,41 @@
+body{
+    margin:0;
+    background: #DFD3C3;
+    scrollbar-color: #8D493A #D0B8A8;
+}
+
+
+/*Tabla de productos*/
+#tabla_productos{
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 0;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 20px #111;
+}
+
+.table thead th{
+    position: sticky;
+    top:0;
+    z-index: 1;
+    background-color: #D0B8A8;
+}
+
+.table tbody td{
+    box-sizing: content-box;/*campos ocupan el 15% del contenedor*/
+}
+
+
+/*media query para ocultarlo en resoluciones pequeñas*/
+@media(max-width:768px){
+    .table td:nth-child(1),
+    .table th:nth-child(1){
+        display:none;
+    }
+}
+
+form{
+    
+    font-weight: bolder;
+    background: transparent;
+}
