@@ -42,10 +42,11 @@ def modificar_producto(request,pk):
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request):
+    #Esta funcion solo necesita los productos activos por lo tanto se hace uso de .filter()
     # Obtiene todos los productos y sus datos de unidad de medida usando select_related()
-    productos = Producto.objects.select_related('unidad_de_medida').all()
+    productos = Producto.objects.filter(estado=True).select_related('unidad_de_medida')
     # creo un diccionario con los datos de los productos para porder enviarlos como un JSON.
-    #
+    
     lista_productos = [
         {
             'id': producto.id,

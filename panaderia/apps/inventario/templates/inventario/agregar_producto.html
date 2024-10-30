@@ -19,6 +19,13 @@
             <div class="mb-3">
                 <label for="{{form_producto.codigo.id_label}}" class="form-label">Código</label>
                 {{form_producto.codigo}}
+                {% if form_producto.codigo.errors %}
+                    <div>
+                        {% for error in form_producto.codigo.errors %}
+                            <p class="text-danger fst-italic">{{ error }}</p>
+                        {% endfor%}
+                    </div>
+                {% endif %}
             </div>
             <!-- Nombre -->
             <div class="mb-3">
