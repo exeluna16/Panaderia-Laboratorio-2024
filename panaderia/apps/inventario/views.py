@@ -73,7 +73,7 @@ def agregar_insumo(request):
 
         if form.is_valid():
             form.save()
-            print('el insumo se guardo correctamente')
+            return redirect('inventario:almacen_insumos')
 
     return render(request,'inventario/agregar_insumo.html',{'form':form})
 
@@ -88,3 +88,6 @@ def modificar_insumo(request,pk):
     form = ModificarInsumoForm(instance=insumo)
     return render(request,'inventario/modificar_insumo.html',{'form':form})
 
+def almacen_insumos(request):
+    insumos = Insumo.objects.all()
+    return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})

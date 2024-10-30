@@ -10,6 +10,13 @@
             <div class="mb-3">
                 <label for="{{form.codigo.id_label}}" class="form-label">Código</label>
                 {{form.codigo}}
+                {% if form.codigo.errors %}
+                    <div>
+                        {% for error in form.codigo.errors %}
+                        <p class="text-danger fst-italic">{{ error }}</p>
+                        {% endfor %}
+                    </div> 
+                {% endif %}
             </div>
             <!-- Nombre -->
             <div class="mb-3">
