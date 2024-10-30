@@ -11,10 +11,7 @@ def agregar_empleado(request):
         formulario = AgregarEmpleadoForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request,'El empleado se agregó correctamente')
             return redirect('empleados:lista_empleados')
-
-
     return render(request,'empleados/agregar_empleado.html',{'formulario':formulario})
 
 def modificar_empleado(request,pk):

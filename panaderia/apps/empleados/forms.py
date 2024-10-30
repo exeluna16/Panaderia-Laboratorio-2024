@@ -5,7 +5,7 @@ from .models import Empleado
 class AgregarEmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleado
-        fields = ['nombre','mail','calle','localidad','numero_calle','fecha_nacido','cuit','cargo']
+        fields = ['nombre','mail','calle','localidad','numero_calle','fecha_nacido','cuit','cargo','tipo_persona']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control','placeholder':'nombre completo...','required':True}),
             'mail':forms.EmailInput(attrs={'class': 'form-control','placeholder':'ingrese el mail...','required':True}),
@@ -15,6 +15,7 @@ class AgregarEmpleadoForm(forms.ModelForm):
             'fecha_nacido':forms.DateInput(attrs={'class': 'form-control'}),
             'cuit':forms.NumberInput(attrs={'class': 'form-control','placeholder':'ingrese el cuit','required':True,'maxlength':10,'minlength':10}),
             'cargo':forms.Select(attrs={'class':'form-select'}),
+            'tipo_persona':forms.HiddenInput(),
         }
 
 class ModificarEmpleadoForm(forms.ModelForm):

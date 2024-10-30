@@ -13,7 +13,7 @@
         </div>
         <div>
             <div class="col-12"><h3>Ingrese los datos del empleado</h3></div>
-                <form method="POST">
+                <form method="POST" id="formulario_agregar_empleado">
                     {% csrf_token %}
 
                     <div class="mb-3">
@@ -49,9 +49,14 @@
                         <label for="{{formulario.cargo.id_label}}" class="form-label">Cargo</label>
                         {{formulario.cargo}}
                     </div>
+                    <!--TIpo de Persona-->
+                    {{formulario.tipo_persona}}
                     <input class="btn btn-danger" type="reset" value="CANCELAR">
                     <input class="btn btn-success" type="submit" value="GUARDAR">
                 </form>
         </div>
     </main>
+    {% block extra_js %}
+        <script src="{% static 'JS/agregar_empleado.js' %}"></script>
+    {% endblock %}
 {% endblock %}
