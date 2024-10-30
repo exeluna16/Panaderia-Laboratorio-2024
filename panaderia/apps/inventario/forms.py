@@ -49,3 +49,17 @@ class AgregarInsumoForm(forms.ModelForm):
             'unidad_de_medida': forms.Select(attrs={'class': 'form-select'}),
             'ultimo_precio': forms.NumberInput(attrs={'class': 'form-control','step':0.01, 'placeholder': 'ingrese el precio', 'required': True}),
         }
+
+class ModificarInsumoForm(forms.ModelForm):
+    class Meta:
+        model = Insumo
+        fields = ['codigo', 'nombre', 'cantidad', 'cantidad_minima', 'unidad_de_medida','ultimo_precio','estado']
+        widgets = {
+            'codigo': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'ingrese el codigo del producto...', 'required': True}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el nombre del producto', 'required': True}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'ingrese la cantidad', 'required': True}),
+            'cantidad_minima': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'ingrese la cantidad minima', 'required': True}),
+            'unidad_de_medida': forms.Select(attrs={'class': 'form-select'}),
+            'ultimo_precio': forms.NumberInput(attrs={'class': 'form-control','step':0.01, 'placeholder': 'ingrese el precio', 'required': True}),
+            'estado': forms.CheckboxInput(attrs={'class':'form-check-input','role':'switch','id':'flexSwitchCheckChecked'}),
+        }

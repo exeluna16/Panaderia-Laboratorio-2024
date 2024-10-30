@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modificar Producto{% endblock %}
+{% block content %}
+<div class="container-fluid mt-3">
+
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+            <strong>{{ message }}</strong>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <h2 class="mb-4">Modificación</h2>
+        <form method="post" > {% csrf_token %}
+            <!-- Código -->
+            <div class="mb-3">
+                <label for="{{fo.id_label}}" class="form-label">Código</label>
+                {{form.codigo}}
+            </div>
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="{{form.nombre.id_label}}" class="form-label">Nombre</label>
+                {{form.nombre}}
+            </div>
+
+            <!-- Cantidad -->
+            <div class="mb-3">
+                <label for="{{form.cantidad.id_label}}" class="form-label">Cantidad Actual</label>
+                {{form.cantidad}}
+            </div>
+
+            <!-- Cantidad Mínima -->
+            <div class="mb-3">
+                <label for="{{form.cantid.id_label}}" class="form-label">Cantidad Mínima</label>
+                {{form.cantidad_minima}}
+            </div>
+
+            <!-- Unidad de Medida -->
+            <div class="mb-3">
+                <label for="{{form.unidad_de_medida.id_label}}" class="form-label">Unidad de Medida</label>
+                {{form.unidad_de_medida}}
+            </div>
+            <!--Ultomo Precio -->
+            <div class="mb-3">
+                <label for="{{form.precio.id_label}}" class="formltimo Precio">Último Precio</label>
+                {{form.ultimo_precio}}
+            </div>
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <label for="{{form.categoria.id_label}}" class="form-label">Estado</label>
+                    {{form.estado}}                    
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
+                </div>
+            </div>
+            <!-- Botón de envío -->
+            <div class="container-fluid">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

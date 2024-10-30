@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import JsonResponse
-from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm
-from .models import Producto, Categoria, UnidadDeMedida
+from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm
+from .models import Producto, Insumo
 from django.shortcuts import get_object_or_404, render, redirect
 
 
@@ -41,7 +41,7 @@ def modificar_producto(request,pk):
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
-def listar_productos(request):
+def listar_productos(request): #el request se muestra en otro color porque no se usa, la solicitud siempre es GET
     #Esta funcion solo necesita los productos activos por lo tanto se hace uso de .filter()
     # Obtiene todos los productos y sus datos de unidad de medida usando select_related()
     productos = Producto.objects.filter(estado=True).select_related('unidad_de_medida')
@@ -76,3 +76,15 @@ def agregar_insumo(request):
             print('el insumo se guardo correctamente')
 
     return render(request,'inventario/agregar_insumo.html',{'form':form})
+
+
+def modificar_insumo(request,pk):
+    insumo = get_object_or_404(Insumo,id=pk)
+    if request.method == 'POST':
+        form = ModificarInsumoForm(request.POST, instance=insumo)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario:almacen_insumos')
+    form = ModificarInsumoForm(instance=insumo)
+    return render(request,'inventario/modificar_insumo.html',{'form':form})
+
