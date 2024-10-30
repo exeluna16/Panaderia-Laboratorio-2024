@@ -16,6 +16,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
+            {% if user.is_authenticated %}
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +39,7 @@
                     </ul>
                     <!--inicio de sesion-->
                     <span class="navbar-text ms-auto">
-                        {% if user.is_authenticated %}
+                        
                         <span class="fs-4 me-2">{{ user.username }}<span>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -48,13 +49,14 @@
                         </span>
                         <a class="btn btn-dark text-light me-2"
                         href="{% url 'usuario:logout' %}">Cerrar sesión</a>
-                        {% else %}
-                        <a class="btn btn-dark text-light me-2"
-                        href="{% url 'usuario:login' %}">Iniciar sesión</a>
-                        {% endif %}
-                    </span>
                 </div>
             </div>
+            {% else %}
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
+                <a class="btn btn-dark text-light me-2"href="{% url 'usuario:login' %}">Iniciar sesión</a>
+            </div>
+            {% endif %}        
         </nav>
     </header>
     <div>
