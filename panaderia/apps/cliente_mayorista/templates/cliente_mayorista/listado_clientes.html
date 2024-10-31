@@ -1,20 +1,20 @@
 {% extends 'base.html'%}
 {% load static %}
 
-{% block title %}Empleados{% endblock %}
+{% block title %}Clientes{% endblock %}
 {% block content %}
     <main>
         <div class="container-fluid">
             <div class="row" id="titulo_empleados">
                 <div class="col-12">
-                    <h1 class="text-center display-1">Empleados</h1>
+                    <h1 class="text-center display-1">Clientes</h1>
                 </div>
             </div>
                 <div class="col-12">
-                    {% if empleados|length == 0 %}
-                    <h2 class="text-center">Aún no hay empleados cargados :/</h2>
+                    {% if clientes|length == 0 %}
+                    <h2 class="text-center">Aún no hay clientes cargados :/</h2>
                     {% else %}
-                        <h2 class="text-center">Empleados Registrados</h2>
+                        <h2 class="text-center">Clientes Registrados</h2>
                         <div class="container-fluid mb-3" id="tabla_empleados">
                             <table class="table table-hover table-primary">
                                 <thead>
@@ -25,28 +25,28 @@
                                         <th>Telefono</th>
                                         <th>Domicilio</th>
                                         <th>Fecha de Nacimiento</th>
-                                        <th>Fecha de ingreso</th>
+                                        <th>Condicion IVA</th>
                                         <th>Estado</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for empleado in empleados %}
+                                    {% for cliente in clientes %}
                                         <tr>
-                                            <td>{{empleado.id}}</td>
-                                            <td>{{empleado.cuit}}</td>
-                                            <td>{{empleado.nombre}}</td>
+                                            <td>{{cliente.id}}</td>
+                                            <td>{{cliente.cuit_cuil}}</td>
+                                            <td>{{cliente.nombre}}</td>
                                             <td>se tiene que agregar</td>
-                                            <td>{{empleado.localidad}},{{empleado.calle}},{{empleado.numero_calle}}</td>
-                                            <td>{{empleado.fecha_nacido}}</td>
-                                            <td>{{empleado.fecha_ingreso}}</td>
-                                            {% if empleado.estado %}
+                                            <td>{{cliente.localidad}},{{cliente.calle}},{{cliente.numero_calle}}</td>
+                                            <td>{{cliente.fecha_nacido}}</td>
+                                            <td>{{cliente.condicionIVA}}</td>
+                                            {% if cliente.estado %}
                                                 <td>Activo</td>
                                             {% else %}
                                             <td>Inactivo</td>
                                             {% endif %}
                                             <td class="project-actions">
-                                                <a class="btn btn-primary btn-sm" href="{% url 'empleados:modificar_empleado' empleado.id %}">
+                                                <a class="btn btn-primary btn-sm" href="{% url 'cliente_mayorista:modificar_cliente_mayorista' cliente.id %}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
@@ -66,8 +66,8 @@
                     {% endif %}
                 </div>
             <section class="content">
-                    <a class="btn btn-success col-2 m-1" href="{% url 'empleados:agregar_empleado' %}" role="button" id="btn_cargar_empleado"><span>Cargar Empleado</span></a>
-                    <a class="btn btn-primary col-2 m-1" href="#card_agregar_empleado" role="button" id="btn_modificar_empleado"><span>Modificar Empelado</span></a>
+                    <a class="btn btn-success col-2 m-1" href="{% url 'cliente_mayorista:agregar_cliente_mayorista' %}" role="button" id="btn_cargar_empleado"><span>Cargar Cliente Mayorista</span></a>
+                    <a class="btn btn-primary col-2 m-1" href="#card_agregar_empleado" role="button" id="btn_modificar_empleado"><span>Modificar Cliente Mayorista</span></a>
             </section>
         </div>
     </main>

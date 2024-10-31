@@ -7,10 +7,10 @@
 
         <h2 class="mb-4">Modificación</h2>
         <form method="post" > {% csrf_token %}
-            <!-- CUIT -->
+            <!-- CUIT/CUIL -->
             <div class="mb-3">
-                <label for="{{form.cuit.id_label}}" class="form-label">CUIT</label>
-                {{form.cuit}}
+                <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIT/CUIL</label>
+                {{form.cuit_cuil}}
             </div>
             <!-- Nombre -->
             <div class="mb-3">
@@ -24,10 +24,10 @@
                 {{form.mail}}
             </div>
 
-            <!-- Cargo -->
+            <!-- Condición ante el IVA -->
             <div class="mb-3">
-                <label for="{{form.cargo.id_label}}" class="form-label">Cargo</label>
-                {{form.cargo}}
+                <label for="{{form.condicionIVA.id_label}}" class="form-label">Condición ante el IVA</label>
+                {{form.condicionIVA}}
             </div>
             <div class="mb-3">
                 <label for="{{form.fecha_nacido.id_label}}" class="form-label">Fecha de Nacimiento</label>

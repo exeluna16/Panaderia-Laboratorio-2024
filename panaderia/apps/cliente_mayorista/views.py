@@ -11,6 +11,7 @@ def agregar_cliente_mayorista(request):
         form = ClienteMayoristaForm(request.POST)
         if form.is_valid():
             form.save()
+        return redirect('cliente_mayorista:listado_clientes')
     return render(request,'cliente_mayorista/registro_de_mayorista.html',{'form':form})
 
 def modificar_cliente_mayorista(request,pk):
@@ -22,3 +23,7 @@ def modificar_cliente_mayorista(request,pk):
             return redirect('cliente_mayorista:listado_clientes')
     form = ModificarClienteMayoristaForm(instance=cliente)
     return render(request,'cliente_mayorista/modificar_cliente_mayorista.html',{'form':form})
+
+def listar_clientes(request):
+    clientes = ClienteMayorista.objects.all()
+    return render(request,'cliente_mayorista/listado_clientes.html',{'clientes':clientes})

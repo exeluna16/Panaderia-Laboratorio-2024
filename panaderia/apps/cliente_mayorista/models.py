@@ -3,4 +3,4 @@ from ..usuario.models import Persona
 
 # Create your models here.
 class ClienteMayorista(Persona):
-    codicionIVA = models.CharField(max_length=15)
+    condicionIVA = models.CharField(max_length=15)
