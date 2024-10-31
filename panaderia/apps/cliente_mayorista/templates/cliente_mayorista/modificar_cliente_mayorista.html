@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modificar Cliente{% endblock %}
+{% block content %}
+<div class="container-fluid mt-3">
+
+        <h2 class="mb-4">Modificación</h2>
+        <form method="post" > {% csrf_token %}
+            <!-- CUIT -->
+            <div class="mb-3">
+                <label for="{{form.cuit.id_label}}" class="form-label">CUIT</label>
+                {{form.cuit}}
+            </div>
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="{{form_producto.nombre.id_label}}" class="form-label">Nombre</label>
+                {{form.nombre}}
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="{{form.mail.id_label}}" class="form-label">MAIL</label>
+                {{form.mail}}
+            </div>
+
+            <!-- Cargo -->
+            <div class="mb-3">
+                <label for="{{form.cargo.id_label}}" class="form-label">Cargo</label>
+                {{form.cargo}}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.fecha_nacido.id_label}}" class="form-label">Fecha de Nacimiento</label>
+                {{form.fecha_nacido}}
+            </div>
+            <!-- Localidad -->
+            <div class="mb-3">
+                <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                {{form.localidad}}
+            </div>
+            <!-- CALLE-->
+            <div class="mb-3">
+                <label for="{{form.calle.id_label}}" class="form-label">CALLE</label>
+                {{form.calle}}
+            </div>
+            <!--N CALLE-->
+            <div class="mb-3">
+                <label for="{{form.numero_calle.id_label}}" class="form-label">N° CALLE</label>
+                {{form.numero_calle}}
+            </div>
+            <!--Estado-->
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Estado</label>
+                    {{form.estado}}                    
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
+                </div>
+            </div>
+            <!-- Botón de envío -->
+            <div class="container-fluid">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

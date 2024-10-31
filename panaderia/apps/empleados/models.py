@@ -9,9 +9,8 @@ class Cargo(models.Model):
         return(self.descripcion)
 # Create your models here.
 class Empleado(Persona):
-    cuit = models.CharField(unique=True,max_length=11)
     cargo = models.ForeignKey(Cargo,on_delete=models.CASCADE,related_name='cargo')
-    fecha_ingreso = models.DateTimeField(auto_now_add=True)
+    fecha_ingreso = models.DateField(auto_now_add=True)
 
 
 

@@ -16,7 +16,7 @@ class Persona(models.Model):
         ('FISICA','FISICA'),
         ('JURIDICA','JURIDICA')
     ]
-
+    cuit_cuil = models.CharField(unique=True,max_length=11)
     nombre = models.CharField(max_length=150)
     mail = models.EmailField(max_length=150,null=True,default='ejemplo@ejemplo.com')
     tipo_persona = models.CharField(max_length=20,choices=TIPO_PERSONA)
