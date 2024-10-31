@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Registrar Pedido{% endblock %}
+{% block extra_css%}
+  <link rel="stylesheet" href="{% static 'CSS/pedidos.css' %}">
+{% endblock %}
 {% block content %}
     <div class="fondo_de_pagina">
 
-      <h1 id="titulo">Registrar Pedidos</h1>
+      <h1 id="titulo">Registrar Pedido</h1>
         <div class="container-fluid" id="contenedor_formulario" >
 
             <form id="form_proveedor" action="#">
                 <fieldset>
-                <legend style="text-align: center;">Formulario para pedido</legend>
+                <h3 class="text-center">Formulario para pedido</h3>
 
                 <button type="button" class="btn btn-outline-dark">Seleccionar Proveedor</button>
 
@@ -28,19 +31,15 @@
 
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-
-                      
-                      <label for="cantidad" class="form-label">cantidad(unidades/litro/kilos...)</label>
-                      <input type="nunber" id="cantidad" name="cantidad" class="form-control">
-                      
-
-                    </div>
-                    <div class="col-12 col-6 col-sm-6">
                       <!--barra de busqueda-->
                       <form class="d-flex" role="search">
                         <label for="cantidad" class="form-label">Seleccione un Insumo</label>
                         <input class="form-control me-2" type="search" placeholder="Buscar Insumo...">
                       </form>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="cantidad" class="form-label">cantidad</label>
+                      <input type="nunber" id="cantidad" name="cantidad" class="form-control">
                     </div>
                   </div>
                   <div class="row">
@@ -74,12 +73,16 @@
                       </table>
                     </div>
                   </div>
-
-                  <button type="submit" name="enviar" class="btn btn-success m-2">Enviar</button>
-                  <button type="reset" name="cancelar" class="btn btn-danger m-2">Cancelar</button>
+                  <div>
+                    <button type="reset" name="cancelar" class="btn btn-danger m-2">Cancelar</button>
+                    <button type="submit" name="enviar" class="btn btn-success m-2">Generar</button>
+                  </div>
                 </div>
                 </fieldset>
             </form>
         </div>
     </div>
+    {% block extra_js %}
+      <script src="{% static 'JS/pedidos.js' %}"></script>
+    {% endblock %}
 {% endblock %}
