@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modificar Proveedor{% endblock %}
+{% block content %}
+<div class="container-fluid mt-3">
+
+        <h2 class="mb-4">Modificación</h2>
+        <form method="post" > {% csrf_token %}
+            <!-- CUIT/CUIL -->
+            <div class="mb-3">
+                <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIT/CUIL</label>
+                {{form.cuit_cuil}}
+            </div>
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="{{form_producto.nombre.id_label}}" class="form-label">Nombre</label>
+                {{form.nombre}}
+            </div>
+            <!-- TIPO DE PERSONA -->
+            <div class="mb-3">
+                <label for="{{form_producto.nombre.id_label}}" class="form-label">Tipo de Persona</label>
+                {{form.tipo_persona}}
+            </div>
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="{{form.mail.id_label}}" class="form-label">MAIL</label>
+                {{form.mail}}
+            </div>
+
+            <div class="col-12 col-6 col-sm-6">
+                <div>
+                    <label for="{{form.dias_de_pedido.id_label}}" class="form-label">Días de Pedidos</label>
+                    {{form.dias_de_pedido}}
+                </div>
+            </div>
+            <div class="col-12 col-6 col-sm-6">
+                <div>
+                    <label for="{{form.dias_de_reparto.id_label}}" class="form-label">Días de Reparto</label>
+                    {{form.dias_de_reparto}}
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="{{form.fecha_nacido.id_label}}" class="form-label">Fecha de Nacimiento</label>
+                {{form.fecha_nacido}}
+            </div>
+            <!-- Localidad -->
+            <div class="mb-3">
+                <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                {{form.localidad}}
+            </div>
+            <!-- CALLE-->
+            <div class="mb-3">
+                <label for="{{form.calle.id_label}}" class="form-label">CALLE</label>
+                {{form.calle}}
+            </div>
+            <!--N CALLE-->
+            <div class="mb-3">
+                <label for="{{form.numero_calle.id_label}}" class="form-label">N° CALLE</label>
+                {{form.numero_calle}}
+            </div>
+            <!--Estado-->
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Estado</label>
+                    {{form.estado}}                    
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
+                </div>
+            </div>
+            <!-- Botón de envío -->
+            <div class="container-fluid">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

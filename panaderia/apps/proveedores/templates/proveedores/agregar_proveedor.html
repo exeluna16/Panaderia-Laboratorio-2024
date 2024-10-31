@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Registrar Proveedor{% endblock %}
+{% block content %}
+    <div class="fondo_pagina">
+
+        <h1 id="titulo">Registrar Proveedor</h1>
+
+        <div class="container">
+        <form method="post">{% csrf_token %}
+            <fieldset>
+                <legend>Informacion de contacto</legend>
+                <div class="row">
+
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.nombre.id_label}}" class="form-label">Nombre</label>
+                            {{form.nombre}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIL/CUIT</label>
+                            {{form.cuit_cuil}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.tipo_persona.id_label}}" class="form-label">Tipo de Persona</label>
+                            {{form.tipo_persona}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div class="mb-3">
+                            <label for="{{form.mail.id_label}}">Email</label>
+                            {{form.mail}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div class="mb-3">
+                            <label for="contacto">Telefono</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                            {{form.localidad}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.calle.id_label}}" class="form-label">Calle</label>
+                            {{form.calle}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                        <label for="{{form.numero_calle.id_label}}" class="form-label">N° Calle</label>
+                            {{form.numero_calle}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                        <label for="{{form..fecha_nacido.id_label}}" class="form-label">FECHA DE NACIMIENTO</label>
+                            {{form.fecha_nacido}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.dias_de_pedido.id_label}}" class="form-label">Días de Pedidos</label>
+                            {{form.dias_de_pedido}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                        <div>
+                            <label for="{{form.dias_de_reparto.id_label}}" class="form-label">Días de Reparto</label>
+                            {{form.dias_de_reparto}}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div>
+                <button type="submit" name="registra" class="btn btn-success">Registrar</button>
+                <button type="reset" name="cancelar" class="btn btn-danger">Cancelar</button>
+            </div>
+        </form>
+        </div>
+
+    </div>
+{% endblock %}
