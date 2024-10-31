@@ -14,10 +14,33 @@
                 <fieldset>
                 <h3 class="text-center">Formulario para pedido</h3>
 
-                <button type="button" class="btn btn-outline-dark">Seleccionar Proveedor</button>
-
+                
+                
                 <div class="container text-center mt-3">
                   <div class="row">
+                    <div class="col-12 col-6 col-sm-6">
+                      <!--Boton del Modal-->
+                      <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar Proveedor</button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title fs-5" id="staticBackdropLabel">Seleccionar Proveedor</h2>
+                              
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              ...
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerar</button>
+                              <button type="button" class="btn btn-primary">Seleccionar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-12 col-6 col-sm-6">
 
                       <label for="numero" class="form-label">Numero de pedido</label>
