@@ -103,3 +103,20 @@ def modificar_insumo(request,pk):
 def almacen_insumos(request):
     insumos = Insumo.objects.all()
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})
+
+
+def listar_insumos(request):
+    insumos = Insumo.objects.filter(estado = True).select_related('unidad_de_medida')
+
+    lista_insumos = [
+        {
+            'id': insumo.id,
+            'nombre':insumo.nombre,
+            'cantidad':insumo.cantidad,
+            'cantidad_minima':insumo.cantidad_minima,
+            'unidad_de_medida':insumo.unidad_de_medida.unidad_medida_nombre,
+            'ultimo_precio':insumo.ultimo_precio,
+        }
+        for insumo in insumos
+    ]
+    return JsonResponse(lista_insumos,safe=False)

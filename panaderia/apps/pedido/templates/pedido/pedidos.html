@@ -44,7 +44,7 @@
                     <div class="col-12 col-6 col-sm-6">
                       
                       <label for="proveedor" class="form-label">Proveedor</label>
-                      <input type="text" id='proveedor-elegido' disabled>
+                      <input class="form-control" type="text" id='proveedor-elegido' disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
 
@@ -60,14 +60,26 @@
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <!--barra de busqueda-->
-                      <form class="d-flex" role="search">
-                        <label for="cantidad" class="form-label">Seleccione un Insumo</label>
-                        <input class="form-control me-2" type="search" placeholder="Buscar Insumo...">
-                      </form>
+                      <div>
+                        <label for="buscar-insumo" class="form-label">Seleccione un Insumo</label>
+                        <input class="form-control me-2" type="text" placeholder="Buscar Insumo..." id="buscar-insumo" onkeyup="buscarInsumo()">
+                          <ul id="lista-insumos">
+
+                          </ul>
+                      </div>
+                    </div>  
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="cantidad" class="form-label">Insumo</label>
+                      <input type="text" class="form-control" id="insumo-elegido" disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="cantidad" class="form-label">cantidad</label>
-                      <input type="number" id="cantidad" name="cantidad" class="form-control">
+                      <label for="cantidad" class="form-label">Cantidad</label>
+                      <input class="form-control" type="number">
+                      
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="" class="form-label"></label>
+                      <input class="form-control btn btn-success" value="AGREGAR">Agregar</inp>
                     </div>
                   </div>
                   <div class="row">
@@ -94,7 +106,7 @@
                     </div>
                   </div>
                   <div>
-                    <button type="reset" name="cancelar" class="btn btn-danger m-2">Cancelar</button>
+                    <button type="reset" name="cancelar" class="btn btn-danger m-2" onclick="fechaActual()">Cancelar</button>
                     <button type="submit" name="enviar" class="btn btn-success m-2">Generar</button>
                   </div>
                 </div>

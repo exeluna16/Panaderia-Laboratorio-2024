@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import listar_productos,agregar_producto,stock_productos,agregar_insumo,modificar_producto,modificar_insumo,almacen_insumos,eliminar_producto
+from .views import listar_productos,agregar_producto,stock_productos,agregar_insumo,modificar_producto,modificar_insumo,almacen_insumos,eliminar_producto,listar_insumos
 
 app_name = 'inventario'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('agregar_insumo',agregar_insumo,name='agregar_insumo'),
     path('modificar_insumo/<int:pk>/',modificar_insumo,name='modificar_insumo'),
     path('almacen_insumos/',almacen_insumos,name='almacen_insumos'),
+    path('listar_insumos',listar_insumos,name='listar_insumos'),
 ]

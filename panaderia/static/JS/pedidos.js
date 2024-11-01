@@ -1,5 +1,6 @@
 let proveedores = [];
-
+let insumos = [];
+let insumosEnTabla = [];
 document.addEventListener('DOMContentLoaded', function() {
     
     fetch('../proveedores/ver_proveedores')//se envia la petición
@@ -9,8 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error=>console.error('No se pudo traer a los proveedores de la BD',error));
     
+    fetch('../inventario/listar_insumos')
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+        insumos = datos
+    })
+    .catch(error=>console.error('No se pudo traer los insumos de la BD',error));
 
+    fechaActual();
+    
+});
 
+function fechaActual(){
     const fecha_actual = new Date();
     //agrego la fecha actual
     //.padStart(2, '0') se asegura de que los dias o meses tengan el 0 delante si son menores a 10.
@@ -19,9 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //desabilito el campo para que no se pueda cambiar
     document.getElementById('fecha_pedido').disabled = true;
 
-    
-});
-
+}
 
 function buscarProveedor(){
     const consulta = document.getElementById('buscador-proveedor').value.toLowerCase();
@@ -38,6 +47,21 @@ function buscarProveedor(){
         lista_proveedores.appendChild(li);
     });
 }
+function buscarInsumo(){
+    const consulta = document.getElementById('buscar-insumo').value.toLowerCase();
+    const lista_insumos = document.getElementById('lista-insumos');
+    lista_insumos.innerHTML = '';
+
+    const resultados = insumos.filter(i => i.nombre.toLowerCase().includes(consulta));
+
+    resultados.forEach(insumo=> {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item','list-group-item-action');
+        li.textContent = insumo.nombre;
+        li.onclick = () => seleccionarInsumo(insumo);
+        lista_insumos.appendChild(li);
+    });
+}
 
 function seleccionarProveedor(proveedor){
     document.getElementById('proveedor-elegido').value = proveedor.nombre;
@@ -47,4 +71,8 @@ function seleccionarProveedor(proveedor){
     modal.hide();
 }
 
-
+function seleccionarInsumo(insumo){
+    document.getElementById('insumo-elegido').value = insumo.nombre;
+    document.getElementById('lista-insumos').innerHTML='';
+    document.getElementById('buscar-insumo').value='';
+}
