@@ -12,10 +12,7 @@
 
             <form id="form_proveedor" action="#">
                 <fieldset>
-                <h3 class="text-center">Formulario para pedido</h3>
-
-                
-                
+                <h3 class="text-center">Formulario para pedido</h3>                
                 <div class="container text-center mt-3">
                   <div class="row">
                     <div class="col-12 col-6 col-sm-6">
@@ -31,15 +28,23 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              ...
+                              <input class='form-control' type="text" placeholder="Ingrese nombre el Proveedor" id="buscador-proveedor" onkeyup="buscarProveedor()">
+                              <ul id="lista-proveedores"><!--lista de proveedores-->
+                                
+                              </ul>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerar</button>
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerar</button>
                               <button type="button" class="btn btn-primary">Seleccionar</button>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      
+                      <label for="proveedor" class="form-label">Proveedor</label>
+                      <input type="text" id='proveedor-elegido' disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
 
@@ -62,7 +67,7 @@
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <label for="cantidad" class="form-label">cantidad</label>
-                      <input type="nunber" id="cantidad" name="cantidad" class="form-control">
+                      <input type="number" id="cantidad" name="cantidad" class="form-control">
                     </div>
                   </div>
                   <div class="row">
@@ -85,15 +90,7 @@
                           </tbody>
                           </table>
                       </div>
-                      <!-- Tabla con el pie de la tabla fijo -->
-                      <table class="table">
-                          <tfoot>
-                          <tr>
-                              <td><section class="fs-2">Total:</section></td>
-                              <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
-                          </tr>
-                          </tfoot>
-                      </table>
+                      
                     </div>
                   </div>
                   <div>
