@@ -27,16 +27,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Menú</a>
+                            <a class="nav-link" aria-current="page" href="/">Menú</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <select name="inventario" id="slct_inventario" class="nav-link">
+                                <option hidden>Inventario</option>
+                                <option value="productos" style="background-color: #8D493A; color: white;">Productos</option>
+                                <option value="insumos" style="background-color: #8D493A; color: white;">Insumos</option>
+                            </select>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link-2</a>
+                            <a class="nav-link" href="/ventas/principal">Ventas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link-3</a>
+                            <a class="nav-link" href="/pedido/pedido">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/empleados/lista_empleados">Empleados</a>
                         </li>
                     </ul>
                     <!--inicio de sesion-->
@@ -111,6 +118,6 @@
     </footer>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script src="{% static 'JS/nav_bar.js'%}"></script>
 </body>
 </html>
