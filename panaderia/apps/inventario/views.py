@@ -40,6 +40,18 @@ def modificar_producto(request,pk):
     formulario = ModificarProductoForm(instance=producto)
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
 
+def eliminar_producto(request, pk):
+    producto = get_object_or_404(Producto, id=pk)
+    
+    if request.method == 'POST':
+        producto.estado = False
+        producto.save()
+        return redirect('inventario:stock_productos')
+    
+    else:
+        messages.error(request, "La cancelación no se pudo completar.")
+        return redirect('inventario:stock_productos')
+
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
 def listar_productos(request): #el request se muestra en otro color porque no se usa, la solicitud siempre es GET
     #Esta funcion solo necesita los productos activos por lo tanto se hace uso de .filter()
