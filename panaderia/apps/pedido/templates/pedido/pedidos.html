@@ -9,8 +9,17 @@
 
       <h1 id="titulo">Registrar Pedido</h1>
         <div class="container-fluid" id="contenedor_formulario" >
-            <form id="form_pedido" method="POST">
-                <fieldset>
+            <form id="form_pedido" method="POST">{% csrf_token %}
+              {{ form_item_pedido.management_form }}
+                <div id="formset-container">
+                  {% for item in form_item_pedido %}
+                    <div class="section-form" id="item_contenedor">
+                      {{ item.pedido}}
+                      {{ item.insumo}}
+                      {{ item.cantidad }}
+                    </div>
+                  {% endfor %}
+                </div>
                 <h3 class="text-center">Formulario para pedido</h3>                
                 <div class="container text-center mt-3">
                   <div class="row">
@@ -41,15 +50,18 @@
                       </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      
                       <label for="proveedor" class="form-label">Proveedor</label>
                       <input class="form-control" type="text" id='proveedor-elegido' disabled>
+                      {{ pedido_form.id_proveedor }}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
 
-                      <label for="numero" class="form-label">Numero de pedido</label>
-                      <input type="number" id="numero" name="numero" class="form-control">
-
+                      <label for="{{pedido_form.numero_pedido.id_label}}" class="form-label">Numero de pedido</label>
+                      {{ pedido_form.numero_pedido }}
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="{{pedido_form.observacion.id_label}}" class="form-label">Observaciones</label>
+                      {{ pedido_form.observacion }}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       
@@ -68,12 +80,12 @@
                       </div>
                     </div>  
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="cantidad" class="form-label">Insumo</label>
+                      <label for="insumo" class="form-label">Insumo</label>
                       <input type="text" class="form-control" id="insumo-elegido" disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <label for="cantidad" class="form-label">Cantidad</label>
-                      <input class="form-control" type="number" id="cantidad-elegida">
+                      <input class="form-control" type="number" id="boton-cantidad">
                       
                     </div>
                     <div class="col-12 col-6 col-sm-6">
@@ -110,11 +122,12 @@
                     <button type="submit" name="enviar" class="btn btn-success m-2">Generar</button>
                   </div>
                 </div>
-                </fieldset>
+                
             </form>
         </div>
     </div>
     {% block extra_js %}
       <script src="{% static 'JS/pedidos.js' %}"></script>
+      
     {% endblock %}
 {% endblock %}

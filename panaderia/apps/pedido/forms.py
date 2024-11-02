@@ -1,15 +1,15 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Pedido, ItemPedido
+from .models import Pedido,ItemPedido
 
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
-        fields = ['observacion','cuit_proveedor','numero_pedido']
+        fields = ['observacion','id_proveedor','numero_pedido']
         widgets = {
             'observacion':forms.TextInput(attrs={'class':'form-control'}),
-            'cuit_proveedor':forms.HiddenInput(),
-            'numero_pedido':forms.HiddenInput(),
+            'id_proveedor':forms.HiddenInput(),
+            'numero_pedido':forms.NumberInput(attrs={'class':'form-control'}),
         }
 
 
@@ -18,7 +18,7 @@ class ItemPedidoForm(forms.ModelForm):
         model = ItemPedido
         fields = ['pedido','insumo','cantidad']
         widgets = {
-            'cantidad':forms.NumberInput(attrs={'class':'form-control cantidad-insumo'}),
+            'cantidad':forms.HiddenInput(attrs={'class':'form-control cantidad-insumo'}),
             'pedido': forms.HiddenInput(),
             'insumo': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
         }
