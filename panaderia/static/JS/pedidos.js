@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+document.getElementById('form_pedido').addEventListener('submit',function(e){
+    //evito que se envie el formulario
+    e.preventDefault();
+    
+});
+
 function fechaActual(){
     const fecha_actual = new Date();
     //agrego la fecha actual

@@ -5,10 +5,11 @@ from .models import Pedido, ItemPedido
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
-        fields = ['observacion','cuit_proveedor']
+        fields = ['observacion','cuit_proveedor','numero_pedido']
         widgets = {
             'observacion':forms.TextInput(attrs={'class':'form-control'}),
             'cuit_proveedor':forms.HiddenInput(),
+            'numero_pedido':forms.HiddenInput(),
         }
 
 
