@@ -68,11 +68,13 @@
             {% endif %}        
         </nav>
     </header>
-    <div>
-        {% block content %} <!--contenido variable dependiendo de las plantillas hijas-->
-
-        {% endblock %}
-    </div>
+    <main>
+        <div>
+            {% block content %} <!--contenido variable dependiendo de las plantillas hijas-->
+    
+            {% endblock %}
+        </div>
+    </main>
     <footer>
         <div class="container-fluid">
             <div class="row p-5 bg-dark text-white">
