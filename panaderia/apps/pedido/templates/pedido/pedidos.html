@@ -74,12 +74,12 @@
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <label for="cantidad" class="form-label">Cantidad</label>
-                      <input class="form-control" type="number">
+                      <input class="form-control" type="number" id="cantidad-elegida">
                       
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <label for="" class="form-label"></label>
-                      <input class="form-control btn btn-success" value="AGREGAR">Agregar</inp>
+                      <input class="form-control btn btn-success" value="AGREGAR" onclick="agregarItemInsumo()">Agregar</inp>
                     </div>
                   </div>
                   <div class="row">
@@ -91,14 +91,15 @@
                               <th>#</th>
                               <th>Insumo</th>
                               <th>Cantidad</th>
+                              <th>Acción</th>
                           </tr>
                           </thead>
                       </table>
                       <!-- Contenedor con scroll para el cuerpo de la tabla -->
                       <div class="tbody-container">
                           <table class="table text-center table-hover table-primary">
-                          <tbody>
-
+                          <tbody id="cuerpo-tabla-pedidos">
+                            
                           </tbody>
                           </table>
                       </div>
