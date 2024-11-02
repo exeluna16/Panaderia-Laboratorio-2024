@@ -16,19 +16,18 @@ def generar_pedido(request):
 
         if pedido_form.is_valid():
             #si el pedido es valido se guarda
-            print(pedido_form.data)
             pedido = pedido_form.save()
-            print('pedido valido')
             #ahora debo comprobar que los formset sean validos
             form_item_pedido = ItemPedidoFormSet(request.POST,instance=pedido)
-            print(form_item_pedido.data)
 
             if form_item_pedido.is_valid(): #controlo que el conjunto de formularios sea valido
                 #guardo todos los items
                 form_item_pedido.save() 
                 
                 #-----------FALTA REDIRECIONAR A LA PAGINA NECESARIA
-        else:
-            print('pedido no valido')
-            print(form_item_pedido.data)
-    return render(request,'pedido/pedidos.html',{'pedido_form':pedido_form,'form_item_pedido':form_item_pedido})
+    return render(request,'pedido/registrar_pedido.html',{'pedido_form':pedido_form,'form_item_pedido':form_item_pedido})
+
+
+def lista_pedidos(request):
+    pedidos = Pedido.objects.all().select_related('id_proveedor')
+    return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})

@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Pedidos{% endblock %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="row" id="titulo_empleados">
+                <div class="col-12">
+                    <h1 class="text-center display-1">Pedidos</h1>
+                </div>
+            </div>
+                <div class="col-12">
+                    {% if pedidos|length == 0 %}
+                    <h2 class="text-center">Aún no hay pedidos cargados :/</h2>
+                    {% else %}
+                        <h2 class="text-center">Pedidos Registrados</h2>
+                        <div class="container-fluid mb-3" id="tabla_empleados">
+                            <table class="table table-hover table-primary">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Numero de Pedido</th>
+                                        <th>Proveedor</th>
+                                        <th>Fecha Realizado</th>
+                                        <th>Observaciones</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pedido in pedidos %}
+                                        <tr>
+                                            <td>{{pedido.id}}</td>
+                                            <td>{{pedido.numero_pedido}}</td>
+                                            <td>{{pedido.id_proveedor}}</td>
+                                            <td>{{pedido.fecha_realizado}}</td>
+                                            <td>{{pedido.observacion}}</td>
+                                            <!--{% if empleado.estado %}
+                                                <td>Activo</td>
+                                            {% else %}
+                                            <td>Inactivo</td>
+                                            {% endif %}-->
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            <section class="content">
+                    <a class="btn btn-success col-2 m-1" href="{% url 'pedido:generar_pedido' %}" role="button"><span>Generar Pedido</span></a>
+                    <!--<a class="btn btn-primary col-2 m-1" href="#card_agregar_empleado" role="button" id="btn_modificar_empleado"><span>Modificar Empelado</span></a>-->
+            </section>
+        </div>
+    </main>
+
+{% endblock %}

@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Pedido(models.Model):
     numero_pedido = models.IntegerField()
-    fecha_realizado = models.DateTimeField(auto_now_add=True)
+    fecha_realizado = models.DateField(auto_now_add=True)
     observacion = models.CharField(max_length=150,null=True,blank=True)
     id_proveedor = models.ForeignKey(Proveedor,on_delete=models.SET_NULL,null=True,related_name='Proveedor')
 

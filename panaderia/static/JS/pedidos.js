@@ -31,9 +31,7 @@ document.getElementById('form_pedido').addEventListener('submit',function(e){
     guardarValores();
     //agrego el id del proveedor seleccionado
     document.getElementById('id_id_proveedor').value = proveedorElegido;
-    //agrego el numero del pedido
-    //document.getElementById('id_numero_pedido').value = document.getElementById('numero').value;
-    console.log(document.getElementById('id_numero_pedido').value)
+    
     this.submit();
 });
 
@@ -181,7 +179,7 @@ function guardarValores(){
 
     //defino mi nodo base que contiene la info necesaria de los formset
     const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true);
-    console.log(nodo_base)
+    
     //ingreso valores al primer form set
     nodo_base.querySelector('.insumo-seleccionado').value = insumosEnTabla[0]; //guardo el id del primer insumo elegido
     //ingreso la cantidad de la fila
