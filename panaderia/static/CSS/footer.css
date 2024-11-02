@@ -1,3 +1,13 @@
 p{
     color:#F8EDE3;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa al menos toda la altura de la viewport */
+  }
+  
+main {
+    flex: 1; /* Ocupa todo el espacio restante */
+  }

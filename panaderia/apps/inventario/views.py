@@ -100,6 +100,18 @@ def modificar_insumo(request,pk):
     form = ModificarInsumoForm(instance=insumo)
     return render(request,'inventario/modificar_insumo.html',{'form':form})
 
+def eliminar_insumo(request, pk):
+    insumo = get_object_or_404(Insumo, id=pk)
+    
+    if request.method == 'POST':
+        insumo.estado = False
+        insumo.save()
+        return redirect('inventario:almacen_insumos')
+    
+    else:
+        messages.error(request, "La cancelación no se pudo completar.")
+        return redirect('inventario:almacen_insumos')
+
 def almacen_insumos(request):
     insumos = Insumo.objects.all()
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})
