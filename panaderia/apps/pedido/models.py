@@ -1,4 +1,3 @@
-from idlelib.tree import TreeItem
 from ..proveedores.models import Proveedor
 from django.db import models
 

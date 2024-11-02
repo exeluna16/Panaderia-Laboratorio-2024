@@ -8,6 +8,8 @@ main{
     background: url(../IMG/pan1.jpeg);
     background-size: cover;
     background-repeat: none;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 #productoSeleccionado h4 span{

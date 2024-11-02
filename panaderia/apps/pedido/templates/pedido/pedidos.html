@@ -12,12 +12,40 @@
 
             <form id="form_proveedor" action="#">
                 <fieldset>
-                <h3 class="text-center">Formulario para pedido</h3>
-
-                <button type="button" class="btn btn-outline-dark">Seleccionar Proveedor</button>
-
+                <h3 class="text-center">Formulario para pedido</h3>                
                 <div class="container text-center mt-3">
                   <div class="row">
+                    <div class="col-12 col-6 col-sm-6">
+                      <!--Boton del Modal-->
+                      <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar Proveedor</button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title fs-5" id="staticBackdropLabel">Seleccionar Proveedor</h2>
+                              
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <input class='form-control' type="text" placeholder="Ingrese nombre el Proveedor" id="buscador-proveedor" onkeyup="buscarProveedor()">
+                              <ul id="lista-proveedores"><!--lista de proveedores-->
+                                
+                              </ul>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerar</button>
+                              <button type="button" class="btn btn-primary">Seleccionar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      
+                      <label for="proveedor" class="form-label">Proveedor</label>
+                      <input class="form-control" type="text" id='proveedor-elegido' disabled>
+                    </div>
                     <div class="col-12 col-6 col-sm-6">
 
                       <label for="numero" class="form-label">Numero de pedido</label>
@@ -32,14 +60,26 @@
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                       <!--barra de busqueda-->
-                      <form class="d-flex" role="search">
-                        <label for="cantidad" class="form-label">Seleccione un Insumo</label>
-                        <input class="form-control me-2" type="search" placeholder="Buscar Insumo...">
-                      </form>
+                      <div>
+                        <label for="buscar-insumo" class="form-label">Seleccione un Insumo</label>
+                        <input class="form-control me-2" type="text" placeholder="Buscar Insumo..." id="buscar-insumo" onkeyup="buscarInsumo()">
+                          <ul id="lista-insumos">
+
+                          </ul>
+                      </div>
+                    </div>  
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="cantidad" class="form-label">Insumo</label>
+                      <input type="text" class="form-control" id="insumo-elegido" disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="cantidad" class="form-label">cantidad</label>
-                      <input type="nunber" id="cantidad" name="cantidad" class="form-control">
+                      <label for="cantidad" class="form-label">Cantidad</label>
+                      <input class="form-control" type="number" id="cantidad-elegida">
+                      
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="" class="form-label"></label>
+                      <input class="form-control btn btn-success" value="AGREGAR" onclick="agregarItemInsumo()">Agregar</inp>
                     </div>
                   </div>
                   <div class="row">
@@ -51,30 +91,23 @@
                               <th>#</th>
                               <th>Insumo</th>
                               <th>Cantidad</th>
+                              <th>Acción</th>
                           </tr>
                           </thead>
                       </table>
                       <!-- Contenedor con scroll para el cuerpo de la tabla -->
                       <div class="tbody-container">
                           <table class="table text-center table-hover table-primary">
-                          <tbody>
-
+                          <tbody id="cuerpo-tabla-pedidos">
+                            
                           </tbody>
                           </table>
                       </div>
-                      <!-- Tabla con el pie de la tabla fijo -->
-                      <table class="table">
-                          <tfoot>
-                          <tr>
-                              <td><section class="fs-2">Total:</section></td>
-                              <td class="bg-success"><p class="fs-2" id="p_total_venta">$35</p></td>
-                          </tr>
-                          </tfoot>
-                      </table>
+                      
                     </div>
                   </div>
                   <div>
-                    <button type="reset" name="cancelar" class="btn btn-danger m-2">Cancelar</button>
+                    <button type="reset" name="cancelar" class="btn btn-danger m-2" onclick="fechaActual()">Cancelar</button>
                     <button type="submit" name="enviar" class="btn btn-success m-2">Generar</button>
                   </div>
                 </div>
