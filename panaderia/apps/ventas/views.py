@@ -33,8 +33,9 @@ def principal(request):
 
         if venta_form.is_valid(): # --> si la venta es valida
 
-            venta = venta_form.save()  # Se guarda la venta y se intancia un modelo
-
+            venta = venta_form.save(commit=False)  # Se guarda la venta y se intancia un modelo
+            venta.empleado = request.user
+            venta.save()
             form_item_venta = ItemVentaFormSet(request.POST, instance=venta) #se le envia al formset la clase padre de la que debe heredar
             
             if form_item_venta.is_valid(): #si los formset son validos ingresara

@@ -25,7 +25,7 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
     ///en esta parte del codigo se esta guardando el precio de la venta
     document.getElementById('id_total_venta').value = total_venta;
     //Ingreso el empleado
-    document.getElementById('id_empleado').value=1;
+    //document.getElementById('id_empleado').value=1;
      // Al final de se envia el formulario a la vista, rezemos para que se guarde
     this.submit();
 });

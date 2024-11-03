@@ -23,14 +23,14 @@ class VentaForm(forms.ModelForm):
 
     class Meta:
         model = Venta
-        fields = ['empleado','forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
+        fields = ['forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
         widgets = {
             'comprador': forms.Select(attrs={'class': 'form-select'}),
             'tipo_comprobante': forms.Select(attrs={'class': 'form-select'}),
             'forma_de_pago': forms.Select(attrs={'class': 'form-select'}),
             'observaciones': forms.Textarea(attrs={'class': 'form-control'}),
             'total_venta': forms.HiddenInput(),
-            'empleado' : forms.HiddenInput(),
+            
         }
 
 ItemVentaFormSet = inlineformset_factory(

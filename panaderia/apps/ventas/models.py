@@ -1,7 +1,7 @@
 from django.db import models
 from ..inventario.models import Producto
 from ..cliente_mayorista.models import ClienteMayorista
-from ..empleados.models import Empleado
+from ..usuario.models import Usuario
 # Create your models here.
 '''Esta es la version de prueba de la venta, hay datos que deben ser claves foraneas para poder
 hacer referencia a modelos que se encuentran en otras apps'''
@@ -16,7 +16,7 @@ class Venta(models.Model):
         ('TICKET','TICKET'),
         ('FACTURA','FACTURA'),
     ]
-    empleado = models.ForeignKey(Empleado,on_delete=models.CASCADE) # debe llevar una clave foranea
+    empleado = models.ForeignKey(Usuario,on_delete=models.CASCADE) # debe llevar una clave foranea
     fecha_venta = models.DateField(auto_now_add=True) # esto guarda la fheca actual de la venta
     forma_de_pago= models.CharField(max_length=20,choices=FORMA_PAGO)
     tipo_comprobante = models.CharField(max_length=20,choices=TIPO_COMPROBANTE)
