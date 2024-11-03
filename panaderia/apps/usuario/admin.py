@@ -8,7 +8,7 @@ from django.contrib.auth.admin import UserAdmin
 class UsuarioAdmin(UserAdmin):
     # Usa la clase en lugar de la instancia de UsuarioForm
     add_form = UsuarioForm
-    form = UsuarioForm
+    model = Usuario
     
     # Asegúrate de que UserAdmin tenga configurado el campo 'add_fieldsets'
     fieldsets = (
