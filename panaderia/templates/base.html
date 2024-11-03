@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg">
             {% if user.is_authenticated %}
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="{% static 'home.html' %}"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="/ventas/principal">Ventas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pedido/pedido">Pedidos</a>
+                            <a class="nav-link" href="/pedido/lista_pedidos">Pedidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/empleados/lista_empleados">Empleados</a>
@@ -62,7 +62,7 @@
             </div>
             {% else %}
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'IMG/logo_2.png' %}" id="logo" id="logo" alt="Logo"></a>
                 <a class="btn btn-dark text-light me-2"href="{% url 'usuario:login' %}">Iniciar sesión</a>
             </div>
             {% endif %}        

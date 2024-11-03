@@ -23,7 +23,7 @@ def generar_pedido(request):
             if form_item_pedido.is_valid(): #controlo que el conjunto de formularios sea valido
                 #guardo todos los items
                 form_item_pedido.save() 
-                
+                return redirect('pedido:lista_pedidos')
                 #-----------FALTA REDIRECIONAR A LA PAGINA NECESARIA
     return render(request,'pedido/registrar_pedido.html',{'pedido_form':pedido_form,'form_item_pedido':form_item_pedido})
 
@@ -31,3 +31,9 @@ def generar_pedido(request):
 def lista_pedidos(request):
     pedidos = Pedido.objects.all().select_related('id_proveedor')
     return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})
+
+'''
+def recibir_pedido(request,pk):
+
+    return render(request,'pedido/recepcion_pedido.html')
+'''

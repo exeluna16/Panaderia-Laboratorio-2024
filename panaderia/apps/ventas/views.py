@@ -6,22 +6,9 @@ from ..inventario.models import Producto
 from .forms import VentaForm, ItemVentaForm, ItemVentaFormSet ,ItemMayoristaForm
 from django.forms import formset_factory,inlineformset_factory ## crea varios formularios del mismo tipo
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-def primera_vista(request): ##CAMBIARLE EL NOMBRE
-    venta = Venta.objects.get(id=1)
-
-    if request.method == 'POST':
-        formset = ItemVentaFormSet(request.POST, instance=venta)
-        print(formset)
-        print('request.pots')
-        if formset.is_valid():
-            print('se guardo')
-            formset.save()
-    else:
-        formset =ItemVentaFormSet()
-    return render(request,'ventas/venta.html', {'formset':formset}) #NECESITO QUE SE QUEDE EN LA MISMA PAGINA
-
+@login_required(login_url='usuario:login')
 def principal(request):
     #POR defecto el metodo de ingreso es GET por lo tanto debemos crear amos focmularios
     venta_form = VentaForm()  #crea un nuevo formulario
