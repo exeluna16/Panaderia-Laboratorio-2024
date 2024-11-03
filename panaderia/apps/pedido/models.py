@@ -5,11 +5,16 @@ from django.db import models
 
 # Create your models here.
 class Pedido(models.Model):
+    ESTADO_PEDIDO = [
+        ('PENDIENTE','PENDIENTE'),
+        ('RECIBIDO','RECIBIDO'),
+    ]
+
     numero_pedido = models.IntegerField()
     fecha_realizado = models.DateField(auto_now_add=True)
     observacion = models.CharField(max_length=150,null=True,blank=True)
     id_proveedor = models.ForeignKey(Proveedor,on_delete=models.SET_NULL,null=True,related_name='Proveedor')
-
+    estado = models.CharField(max_length=25,choices=ESTADO_PEDIDO,default='PENDIENTE')
 
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido,on_delete = models.SET_NULL,null= True)

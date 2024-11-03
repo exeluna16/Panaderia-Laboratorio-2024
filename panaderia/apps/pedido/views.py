@@ -38,7 +38,7 @@ def recibir_pedido(request,pk):
     
     #traigo el pedido que acaba de ingresar
     pedido = get_object_or_404(Pedido, id=pk)
-    #
+    
     recepcion_form = RecepcionPedidoForm()
     #creo el conjunto de formularios y le paso el pedido que acaba de llegar
     formset = ItemRecepcionPedidoFormSet(request.POST or None, instance=pedido)
@@ -47,13 +47,14 @@ def recibir_pedido(request,pk):
         recepcion_form = RecepcionPedidoForm(request.POST)
         
         if recepcion_form.is_valid():
-            print('recepcion valida')
+            
             recepcion = recepcion_form.save(commit=False)
             recepcion.empleado = request.user #coloco el usuario
             recepcion.proveedor_id = pedido.id_proveedor_id #coloco el proveedor
             recepcion.pedido_id = pedido.id
             recepcion.save()
-            
+            pedido.estado = 'RECIBIDO' 
+            pedido.save()
         for form in formset:
             item = form.save(commit=False) #evito que se guarde el formulario
             #actualizo la cantidad de los insumos
@@ -64,6 +65,6 @@ def recibir_pedido(request,pk):
             insumo.save()
 
         formset.save()
+        return redirect('pedido:lista_pedidos')
         
-        #print(pedido.id_proveedor_id)
     return render(request,'pedido/recepcion_pedido.html',{'formset':formset,'recepcion_form':recepcion_form})
