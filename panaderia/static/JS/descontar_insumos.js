@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded',function(){
     .catch(error=>console.error('No se pudo traer los insumos de la BD',error));
 });
 
+document.getElementById('form_descuento_insumos').addEventListener('submit',function(e){
+    e.preventDefault();
+    guardarValores();
+    this.submit();
+});
+
 function buscarInsumo(){
     const consulta = document.getElementById('buscar-insumo').value.toLowerCase();
     const lista_insumos = document.getElementById('lista-insumos');
@@ -47,7 +53,7 @@ function agregarItemInsumo(){
     //traigo la cantidad ingresada
     let cantidad = document.getElementById('boton-cantidad').value;
     if(existeCantidadSuficiente(cantidad)){
-        const tabla = document.getElementById('cuerpo-tabla-pedidos');//traigo la tabla
+        const tabla = document.getElementById('cuerpo-tabla');//traigo la tabla
         const fila = document.createElement('tr'); //creo una fila
         /* campos de las cabecera
         <th>#</th>
@@ -91,7 +97,7 @@ function eliminarFila(boton,insumoId){
 
 
 function reiniciarTabla(){
-    const tabla = document.getElementById('cuerpo-tabla-pedidos');
+    const tabla = document.getElementById('cuerpo-tabla');
     tabla.innerHTML = ''; // Elimina todas las filas de la tabla
 
     // Reinicia la lista de insumos en la tabla para que puedan volver a seleccionarse
@@ -119,12 +125,48 @@ function actualizarIndiceFormulario(){
         const form_input_cantidad = items_formularios[i].getElementsByClassName('cantidad-insumo');
         
         for(input_insumo of form_input_insumo){
-            actualizarIndiceElemento(input_insumo,'itempedido_set',i);
+            actualizarIndiceElemento(input_insumo,'form',i);
         }
         for(input_cantidad of form_input_cantidad){
-            actualizarIndiceElemento(input_cantidad,'itempedido_set',i);
+            actualizarIndiceElemento(input_cantidad,'form',i);
         }
         
     }
     
+}
+
+function guardarValores(){
+    //la cantidad de formset debe ser igual a la cantidad de insumos en la tabla
+    document.getElementById('id_form-TOTAL_FORMS').value = insumosEnTabla.length;
+    
+    //traigo las filas que se crearon dinamicamente
+    const filas = document.querySelectorAll('#cuerpo-tabla tr');
+
+    //defino mi nodo base que contiene la info necesaria de los formset
+    const nodo_base = document.getElementById('formset-container').children[0].cloneNode(true);
+    
+    //ingreso valores al primer form set
+    nodo_base.querySelector('.insumo-seleccionado').value = insumosEnTabla[0]; //guardo el id del primer insumo elegido
+    //ingreso la cantidad de la fila
+    nodo_base.querySelector('.cantidad-insumo').value = filas[0].querySelector('td.fila_cantidad').textContent.trim();
+
+    //Limpio el contenedor de formularios y agrego el nodo base como primer elemento
+    const formsetContenedor = document.getElementById('formset-container');
+    formsetContenedor.innerHTML = '';
+    formsetContenedor.appendChild(nodo_base);
+
+    for (let i = 1; i < insumosEnTabla.length;i++){
+        //clono el nodo base
+        const nuevo_nodo = nodo_base.cloneNode(true);
+
+        //ahora relleno el nuevo nodo con los datos
+        nuevo_nodo.querySelector('.insumo-seleccionado').value = insumosEnTabla[i];
+
+        nuevo_nodo.querySelector('.cantidad-insumo').value = filas[i].querySelector('td.fila_cantidad').textContent.trim();
+
+        //agrego el nuevo nodo al contenedor
+        formsetContenedor.appendChild(nuevo_nodo);
+        //mando a actualizar el indice de los formularios
+        actualizarIndiceFormulario();
+    }
 }

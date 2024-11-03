@@ -9,12 +9,12 @@
 
         <h1 id="titulo">Descontar Insumos</h1>
         <div class="container-fluid" id="contenedor_formulario" >
-            <form id="form_pedido" method="POST">{% csrf_token %}
+            <form id="form_descuento_insumos" method="POST">{% csrf_token %}
                 {{ form_set_insumos.management_form }}
                 <div id="formset-container">
                     {% for insumo in form_set_insumos %}
                     <div class="section-form" id="item_contenedor">
-                        {{ insumo.id}}
+                        {{ insumo.codigo }}
                         {{ insumo.cantidad }}
                     </div>
                     {% endfor %}
@@ -60,7 +60,7 @@
                         <!-- Contenedor con scroll para el cuerpo de la tabla -->
                         <div class="tbody-container">
                             <table class="table text-center table-hover table-primary">
-                            <tbody id="cuerpo-tabla-pedidos">
+                            <tbody id="cuerpo-tabla">
                             
                             </tbody>
                             </table>

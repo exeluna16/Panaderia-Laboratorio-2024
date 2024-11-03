@@ -2,7 +2,7 @@ from django import forms
 from django.forms import HiddenInput
 
 from .models import Producto,Insumo
-
+from django.forms import formset_factory
 
 class AgregarProductoForm(forms.ModelForm):
     class Meta:
@@ -68,8 +68,11 @@ class ModificarInsumoForm(forms.ModelForm):
 class DescontarInsumoForm(forms.ModelForm):
     class Meta:
         model = Insumo
-        fields = ['id','cantidad']
+        fields = ['codigo','cantidad']
         widgets = {
             'cantidad':forms.HiddenInput(attrs={'class':'cantidad-insumo'}),
-            'id': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
+            #IMPORTANTE!! acá se define ocmo codigo pero en realidad es el id del insumo, puede que el comportamiento sea debido al formsetfactory
+            'codigo': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
         }
+
+ItemInsumoFormSet = formset_factory(DescontarInsumoForm,extra=1)
