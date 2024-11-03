@@ -2,6 +2,9 @@ from django import forms
 from .models import ClienteMayorista
 
 class ClienteMayoristaForm(forms.ModelForm):
+    fecha_nacido = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'form-control'})
+    )
     class Meta:
         model = ClienteMayorista
         fields = ['nombre','mail','tipo_persona','calle','localidad','numero_calle','fecha_nacido','condicionIVA','cuit_cuil']
@@ -12,12 +15,14 @@ class ClienteMayoristaForm(forms.ModelForm):
             'tipo_persona': forms.Select(attrs={'class': 'form-select'}),
             'calle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la calle..', 'required': True}),
             'numero_calle': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'ingrese la Numero de calle..'}),
-            'fecha_nacido': forms.DateTimeInput(attrs={'class': 'form-control'}),
-            'condicionIVA': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Ingrese condicion ante el IVA','requiered':True}),
+            'condicionIVA': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Ingrese condicion ante el IVA','required':True}),
             'cuit_cuil':forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingrese el CUIT/CUIL','required':True}),
         }
 
 class ModificarClienteMayoristaForm(forms.ModelForm):
+    fecha_nacido = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'form-control'})
+    )
     class Meta:
         model = ClienteMayorista
         fields = ['nombre','mail','tipo_persona','calle','localidad','numero_calle','fecha_nacido','condicionIVA','estado','cuit_cuil']
@@ -28,8 +33,7 @@ class ModificarClienteMayoristaForm(forms.ModelForm):
             'tipo_persona': forms.Select(attrs={'class': 'form-select'}),
             'calle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ingrese la calle..', 'required': True}),
             'numero_calle': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'ingrese la Numero de calle..'}),
-            'fecha_nacido': forms.DateTimeInput(attrs={'class': 'form-control'}),
-            'condicionIVA': forms.TextInput(attrs={'class': 'form-control','placeholder': 'ingrese condicion ante el IVA','requiered':True}),
+            'condicionIVA': forms.TextInput(attrs={'class': 'form-control','placeholder': 'ingrese condicion ante el IVA','required':True}),
             'estado': forms.CheckboxInput(attrs={'class':'form-check-input','role':'switch','id':'flexSwitchCheckChecked'}),
-            'cuit_cuil':forms.NumberInput(attrs={'class': 'form-control','placeholder':'ingrese el cuit','required':True,'maxlength':10,'minlength':10}),
+            'cuit_cuil':forms.TextInput(attrs={'class': 'form-control','placeholder':'ingrese el cuit','required':True,'maxlength':10,'minlength':10}),
         }
