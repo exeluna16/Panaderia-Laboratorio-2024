@@ -3,14 +3,16 @@ from django.http import JsonResponse
 from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm
 from .models import Producto, Insumo
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url='usuario:login')
 def stock_productos(request):
     productos = Producto.objects.all()
     return render(request,'inventario/stock_productos.html', {'productos': productos})
 
-#
+@login_required(login_url='usuario:login')
 def agregar_producto(request):
 
     form_producto = AgregarProductoForm() #formulario para producto
@@ -28,6 +30,7 @@ def agregar_producto(request):
             return redirect('inventario:stock_productos')
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
 
+@login_required(login_url='usuario:login')
 def modificar_producto(request,pk):
     #Se pasa como dato el modelo (Producto) y se comprara el id con la pk(primary key)
     producto = get_object_or_404(Producto,id=pk)
@@ -77,7 +80,7 @@ def listar_productos(request): #el request se muestra en otro color porque no se
     ]
     return JsonResponse(lista_productos, safe=False)
 
-
+@login_required(login_url='usuario:login')
 def agregar_insumo(request):
     form = AgregarInsumoForm()
     if request.method=='POST':
@@ -89,7 +92,7 @@ def agregar_insumo(request):
 
     return render(request,'inventario/agregar_insumo.html',{'form':form})
 
-
+@login_required(login_url='usuario:login')
 def modificar_insumo(request,pk):
     insumo = get_object_or_404(Insumo,id=pk)
     if request.method == 'POST':
@@ -112,6 +115,7 @@ def eliminar_insumo(request, pk):
         messages.error(request, "La cancelación no se pudo completar.")
         return redirect('inventario:almacen_insumos')
 
+@login_required(login_url='usuario:login')
 def almacen_insumos(request):
     insumos = Insumo.objects.all()
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})

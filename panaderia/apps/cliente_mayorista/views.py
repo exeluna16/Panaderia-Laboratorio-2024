@@ -16,6 +16,7 @@ def agregar_cliente_mayorista(request):
         return redirect('cliente_mayorista:listado_clientes')
     return render(request,'cliente_mayorista/registro_de_mayorista.html',{'form':form})
 
+@login_required(login_url='usuario:login')
 def modificar_cliente_mayorista(request,pk):
     cliente = get_object_or_404(ClienteMayorista,id=pk)
     if request.method == 'POST':
@@ -38,6 +39,7 @@ def eliminar_cliente(request,pk):
         messages.error(request, "La cancelación no se pudo completar.")
         return redirect('cliente_mayorista:listado_clientes')
 
+@login_required(login_url='usuario:login')
 def listar_clientes(request):
     clientes = ClienteMayorista.objects.all()
     return render(request,'cliente_mayorista/listado_clientes.html',{'clientes':clientes})

@@ -3,8 +3,10 @@ from .models import Pedido,ItemPedido
 from ..inventario.models import Insumo
 #from .forms import PedidoForm,ItemPedidoFormSet
 from .forms import PedidoForm,ItemPedidoFormSet
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='usuario:login')
 def generar_pedido(request):
     #por defecto la peticion es GET asi que instancio un formulario para pedido
     pedido_form = PedidoForm()
@@ -27,7 +29,7 @@ def generar_pedido(request):
                 #-----------FALTA REDIRECIONAR A LA PAGINA NECESARIA
     return render(request,'pedido/registrar_pedido.html',{'pedido_form':pedido_form,'form_item_pedido':form_item_pedido})
 
-
+@login_required(login_url='usuario:login')
 def lista_pedidos(request):
     pedidos = Pedido.objects.all().select_related('id_proveedor')
     return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})

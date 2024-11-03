@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Proveedor
 from .forms import AgregarProveedorForm,ModificarProveedorForm
 from django.http import JsonResponse
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required(login_url='usuario:login')
 def agregar_proveedor(request):
 
     form = AgregarProveedorForm()
@@ -15,7 +16,7 @@ def agregar_proveedor(request):
     
     return render(request,'proveedores/agregar_proveedor.html',{'form':form})
 
-
+@login_required(login_url='usuario:login')
 def modificar_proveedor(request,pk):
     proveedor = get_object_or_404(Proveedor,id=pk)
     form = ModificarProveedorForm(instance=proveedor)
@@ -27,12 +28,12 @@ def modificar_proveedor(request,pk):
 
     return render(request,'proveedores/modificar_proveedor.html',{'form':form})
 
-
+@login_required(login_url='usuario:login')
 def listar_proveedores(request):
     proveedores=Proveedor.objects.all()
     return render(request,'proveedores/listar_proveedores.html',{'proveedores':proveedores})
 
-
+@login_required()
 def ver_proveedores(request):
     #filtro los proveedores que estan activos unicamente
     proveedores = Proveedor.objects.filter(estado=True)
