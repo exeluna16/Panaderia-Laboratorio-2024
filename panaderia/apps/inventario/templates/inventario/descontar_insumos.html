@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Descontar Insumos{% endblock %}
+{% block extra_css%}
+    <link rel="stylesheet" href="{% static 'CSS/pedidos.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="fondo_de_pagina">
+
+        <h1 id="titulo">Descontar Insumos</h1>
+        <div class="container-fluid" id="contenedor_formulario" >
+            <form id="form_pedido" method="POST">{% csrf_token %}
+                {{ form_set_insumos.management_form }}
+                <div id="formset-container">
+                    {% for insumo in form_set_insumos %}
+                    <div class="section-form" id="item_contenedor">
+                        {{ insumo.id}}
+                        {{ insumo.cantidad }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="container text-center mt-3">
+                    <div class="row">
+                        <div class="col-6 mt-3">
+                            <!--barra de busqueda-->
+                            <div>
+                            <label for="buscar-insumo" class="form-label">Seleccione un Insumo</label>
+                            <input class="form-control me-2" type="text" placeholder="Buscar Insumo..." id="buscar-insumo" onkeyup="buscarInsumo()">
+                                <ul id="lista-insumos">
+
+                                </ul>
+                            </div>
+                        </div>  
+                        <div class="col-6 mt-3">
+                            <label for="insumo" class="form-label">Insumo</label>
+                            <input type="text" class="form-control" id="insumo-elegido" disabled>
+                        </div>
+                        <div class="col-12">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input class="form-control" type="number" id="boton-cantidad">
+                            
+                        </div>
+                        <div>
+                            <input class="btn btn-success m-2" value="AGREGAR" onclick="agregarItemInsumo()">
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="container mb-3 mt-3">
+                        <!-- Tabla con el encabezado fijo -->
+                        <table class="table text-center">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Insumo</th>
+                                <th>Cantidad</th>
+                                <th>Acción</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <!-- Contenedor con scroll para el cuerpo de la tabla -->
+                        <div class="tbody-container">
+                            <table class="table text-center table-hover table-primary">
+                            <tbody id="cuerpo-tabla-pedidos">
+                            
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                    <div>
+                    <button type="reset" name="cancelar" class="btn btn-danger m-2" onclick="reiniciarTabla()">Cancelar</button>
+                    <button type="submit" name="descontar" class="btn btn-success m-2">Descontar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% block extra_js %}
+        <script src="{% static 'JS/descontar_insumos.js' %}"></script>
+    {% endblock %}
+{% endblock %}

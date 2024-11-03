@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.http import JsonResponse
-from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm
+from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm,DescontarInsumoForm
 from .models import Producto, Insumo
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-
+from django.forms import formset_factory
 
 # Create your views here.
 @login_required(login_url='usuario:login')
@@ -136,3 +136,7 @@ def listar_insumos(request):
         for insumo in insumos
     ]
     return JsonResponse(lista_insumos,safe=False)
+
+def descontar_insumos(request):
+    form_set_insumos = formset_factory(DescontarInsumoForm,extra=1)
+    return render(request,'inventario/descontar_insumos.html',{'form_set_insumos':form_set_insumos})

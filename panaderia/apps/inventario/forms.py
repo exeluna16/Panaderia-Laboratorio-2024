@@ -63,3 +63,13 @@ class ModificarInsumoForm(forms.ModelForm):
             'ultimo_precio': forms.NumberInput(attrs={'class': 'form-control','step':0.01, 'placeholder': 'ingrese el precio', 'required': True}),
             'estado': forms.CheckboxInput(attrs={'class':'form-check-input','role':'switch','id':'flexSwitchCheckChecked'}),
         }
+
+
+class DescontarInsumoForm(forms.ModelForm):
+    class Meta:
+        model = Insumo
+        fields = ['id','cantidad']
+        widgets = {
+            'cantidad':forms.HiddenInput(attrs={'class':'cantidad-insumo'}),
+            'id': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
+        }
