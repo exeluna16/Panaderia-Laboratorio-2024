@@ -1,4 +1,5 @@
 let productos = [];
+let clientes = [];
 let productoSeleccionado = null;
 let item_numero = 0;
 let total_venta = 0.00;
@@ -13,7 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
         productos = data
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error: al recueperar a los productos', error));
+
+    fetch('../cliente_mayorista/ver_clientes_mayoristas')
+    .then(respuesta => respuesta.json())
+    .then(datos =>{
+        clientes = datos
+    })
+    .catch(error => console.error('Error al recuperar a los clientes',error));
 });
 //
 //Cargar datos venta
@@ -225,3 +233,30 @@ function guardarValores(){
 
 }
 
+function buscarMayorista(){
+    const consulta = document.getElementById('buscador-mayorista').value.toLowerCase();
+
+    const lista_clientes = document.getElementById('lista-clientes');
+    lista_clientes.innerHTML='';
+
+    const resultados = clientes.filter(cli => cli.nombre.toLowerCase().includes(consulta));
+    resultados.forEach(cliente =>{
+        const li = document.createElement('li');
+        li.classList.add('list-group-item','list-group-item-action');
+        li.textContent = cliente.nombre;
+        li.onclick = () => seleccionarMayorista(cliente);
+        lista_clientes.appendChild(li);
+    });
+
+}
+
+function seleccionarMayorista(cliente){
+    //pongo el valor del cliente mayorista en su formulario
+    document.getElementById('id_cliente_mayorista').value = cliente.id;
+    //cierro el modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('staticBackdrop'));
+    modal.hide();
+
+    //Se carga el valor del cliente seleccionado para que el usuario lo vea
+    document.getElementById('cliente-elegido').value = cliente.nombre;
+}

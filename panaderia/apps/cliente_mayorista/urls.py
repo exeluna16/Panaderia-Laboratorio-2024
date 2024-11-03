@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import agregar_cliente_mayorista,modificar_cliente_mayorista,listar_clientes,eliminar_cliente
+from .views import agregar_cliente_mayorista,modificar_cliente_mayorista,listar_clientes,eliminar_cliente,ver_clientes_mayoristas
 
 
 app_name='cliente_mayorista'
@@ -9,5 +9,5 @@ urlpatterns = [
     path('modificar_cliente_mayorista/<int:pk>',modificar_cliente_mayorista,name='modificar_cliente_mayorista'),
     path('listado_clientes',listar_clientes,name='listado_clientes'),
     path('eliminar_cliente/<int:pk>/',eliminar_cliente,name='eliminar_cliente'),
-
+    path('ver_clientes_mayoristas',ver_clientes_mayoristas,name='ver_clientes_mayoristas')
 ]

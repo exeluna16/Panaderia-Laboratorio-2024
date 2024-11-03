@@ -20,10 +20,13 @@ class Venta(models.Model):
     fecha_venta = models.DateField(auto_now_add=True) # esto guarda la fheca actual de la venta
     forma_de_pago= models.CharField(max_length=20,choices=FORMA_PAGO)
     tipo_comprobante = models.CharField(max_length=20,choices=TIPO_COMPROBANTE)
-    comprador = models.ForeignKey(ClienteMayorista,on_delete=models.CASCADE) #debe ser clave foranea
+    #comprador = models.ForeignKey(ClienteMayorista,on_delete=models.SET_NULL,null=True,blank=True) #debe ser clave foranea
     observaciones = models.CharField(max_length=150,blank=True)
     total_venta = models.DecimalField(decimal_places=2,max_digits=10)
 
+class ItemMayorista(models.Model):
+    venta = models.ForeignKey(Venta,on_delete=models.CASCADE)
+    cliente_mayorista = models.ForeignKey(ClienteMayorista,on_delete=models.CASCADE)
 
 #una venta puede tener muchos items, la idea es que se carguen dinamicamente en la vista
 class ItemVenta(models.Model):

@@ -3,6 +3,7 @@ from .forms import ClienteMayoristaForm,ModificarClienteMayoristaForm
 from django.contrib.auth.decorators import login_required #controla el usaurio logueado
 from .models import ClienteMayorista
 from django.contrib import messages
+from django.http import JsonResponse
 # Create your views here.
 #controla que el usuario este logueado, si no lo esta lo redireciona al login
 @login_required(login_url='usuario:login')
@@ -40,3 +41,15 @@ def eliminar_cliente(request,pk):
 def listar_clientes(request):
     clientes = ClienteMayorista.objects.all()
     return render(request,'cliente_mayorista/listado_clientes.html',{'clientes':clientes})
+
+
+def ver_clientes_mayoristas(render):
+    clientes_mayoristas = ClienteMayorista.objects.filter(estado=True)
+    lista_clientes = [
+        {   
+            'id':mayorista.id,
+            'nombre': mayorista.nombre,
+        }
+        for mayorista in clientes_mayoristas
+    ]
+    return JsonResponse(lista_clientes,safe=False)

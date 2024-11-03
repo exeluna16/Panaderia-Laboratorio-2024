@@ -84,22 +84,51 @@
                                 <!--FORMULARIO DE VENTA-->
                                     <h3>Datos Generales</h3>
                                     <div class="col-md-6">
-                                        <label for="{{ venta.comprador.id_forlable }}" class="form-label">Cliente</label>
-                                        {{ venta.comprador }}
+                                        <label for="consumidor_final" class="form-label">Cliente</label>
+                                        <input class="form-control" type="text" value="Consumidor Final" id="cliente-elegido" disabled>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <!--<button class="btn btn-secondary m-2">venta mayorista</button>-->
+                                        {{item_mayorista.as_p}}
+                                        <!--Boton del Modal-->
+                                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar mayorista</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h2 class="modal-title fs-5" id="staticBackdropLabel">Venta Mayorista</h2>
+                                                
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <input class='form-control' type="text" placeholder="Ingrese nombre del cliente..." id="buscador-mayorista" onkeyup="buscarMayorista()">
+                                                <ul id="lista-clientes">
+                                                    
+                                                </ul>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerar</button>
+                                                <button type="button" class="btn btn-primary">Seleccionar</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-12">
                                         <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label">Comprobante</label>
                                         {{ venta.tipo_comprobante }}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <label for="num_comprobante" class="form-label">N° Comprobante</label>
                                         <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <label for="fecha_venta" class="form-label">Fecha</label>
                                         <input type="date" class="form-control" name="fecha_venta" id="fecha_venta" disabled>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label">Forma de Pago</label>
                                         {{venta.forma_de_pago}}
                                     </div>

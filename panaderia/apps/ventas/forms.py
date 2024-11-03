@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import inlineformset_factory
 
-from .models import Venta, ItemVenta
+from .models import Venta, ItemVenta,ItemMayorista
 from ..inventario.models import Producto
 
 class ItemVentaForm(forms.ModelForm):
@@ -23,9 +23,9 @@ class VentaForm(forms.ModelForm):
 
     class Meta:
         model = Venta
-        fields = ['forma_de_pago','tipo_comprobante','comprador','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
+        fields = ['forma_de_pago','tipo_comprobante','observaciones','total_venta'] #SE DEBEN DEFINIR TODOS LOS CAMPOS AUNQUE NO SE USEN
         widgets = {
-            'comprador': forms.Select(attrs={'class': 'form-select'}),
+            #'comprador': forms.Select(attrs={'class': 'form-select'}),
             'tipo_comprobante': forms.Select(attrs={'class': 'form-select'}),
             'forma_de_pago': forms.Select(attrs={'class': 'form-select'}),
             'observaciones': forms.Textarea(attrs={'class': 'form-control'}),
@@ -40,3 +40,11 @@ ItemVentaFormSet = inlineformset_factory(
     extra=1,  # Formularios vacíos adicionales
     can_delete=True  # Permitir que el usuario elimine elementos
 )
+
+class ItemMayoristaForm(forms.ModelForm):
+    class Meta:
+        model = ItemMayorista
+        fields = ['cliente_mayorista']
+        widgets = {
+            'cliente_mayorista' : forms.HiddenInput(attrs={'class':'cliente mayorista'})
+        }
