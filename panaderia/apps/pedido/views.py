@@ -1,8 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Pedido,ItemPedido
 from ..inventario.models import Insumo
-#from .forms import PedidoForm,ItemPedidoFormSet
-from .forms import PedidoForm,ItemPedidoFormSet
+from .forms import PedidoForm,ItemPedidoFormSet,ItemRecepcionPedidoFormSet,RecepcionPedidoForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -34,8 +33,37 @@ def lista_pedidos(request):
     pedidos = Pedido.objects.all().select_related('id_proveedor')
     return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})
 
-'''
-def recibir_pedido(request,pk):
 
-    return render(request,'pedido/recepcion_pedido.html')
-'''
+def recibir_pedido(request,pk):
+    
+    #traigo el pedido que acaba de ingresar
+    pedido = get_object_or_404(Pedido, id=pk)
+    #
+    recepcion_form = RecepcionPedidoForm()
+    #creo el conjunto de formularios y le paso el pedido que acaba de llegar
+    formset = ItemRecepcionPedidoFormSet(request.POST or None, instance=pedido)
+    
+    if request.method == 'POST' and formset.is_valid():
+        recepcion_form = RecepcionPedidoForm(request.POST)
+        
+        if recepcion_form.is_valid():
+            print('recepcion valida')
+            recepcion = recepcion_form.save(commit=False)
+            recepcion.empleado = request.user #coloco el usuario
+            recepcion.proveedor_id = pedido.id_proveedor_id #coloco el proveedor
+            recepcion.pedido_id = pedido.id
+            recepcion.save()
+            
+        for form in formset:
+            item = form.save(commit=False) #evito que se guarde el formulario
+            #actualizo la cantidad de los insumos
+            insumo = Insumo.objects.get(id=item.insumo_id)
+            
+            insumo.cantidad = insumo.cantidad + item.cantidad_recibida
+            #guardo el insumo
+            insumo.save()
+
+        formset.save()
+        
+        #print(pedido.id_proveedor_id)
+    return render(request,'pedido/recepcion_pedido.html',{'formset':formset,'recepcion_form':recepcion_form})

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Pedido,ItemPedido
+from .models import Pedido,ItemPedido,RecepcionPedido
 
 class PedidoForm(forms.ModelForm):
     class Meta:
@@ -12,13 +12,22 @@ class PedidoForm(forms.ModelForm):
             'numero_pedido':forms.NumberInput(attrs={'class':'form-control'}),
         }
 
+class RecepcionPedidoForm(forms.ModelForm):
+    class Meta:
+        model = RecepcionPedido
+        fields = ['total_pedido','numero_comprobante','observaciones']
+        widgets = {
+            'total_pedido':forms.NumberInput(attrs={'class':'form-control'}),
+            'numero_comprobante':forms.NumberInput(attrs={'class':'form-control'}),
+            'observaciones':forms.Textarea(attrs={'class':'form-control'}),
+        }
 
 class ItemPedidoForm(forms.ModelForm):
     class Meta:
         model = ItemPedido
-        fields = ['pedido','insumo','cantidad']
+        fields = ['pedido','insumo','cantidad_pedida']
         widgets = {
-            'cantidad':forms.HiddenInput(attrs={'class':'form-control cantidad-insumo'}),
+            'cantidad_pedida':forms.HiddenInput(attrs={'class':'form-control cantidad-insumo'}),
             'pedido': forms.HiddenInput(),
             'insumo': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
         }
@@ -32,3 +41,18 @@ ItemPedidoFormSet = inlineformset_factory (
     extra = 1,
     can_delete=True,
 )
+
+ItemRecepcionPedidoFormSet = inlineformset_factory(
+    Pedido,
+    ItemPedido,
+    form=ItemPedidoForm,
+    fields=['id','cantidad_recibida','cantidad_pedida'],
+    widgets = {
+            'cantidad_recibida':forms.NumberInput(attrs={'class':'form-control cantidad-insumo-recibido'}),
+            'id': forms.HiddenInput(attrs={'class':'insumo-seleccionado'}),
+            'cantidad_pedida':forms.TextInput(attrs={'class': 'form-control', 'readonly': True}),
+        },
+    extra=0,
+    can_delete=False,
+)
+

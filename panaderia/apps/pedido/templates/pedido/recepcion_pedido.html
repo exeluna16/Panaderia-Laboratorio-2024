@@ -1,9 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Registrar Pedido{% endblock %}
+{% block title %}Recibir Pedido{% endblock %}
 {% block extra_css%}
     
 {% endblock %}
 {% block content %}
-    
-{% enblock %}
+    <div class="container-fluid text-center" id="contenedor_formulario" >
+        <h1>Recibir Pedido</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <label for="{{ recepcion_form.numero_comprobante.id_label }}" class="form-label">N° de Comprobante</label>
+                    {{ recepcion_form.numero_comprobante }}
+                </div>
+                <div class="col-6">
+                    <label for="{{ recepcion_form.total_pedido.id_label }}" class="form-label">Total del pedido</label>
+                    {{ recepcion_form.total_pedido }}
+                </div>
+                <div class="col-12">
+                    <label for="{{ recepcion_form.observaciones.id_label }}" class="form-label">Observaciones (opcional)</label>
+                    {{ recepcion_form.observaciones }}
+                </div>
+            </div>
+            <div class="row">
+                    {{ formset.management_form }}
+                <table class="table text-center table-hover table-primary">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Insumo</th>
+                            <th>Cantidad Solicitada</th>
+                            <th>Cantidad Recibida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for form in formset %}
+                            {{ form.id }}
+                            <tr>
+                                <td>
+                                    {{ form.instance.insumo.id }}
+                                </td>
+                                <td>
+                                    {{ form.instance.insumo.nombre }}
+                                </td>
+                                <td>{{ form.cantidad_pedida }}</td>
+                                <td>{{ form.cantidad_recibida }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-success" type="submit">Guardar</button>
+        </form>
+    </div>
+{% endblock %}
