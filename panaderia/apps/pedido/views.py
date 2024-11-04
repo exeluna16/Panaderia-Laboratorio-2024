@@ -33,7 +33,7 @@ def lista_pedidos(request):
     pedidos = Pedido.objects.all().select_related('id_proveedor')
     return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})
 
-
+@login_required(login_url='usuario:login')
 def recibir_pedido(request,pk):
     
     #traigo el pedido que acaba de ingresar

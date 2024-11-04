@@ -1,7 +1,7 @@
 body{
     scrollbar-color: #D0B8A8 #F8EDE3;
 }
-.fondo_de_pagina{
+main{
     background-image: url(../IMG/pan3.jpg);
     height: 100%;
     background-position: center;

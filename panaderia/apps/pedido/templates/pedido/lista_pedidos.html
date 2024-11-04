@@ -2,20 +2,19 @@
 {% load static %}
 
 {% block title %}Pedidos{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/lista_pedidos.css' %}">
+{% endblock %}
 {% block content %}
     <main>
+        <h1 class="text-center display-1">Pedidos</h1>
         <div class="container-fluid">
-            <div class="row" id="titulo_empleados">
-                <div class="col-12">
-                    <h1 class="text-center display-1">Pedidos</h1>
-                </div>
-            </div>
                 <div class="col-12">
                     {% if pedidos|length == 0 %}
                     <h2 class="text-center">Aún no hay pedidos cargados :/</h2>
                     {% else %}
-                        <h2 class="text-center">Pedidos Registrados</h2>
-                        <div class="container-fluid mb-3" id="tabla_empleados">
+                        <h2 class="text-light display-6 p-2"><span>Pedidos Registrados</span></h2>
+                        <div class="container-fluid mb-3" id="tabla_pedidos">
                             <table class="table table-hover table-primary">
                                 <thead>
                                     <tr>
@@ -23,7 +22,6 @@
                                         <th>Numero de Pedido</th>
                                         <th>Proveedor</th>
                                         <th>Fecha Realizado</th>
-                                        <th>Observaciones</th>
                                         <th>Estado</th>
                                         <th>Acción</th>
                                     </tr>
@@ -35,7 +33,6 @@
                                             <td>{{pedido.numero_pedido}}</td>
                                             <td>{{pedido.id_proveedor}}</td>
                                             <td>{{pedido.fecha_realizado}}</td>
-                                            <td>{{pedido.observacion}}</td>
                                             <td>{{pedido.estado}}</td>
                                             <td>
                                                 <a class="btn btn-primary" href="{% url 'pedido:recibir_pedido' pedido.id %}">Recibir
