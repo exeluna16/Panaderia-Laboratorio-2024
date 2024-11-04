@@ -36,10 +36,10 @@
                             {{form.mail}}
                         </div>
                     </div>
+                    <!--Telefono-->
                     <div class="col-12 col-6 col-sm-6">
-                        <div class="mb-3">
-                            <label for="contacto">Telefono</label>
-                        </div>
+                        <label for="{{form.telefono.id_label}}" class="form-label">Teléfono</label>
+                        {{form.telefono}}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
@@ -57,12 +57,6 @@
                         <div>
                         <label for="{{form.numero_calle.id_label}}" class="form-label">N° Calle</label>
                             {{form.numero_calle}}
-                        </div>
-                    </div>
-                    <div class="col-12 col-6 col-sm-6">
-                        <div>
-                        <label for="{{form..fecha_nacido.id_label}}" class="form-label">FECHA DE NACIMIENTO</label>
-                            {{form.fecha_nacido}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">

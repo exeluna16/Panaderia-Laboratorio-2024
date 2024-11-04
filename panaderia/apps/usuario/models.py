@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 # Create your models here.
 
 '''Se define al usuario'''
@@ -16,6 +17,12 @@ class Persona(models.Model):
         ('FISICA','FISICA'),
         ('JURIDICA','JURIDICA')
     ]
+    telefono = models.CharField(
+        max_length=10,
+        validators=[RegexValidator(r'^\+?1?\d{9,10}$', message="Formato: +999999999. Hasta 10 dígitos.")],
+        null = True,
+        blank = True,
+    )
     cuit_cuil = models.CharField(unique=True,max_length=11)
     nombre = models.CharField(max_length=150)
     mail = models.EmailField(max_length=150,null=True,default='ejemplo@ejemplo.com')
@@ -24,7 +31,7 @@ class Persona(models.Model):
     calle=models.CharField(max_length=150)
     localidad = models.CharField(max_length=150)
     numero_calle = models.IntegerField(null=True)
-    fecha_nacido = models.DateField()
+    
 
     class Meta:
         abstract = True

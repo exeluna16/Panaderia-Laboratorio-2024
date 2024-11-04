@@ -5,7 +5,7 @@ from .models import Empleado
 class AgregarEmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleado
-        fields = ['nombre','mail','calle','localidad','numero_calle','fecha_nacido','cuit_cuil','cargo','tipo_persona']
+        fields = ['nombre','telefono','mail','calle','localidad','numero_calle','fecha_nacido','cuit_cuil','cargo','tipo_persona']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control','placeholder':'nombre completo...','required':True}),
             'mail':forms.EmailInput(attrs={'class': 'form-control','placeholder':'ingrese el mail...','required':True}),
@@ -16,12 +16,13 @@ class AgregarEmpleadoForm(forms.ModelForm):
             'cuit_cuil':forms.NumberInput(attrs={'class': 'form-control','placeholder':'ingrese el cuit','required':True,'maxlength':10,'minlength':10}),
             'cargo':forms.Select(attrs={'class':'form-select'}),
             'tipo_persona':forms.HiddenInput(),
+            'telefono': forms.TextInput(attrs={'placeholder': '+1234567890', 'class': 'form-control'}),
         }
 
 class ModificarEmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleado
-        fields = ['nombre','mail','calle','localidad','numero_calle','fecha_nacido','cuit_cuil','cargo','estado']
+        fields = ['nombre','telefono','mail','calle','localidad','numero_calle','fecha_nacido','cuit_cuil','cargo','estado']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control','placeholder':'nombre completo...','required':True}),
             'mail':forms.EmailInput(attrs={'class': 'form-control','placeholder':'ingrese el mail...','required':True}),
@@ -32,4 +33,5 @@ class ModificarEmpleadoForm(forms.ModelForm):
             'cuit_cuil':forms.NumberInput(attrs={'class': 'form-control','placeholder':'ingrese el cuit','required':True,'maxlength':10,'minlength':10}),
             'cargo':forms.Select(attrs={'class':'form-select'}),
             'estado': forms.CheckboxInput(attrs={'class':'form-check-input','role':'switch','id':'flexSwitchCheckChecked'}),        
+            'telefono': forms.TextInput(attrs={'placeholder': '+1234567890', 'class': 'form-control'}),
         }

@@ -4,3 +4,4 @@ from ..usuario.models import Persona
 class Proveedor(Persona):
     dias_de_pedido = models.TextField(max_length=150,blank=True)
     dias_de_reparto = models.TextField(max_length=150,blank=True)
+    fecha_nacido = models.DateField()

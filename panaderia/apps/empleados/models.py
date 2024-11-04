@@ -11,6 +11,7 @@ class Cargo(models.Model):
 class Empleado(Persona):
     cargo = models.ForeignKey(Cargo,on_delete=models.CASCADE,related_name='cargo')
     fecha_ingreso = models.DateField(auto_now_add=True)
+    fecha_nacido = models.DateField()
 
 
 
