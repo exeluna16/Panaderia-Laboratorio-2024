@@ -3,11 +3,12 @@ body{
     scrollbar-color: #8D493A #D0B8A8;
 }
 
-#titulo_empleados{
-    background: url(../IMG/326.jpg);
-    background-position: center;
-    background-repeat: none;
+#fondo{
+    background: url(../IMG/insumos.jpg);    
     background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 

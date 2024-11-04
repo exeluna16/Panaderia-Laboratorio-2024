@@ -2,8 +2,11 @@
 {% load static %}
 
 {% block title %}Empleados{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/empleados.css' %}">
+{% endblock %}
 {% block content %}
-    <main>
+    <div id="fondo" class="pe-3 ps-3">
         <div class="container-fluid">
             <div class="row" id="titulo_empleados">
                 <div class="col-12">
@@ -70,6 +73,6 @@
                     
             </section>
         </div>
-    </main>
+    </div>
 
 {% endblock %}

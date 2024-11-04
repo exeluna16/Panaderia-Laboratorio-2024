@@ -4,6 +4,13 @@ body{
     scrollbar-color: #8D493A #D0B8A8;
 }
 
+#fondo{
+    background: url(../IMG/insumos.jpg);    
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    background-attachment: fixed;
+}
 
 /*Tabla de productos*/
 #tabla_productos{

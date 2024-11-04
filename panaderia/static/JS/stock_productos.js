@@ -1,27 +1,25 @@
-document.getElementById('dar_baja').addEventListener('submit',function (evento){
+document.getElementById('dar_baja').addEventListener('submit', async function (evento) {
     evento.preventDefault();
-    
-    if (confirmarBaja()){
-        this.submit();
-    }
-    return false;
+    await confirmarBaja(evento.target.action);
 });
 
-async function confirmarBaja() {
-    const confirmacion = await Swal.fire(
-        {
-            title: "¿Desea confirmar la Baja?",
-            showCancelButton: true,
-            confirmButtonText: "Dar BAJA",
-            confirmButtonColor: "#dc3545", //rojo de bootstrap
-            backdrop:true,
-            preConfirm: () =>{
-                return true;
-            },
-            showLoaderOnConfirm:true,
-            allowOutsideClick: () => false,
-            allowEscapeKey: ()  => false,
-        }
-    );
-    return confirmacion; // Esto determina si se envía o no el formulario
+async function confirmarBaja(link) {
+    const respuesta = await Swal.fire({
+        title: "¿Desea confirmar la Baja?",
+        showCancelButton: true,
+        confirmButtonText: "Dar BAJA",
+        confirmButtonColor: "#dc3545", // rojo de bootstrap
+        backdrop: true,
+        showLoaderOnConfirm: true,
+        allowOutsideClick: () => false,
+        allowEscapeKey: () => false,
+    });
+
+    if (respuesta.isConfirmed) {
+        const form = document.getElementById('dar_baja');
+        form.action = link;
+        form.submit();
+    } else {
+        console.log('El usuario canceló la acción');
+    }
 }
