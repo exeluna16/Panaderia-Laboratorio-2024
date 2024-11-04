@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
-from django.views.generic import FormView
-
 from .models import Venta, ItemVenta
 from ..inventario.models import Producto
 from .forms import VentaForm, ItemVentaForm, ItemVentaFormSet ,ItemMayoristaForm
 from django.forms import formset_factory,inlineformset_factory ## crea varios formularios del mismo tipo
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 # Create your views here.
 @login_required(login_url='usuario:login')
+@permission_required('inventario.add_venta',raise_exception=True)
 def principal(request):
     #POR defecto el metodo de ingreso es GET por lo tanto debemos crear amos focmularios
     venta_form = VentaForm()  #crea un nuevo formulario
