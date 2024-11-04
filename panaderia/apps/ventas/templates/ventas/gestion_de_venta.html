@@ -16,7 +16,7 @@
                     
                 </div>
                 <!--BUSCADOR-->
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <input type="text" id="search" class="form-control" placeholder="Buscar producto..." onkeyup="buscarProducto()">
                     <button class="btn btn-secondary" type="button">Buscar</button>
                 </div>
@@ -123,7 +123,8 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label for="num_comprobante" class="form-label fs-4">N° Comprobante</label>
-                                        <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
+                                        <input type="text" class="form-control" name="numero_de_comprobante" id="num_comprobante" disabled>
+                                        {{venta.numero_comprobante}}
                                     </div>
                                     <div class="col-md-12">
                                         <label for="fecha_venta" class="form-label fs-4">Fecha</label>

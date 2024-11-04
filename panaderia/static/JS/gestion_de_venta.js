@@ -1,6 +1,7 @@
 let productos = [];
 let clientes = [];
 let productoSeleccionado = null;
+const numero_comprobante = generarNumeroComprobante();
 let item_numero = 0;
 let total_venta = 0.00;
 let cantidad_formularios = document.getElementById('id_venta-TOTAL_FORMS').value;
@@ -24,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error al recuperar a los clientes',error));
 
     fechaActual();
+    
+    document.getElementById('num_comprobante').value = numero_comprobante;// se agrega el numero en la vista
 });
 
 function fechaActual(){
@@ -45,11 +48,17 @@ document.getElementById('formulario_de_venta').addEventListener('submit',functio
     guardarValores();
     ///en esta parte del codigo se esta guardando el precio de la venta
     document.getElementById('id_total_venta').value = total_venta;
+
+    document.getElementById('id_numero_comprobante').value = numero_comprobante;
     //Ingreso el empleado
     //document.getElementById('id_empleado').value=1;
      // Al final de se envia el formulario a la vista, rezemos para que se guarde
     this.submit();
 });
+
+function generarNumeroComprobante() {
+    return Math.floor(Math.random() * 241183880);
+}
 
 // Función para seleccionar un producto
 function seleccionarProducto(producto) {
@@ -80,6 +89,8 @@ function buscarProducto() {
     });
 
 }
+
+
 
 //Funcion para calcular el total de la venta
 function totalVenta(){

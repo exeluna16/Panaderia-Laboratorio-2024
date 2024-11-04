@@ -23,6 +23,7 @@ class Venta(models.Model):
     #comprador = models.ForeignKey(ClienteMayorista,on_delete=models.SET_NULL,null=True,blank=True) #debe ser clave foranea
     observaciones = models.CharField(max_length=150,blank=True)
     total_venta = models.DecimalField(decimal_places=2,max_digits=10)
+    numero_comprobante = models.TextField(default='00000')
 
 class ItemMayorista(models.Model):
     venta = models.ForeignKey(Venta,on_delete=models.CASCADE)

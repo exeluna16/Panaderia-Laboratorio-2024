@@ -60,3 +60,13 @@ td{
     color:#DFD3C3;
     font-weight: bolder;
 }
+
+#resultados{
+    position: relative
+}
+
+#resultados li{
+    position: absolute; 
+    z-index: 1000;
+    border-radius: 8px;
+}
