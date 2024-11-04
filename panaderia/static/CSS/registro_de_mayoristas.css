@@ -11,7 +11,7 @@
 #titulo{
     text-align: center;
     color: white;
-   /* background-color: rgba(139, 69, 19, 0.712);*/
+    /* background-color: rgba(139, 69, 19, 0.712);*/
 }
 
 #regisro_mayorista{
@@ -19,11 +19,13 @@
     
 }
 
-
+label{
+    color:#fff;
+}
 .container{
     max-width: 880px;
     margin-top: 60px;
-    background-color: #D0B8A8;
+    background-color: rgb(0, 0, 0,0.7);
 
     font-family: "Fira Sans", sans-serif;
     font-weight: 100;

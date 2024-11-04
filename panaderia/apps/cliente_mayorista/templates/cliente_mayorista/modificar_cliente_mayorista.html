@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block title %}Modificar Cliente{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/registro_de_mayoristas.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container-fluid mt-3">
 
@@ -9,54 +12,54 @@
         <form method="post" > {% csrf_token %}
             <!-- CUIT/CUIL -->
             <div class="mb-3">
-                <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIT/CUIL</label>
+                <label for="{{form.cuit_cuil.id_label}}" class="form-label fs-4">CUIT/CUIL</label>
                 {{form.cuit_cuil}}
             </div>
             <!-- Nombre -->
             <div class="mb-3">
-                <label for="{{form_producto.nombre.id_label}}" class="form-label">Nombre</label>
+                <label for="{{form_producto.nombre.id_label}}" class="form-label fs-4">Nombre</label>
                 {{form.nombre}}
             </div>
 
             <div class="mb-3">
-                <label for="{{form_producto.nombre.id_label}}" class="form-label">Tipo de persona</label>
+                <label for="{{form_producto.nombre.id_label}}" class="form-label fs-4">Tipo de persona</label>
                 {{form.tipo_persona}}
             </div>
             <!-- Email -->
             <div class="mb-3">
-                <label for="{{form.mail.id_label}}" class="form-label">MAIL</label>
+                <label for="{{form.mail.id_label}}" class="form-label fs-4">MAIL</label>
                 {{form.mail}}
             </div>
             <!--Telefono-->
             <div class="mb-3">
-                <label for="{{form.telefono.id_label}}" class="form-label">Teléfono</label>
+                <label for="{{form.telefono.id_label}}" class="form-label fs-4">Teléfono</label>
                 {{form.telefono}}
             </div>
             <!-- Condición ante el IVA -->
             <div class="mb-3">
-                <label for="{{form.condicionIVA.id_label}}" class="form-label">Condición ante el IVA</label>
+                <label for="{{form.condicionIVA.id_label}}" class="form-label fs-4">Condición ante el IVA</label>
                 {{form.condicionIVA}}
             </div>
             
             <!-- Localidad -->
             <div class="mb-3">
-                <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                <label for="{{form.localidad.id_label}}" class="form-label fs-4">Localidad</label>
                 {{form.localidad}}
             </div>
             <!-- CALLE-->
             <div class="mb-3">
-                <label for="{{form.calle.id_label}}" class="form-label">CALLE</label>
+                <label for="{{form.calle.id_label}}" class="form-label fs-4">CALLE</label>
                 {{form.calle}}
             </div>
             <!--N CALLE-->
             <div class="mb-3">
-                <label for="{{form.numero_calle.id_label}}" class="form-label">N° CALLE</label>
+                <label for="{{form.numero_calle.id_label}}" class="form-label fs-4">N° CALLE</label>
                 {{form.numero_calle}}
             </div>
             <!--Estado-->
             <div class="mb-3">
                 <div class="form-check form-switch">
-                    <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Estado</label>
+                    <label for="{{form_prodcuto.categoria.id_label}}" class="form-label fs-4">Estado</label>
                     {{form.estado}}                    
                     <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
                 </div>

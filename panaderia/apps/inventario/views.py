@@ -153,6 +153,6 @@ def descontar_insumos(request):
                 insumo.cantidad -= form.cleaned_data['cantidad'] #descuento la cantidad
                 
                 insumo.save()#actualizo la cantidad en la BD
-                print(f'la nueva cantidad del insumo es {insumo.cantidad}')
+                
                 redirect('inventario:almacen_insumos')
     return render(request,'inventario/descontar_insumos.html',{'form_set_insumos':form_set_insumos})

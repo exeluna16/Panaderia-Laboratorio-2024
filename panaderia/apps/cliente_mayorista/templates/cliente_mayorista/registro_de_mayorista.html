@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Registrar Mayorista{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'CSS/registro_de_mayoristas.css' %}">
+{% endblock %}
 {% block content %}
     <div class="fondo_pagina">
 
@@ -10,66 +13,66 @@
       
         <form id="regisro_mayorista" method="post">{% csrf_token %}
             <fieldset>
-                <legend>Informacion de contacto</legend>
+                <h2 class="text-light">Informacion de contacto</h2>
                 <div class="row">
 
                   <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.nombre.id_label}}" class="form-label">Nombre Cliente/Empresa</label>
+                      <label for="{{form.nombre.id_label}}" class="form-label fs-4">Nombre Cliente/Empresa</label>
                         {{form.nombre}}
                     </div>
                   </div>
                   <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIL/CUIT</label>
+                      <label for="{{form.cuit_cuil.id_label}}" class="form-label fs-4">CUIL/CUIT</label>
                         {{form.cuit_cuil}}
                     </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.tipo_persona.id_label}}" class="form-label">Tipo de Persona</label>
+                      <label for="{{form.tipo_persona.id_label}}" class="form-label fs-4">Tipo de Persona</label>
                         {{form.tipo_persona}}
                     </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.condicionIVA.id_label}}" class="form-label">CONDICION IVA</label>
+                      <label for="{{form.condicionIVA.id_label}}" class="form-label fs-4">CONDICION IVA</label>
                         {{form.condicionIVA}}
                     </div>
                     </div>
                   <div class="col-12 col-6 col-sm-6">
                     <div class="mb-3">
-                        <label for="{{form.mail.id_label}}">Email</label>
+                        <label for="{{form.mail.id_label}}" class="form-label fs-4">Email</label>
                         {{form.mail}}
                     </div>
                   </div>
                   <!--Telefono-->
                   <div class="col-12 col-6 col-sm-6">
-                    <label for="{{form.telefono.id_label}}" class="form-label">Teléfono</label>
+                    <label for="{{form.telefono.id_label}}" class="form-label fs-4">Teléfono</label>
                     {{form.telefono}}
                   </div>
                   <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                      <label for="{{form.localidad.id_label}}" class="form-label fs-4">Localidad</label>
                         {{form.localidad}}
                     </div>
                   </div>
                   <div class="col-12 col-6 col-sm-6">
                     <div>
-                      <label for="{{form.calle.id_label}}" class="form-label">Calle</label>
+                      <label for="{{form.calle.id_label}}" class="form-label fs-4">Calle</label>
                         {{form.calle}}
                     </div>
                   </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                        <label for="{{form.numero_calle.id_label}}" class="form-label">N° Calle</label>
+                        <label for="{{form.numero_calle.id_label}}" class="form-label fs-4">N° Calle</label>
                             {{form.numero_calle}}
                         </div>
                     </div>
                     
                 </div>
             </fieldset>
-            <div>
+            <div class="text-start mt-3">
                 <button type="submit" name="registra" class="btn btn-success">Registrar</button>
                 <button type="reset" name="cancelar" class="btn btn-danger">Cancelar</button>
             </div>
