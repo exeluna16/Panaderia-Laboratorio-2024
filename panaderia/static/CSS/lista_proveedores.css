@@ -1,0 +1,22 @@
+main{
+    background: url(../IMG/proveedor.jfif);    
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    background-attachment: fixed;
+}
+h2 span{
+    background: rgb(0, 0, 0,0.7);
+}
+#tabla_proveedores{
+    overflow-y: auto;
+    max-height: 250px;
+    width: 100%;
+    padding: 0;
+}
+
+.table thead th{
+    position: sticky;
+    top:0;
+    background: #D0B8A8;
+}
