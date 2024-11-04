@@ -108,7 +108,8 @@ function totalVenta(){
 //Funcion para comprobar desde el Front-End si hay suficiente cantidad de un producto ingresado
 function existeSuficienteCantidad(cantidad){
     if (productoSeleccionado.cantidad < cantidad){
-        alert('NO hay suficiente cantidadad');
+        //alert('NO hay suficiente cantidadad');
+        alertaSwal('Aviso','no hay suficiente cantidad, la cantidad actual es: '+productoSeleccionado.cantidad,'warning','Ok')
         return false;
     }
     return true;
@@ -117,7 +118,7 @@ function existeSuficienteCantidad(cantidad){
 function agregarItem(){
     //le resto uno a la cantidad de formularios totales porque al agregar estamos sumando 1 pero nos interesa la cantidad del anterior
     let cantidad_ingresada = document.getElementById('cantidad_seleccionada').value;
-    if(existeSuficienteCantidad(cantidad_ingresada)){ 
+    if(existeSuficienteCantidad(cantidad_ingresada) && !es_numero_negativo(cantidad_ingresada)){ 
         agregarProducto(); //al final se agrega el producto a la tabla
     }
 }
@@ -284,3 +285,4 @@ function seleccionarMayorista(cliente){
     //Se carga el valor del cliente seleccionado para que el usuario lo vea
     document.getElementById('cliente-elegido').value = cliente.nombre;
 }
+

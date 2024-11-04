@@ -6,3 +6,12 @@ const alertaSwal = (titleText,text,icon,confirmButtonText)=>{
         confirmButtonText : confirmButtonText,
     });
 } 
+
+
+function es_numero_negativo(numero){
+    if(numero<0){
+        alertaSwal('Error','Ingrese un numero valido','error','OK!');
+        return true;
+    }
+    return false;
+}

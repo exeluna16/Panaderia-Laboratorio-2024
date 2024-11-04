@@ -1,0 +1,17 @@
+#fondo{
+    background-image: url('../IMG/pan2.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+.row{
+    background: #00000088;
+}
+
+label{
+    color:#fff;
+}

@@ -2,77 +2,83 @@
 {% load static %}
 
 {% block title %}Agregar Producto{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/agregar_producto.css' %}">
+{% endblock %}
 {% block content %}
-<div class="container-fluid mt-3">
+<div id="fondo" class="pe-3 ps-3">
+    <div class="container-fluid">
 
-        {% if messages %}
-        <div class="alert alert-success" role="alert">
-            {% for message in messages %}
-            <strong>{{ message }}</strong>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        <h2 class="mb-4">Carga de Productos</h2>
-        <form method="post" > {% csrf_token %}
-            <!-- Código -->
-            <div class="mb-3">
-                <label for="{{form_producto.codigo.id_label}}" class="form-label">Código</label>
-                {{form_producto.codigo}}
-                {% if form_producto.codigo.errors %}
-                    <div>
-                        {% for error in form_producto.codigo.errors %}
-                            <p class="text-danger fst-italic">{{ error }}</p>
-                        {% endfor%}
+            {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="row">
+                <h1 class="text-center mb-4">Carga de Productos</h1>
+                <form method="post" > {% csrf_token %}
+                    <!-- Código -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.codigo.id_label}}" class="form-label fs-4">Código</label>
+                        {{form_producto.codigo}}
+                        {% if form_producto.codigo.errors %}
+                            <div>
+                                {% for error in form_producto.codigo.errors %}
+                                    <p class="text-danger fst-italic">{{ error }}</p>
+                                {% endfor%}
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.nombre.id_label}}" class="form-label fs-4">Nombre</label>
+                        {{form_producto.nombre}}
+                    </div>
+        
+                    <!-- Cantidad -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.cantidad.id_label}}" class="form-label fs-4">Cantidad</label>
+                        {{form_producto.cantidad}}
+                    </div>
+        
+                    <!-- Cantidad Mínima -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.cantidad_minima.id_label}}" class="form-label fs-4">Cantidad Mínima</label>
+                        {{form_producto.cantidad_minima}}
+                    </div>
+        
+                    <!-- Unidad de Medida -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.unidad_de_medida.id_label}}" class="form-label fs-4">Unidad de Medida</label>
+                        {{form_producto.unidad_de_medida}}
+                    </div>
+                    <!-- Precio -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.precio.id_label}}" class="form-label fs-4">Precio</label>
+                        {{form_producto.precio}}
+                    </div>
+        
+                    <!-- Precio Mayorista -->
+                    <div class="mb-3">
+                        <label for="{{form_producto.precio_mayorista.id_label}}" class="form-label fs-4">Precio Mayorista</label>
+                        {{form_producto.precio_mayorista}}
+                    </div>
+        
+                    <!-- Categoría -->
+                    <div class="mb-3">
+                        <label for="{{form_prodcuto.categoria.id_label}}" class="form-label fs-4">Categoría</label>
+                        {{form_producto.categoria}}
+                    </div>
+        
+                    <!-- Botón de envío -->
+                    <div class="container-fluid mb-3">
+                        <button type="reset" class="btn btn-danger">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
             </div>
-            <!-- Nombre -->
-            <div class="mb-3">
-                <label for="{{form_producto.nombre.id_label}}" class="form-label">Nombre</label>
-                {{form_producto.nombre}}
-            </div>
-
-            <!-- Cantidad -->
-            <div class="mb-3">
-                <label for="{{form_producto.cantidad.id_label}}" class="form-label">Cantidad</label>
-                {{form_producto.cantidad}}
-            </div>
-
-            <!-- Cantidad Mínima -->
-            <div class="mb-3">
-                <label for="{{form_producto.cantidad_minima.id_label}}" class="form-label">Cantidad Mínima</label>
-                {{form_producto.cantidad_minima}}
-            </div>
-
-            <!-- Unidad de Medida -->
-            <div class="mb-3">
-                <label for="{{form_producto.unidad_de_medida.id_label}}" class="form-label">Unidad de Medida</label>
-                {{form_producto.unidad_de_medida}}
-            </div>
-            <!-- Precio -->
-            <div class="mb-3">
-                <label for="{{form_producto.precio.id_label}}" class="form-label">Precio</label>
-                {{form_producto.precio}}
-            </div>
-
-            <!-- Precio Mayorista -->
-            <div class="mb-3">
-                <label for="{{form_producto.precio_mayorista.id_label}}" class="form-label">Precio Mayorista</label>
-                {{form_producto.precio_mayorista}}
-            </div>
-
-            <!-- Categoría -->
-            <div class="mb-3">
-                <label for="{{form_prodcuto.categoria.id_label}}" class="form-label">Categoría</label>
-                {{form_producto.categoria}}
-            </div>
-
-            <!-- Botón de envío -->
-            <div class="container-fluid">
-                <button type="reset" class="btn btn-danger">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </div>
-        </form>
     </div>
+</div>
 {% endblock %}
