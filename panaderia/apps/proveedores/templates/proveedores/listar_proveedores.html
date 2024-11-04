@@ -36,7 +36,7 @@
                                             <td>{{proveedor.id}}</td>
                                             <td>{{proveedor.cuit_cuil}}</td>
                                             <td>{{proveedor.nombre}}</td>
-                                            <td>se tiene que agregar</td>
+                                            <td>{{proveedor.telefono}}</td>
                                             <td>{{proveedor.localidad}}<br>{{proveedor.calle}}<br>{{proveedor.numero_calle}}</td>
                                             <td>{{proveedor.dias_de_pedido}}</td>
                                             <td>{{proveedor.dias_de_reparto}}</td>
@@ -67,7 +67,7 @@
                 </div>
             <section class="content">
                     <a class="btn btn-success col-2 m-1" href="{% url 'proveedor:agregar_proveedor' %}" role="button" id="btn_cargar_empleado"><span>Cargar Proveedor</span></a>
-                    <a class="btn btn-primary col-2 m-1" href="#card_agregar_empleado" role="button" id="btn_modificar_empleado"><span>Modificar Proveedor</span></a>
+                    
             </section>
         </div>
     </main>
