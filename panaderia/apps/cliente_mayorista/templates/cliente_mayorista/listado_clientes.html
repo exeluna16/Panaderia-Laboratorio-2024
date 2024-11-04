@@ -2,20 +2,19 @@
 {% load static %}
 
 {% block title %}Clientes{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/lista_clientes.css' %}">
+{% endblock %}
 {% block content %}
     <main>
+        <h1 class="text-center display-1">Clientes</h1>
         <div class="container-fluid">
-            <div class="row" id="titulo_empleados">
-                <div class="col-12">
-                    <h1 class="text-center display-1">Clientes</h1>
-                </div>
-            </div>
                 <div class="col-12">
                     {% if clientes|length == 0 %}
                     <h2 class="text-center">Aún no hay clientes cargados :/</h2>
                     {% else %}
-                        <h2 class="text-center">Clientes Registrados</h2>
-                        <div class="container-fluid mb-3" id="tabla_empleados">
+                        <h2 class="text-light display-6 p-2"><span>Clientes Registrados</span></h2>
+                        <div class="container-fluid mb-3" id="tabla_clientes">
                             <table class="table table-hover table-primary">
                                 <thead>
                                     <tr>
