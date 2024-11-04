@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Inicio Sesión{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+{% endblock %}
 {% block content %}
-<header id="home">
+<div id="fondo">
     <h1>Iniciar Sesión</h1>
-</header>
-    <br>
     {% if msj %}
     <div>{{ msj }}</div>
     {% endif %}
-    <hr class="w-75">
-<form action="{% url 'usuario:login' %}" method="post" class="w-75">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label class="form-label" for="username">Nombre de Usuario: </label>
-        <input type="text" id="username" name="username" class="form-control" >
+    <div class="container-fluid" id="contenedor">
+        <div class="row mt-5">
+            <form action="{% url 'usuario:login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fs-4" for="username">Nombre de Usuario: </label>
+                    <input type="text" id="username" name="username" class="form-control" >
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fs-4" for="passw">Contraseña: </label>
+                    <input type="password" id="passw" name="password" class="form-control" >
+                </div>
+                <input type="submit" class="btn btn-success" value="Ingresar">
+            </form>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="passw">Contraseña: </label>
-        <input type="password" id="passw" name="password" class="form-control" >
-    </div>
-    <input type="submit" class="btn btn-primary" value="Login">
-</form>
+</div>
 {% endblock %}

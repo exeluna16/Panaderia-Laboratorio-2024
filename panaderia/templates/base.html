@@ -34,19 +34,27 @@
                         <li class="nav-item">
                             <select name="inventario" id="slct_inventario" class="nav-link">
                                 <option hidden>Inventario</option>
+                                {% if perms.inventario.add_inventario%}
                                 <option value="productos" style="background-color: #8D493A; color: white;">Productos</option>
+                                {% endif %}
+                                {% if perms.inventario.add_inventario%}
                                 <option value="insumos" style="background-color: #8D493A; color: white;">Insumos</option>
+                                {% endif %}
                             </select>
                         </li>
+                        {% if perms.venta.add_venta%}
                         <li class="nav-item">
                             <a class="nav-link" href="/ventas/principal">Ventas</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/pedido/lista_pedidos">Pedidos</a>
                         </li>
+                        {% if perms.empleados.add_empleados%}
                         <li class="nav-item">
                             <a class="nav-link" href="/empleados/lista_empleados">Empleados</a>
                         </li>
+                        {% endif %}
                     </ul>
                     <!--inicio de sesion-->
                     <span class="navbar-text ms-auto">

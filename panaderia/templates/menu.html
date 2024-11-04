@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Menú{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'CSS/menu.css' %}">
 {% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
     <main>
@@ -27,6 +29,7 @@
                     </div>
                 </div>
                 {% endif %}
+                {% if perms.inventario.add_inventario%}
                 <div class="col-4 mb-5">
                 
                     <div class="small-box">
@@ -44,7 +47,8 @@
                     
                     </div>
                 </div>
-                
+                {% endif %}
+                {% if perms.pedido.add_pedido%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                         <div class="inner">
@@ -61,7 +65,8 @@
                         
                     </div>
                 </div>
-                
+                {% endif %}
+                {% if perms.empleados.add_empleados%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                     <div class="inner">
@@ -77,6 +82,8 @@
                     </div>
                     </div>
                 </div>
+                {% endif %}
+                {% if perms.cliente_mayorista.add_cliente_mayorista%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                     <div class="inner">
@@ -93,7 +100,8 @@
                     </div>
                     </div>
                 </div>
-                
+                {% endif %}
+                {% if perms.inventario.add_inventario%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                     <div class="inner">
@@ -107,6 +115,8 @@
                     </div>
                     </div>
                 </div>
+                {% endif %}
+                {% if perms.proveedores.add_proveedores%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                     <div class="inner">
@@ -122,6 +132,8 @@
                     </div>
                     </div>
                 </div>
+                {% endif %}
+                {% if perms.usuario.add_usuario%}
                 <div class="col-4 mb-5">
                     <div class="small-box">
                     <div class="inner">
@@ -137,6 +149,7 @@
                     </div>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </main>

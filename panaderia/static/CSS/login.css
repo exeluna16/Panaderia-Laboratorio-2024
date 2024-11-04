@@ -1,0 +1,16 @@
+#contenedor{
+    background: rgb(0, 0, 0,0.7);
+}   
+
+main{
+    background: url(../IMG/pan3.jpg);    
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+label{
+    color:#fff;
+
+}
