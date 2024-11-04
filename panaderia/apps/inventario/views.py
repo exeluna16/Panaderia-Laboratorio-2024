@@ -38,7 +38,7 @@ def modificar_producto(request,pk):
         formulario = ModificarProductoForm(request.POST,instance=producto)
         if formulario.is_valid():
             formulario.save()
-            
+            messages.success(request, '¡Producto modificado exitosamente!')
             return redirect('inventario:stock_productos')
     formulario = ModificarProductoForm(instance=producto)
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
