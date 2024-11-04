@@ -24,7 +24,6 @@
                                         <th>Nombre</th>
                                         <th>Telefono</th>
                                         <th>Domicilio</th>
-                                        <th>Fecha de Nacimiento</th>
                                         <th>Condicion IVA</th>
                                         <th>Estado</th>
                                         <th>Acción</th>
@@ -36,9 +35,8 @@
                                             <td>{{cliente.id}}</td>
                                             <td>{{cliente.cuit_cuil}}</td>
                                             <td>{{cliente.nombre}}</td>
-                                            <td>se tiene que agregar</td>
+                                            <td>{{cliente.telefono}}</td>
                                             <td>{{cliente.localidad}},{{cliente.calle}},{{cliente.numero_calle}}</td>
-                                            <td>{{cliente.fecha_nacido}}</td>
                                             <td>{{cliente.condicionIVA}}</td>
                                             {% if cliente.estado %}
                                                 <td>Activo</td>

@@ -26,3 +26,9 @@ def logout_view(request):
 def menu_principal(request):
     # Solo los usuarios autenticados pueden acceder a esta vista
     return render(request, 'menu.html')
+
+def home(request):
+    if request.user.is_authenticated:
+        return render(request,'menu.html')
+    else:
+        return render(request,'home.html')

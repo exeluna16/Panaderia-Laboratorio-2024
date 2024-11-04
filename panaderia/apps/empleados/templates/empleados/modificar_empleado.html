@@ -9,8 +9,8 @@
         <form method="post" > {% csrf_token %}
             <!-- CUIT -->
             <div class="mb-3">
-                <label for="{{form.cuit.id_label}}" class="form-label">CUIT</label>
-                {{form.cuit}}
+                <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIT/CUIL</label>
+                {{form.cuit_cuil}}
             </div>
             <!-- Nombre -->
             <div class="mb-3">

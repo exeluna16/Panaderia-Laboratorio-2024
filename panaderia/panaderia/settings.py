@@ -133,6 +133,8 @@ STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'usuario.Usuario' #deifno mi usuario
 
+LOGIN_REDIRECT_URL = 'menu_principal'
+
 #Se inidca la direccion de los archivos estaticos
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
