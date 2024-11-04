@@ -10,9 +10,10 @@
     {% block content %} <!--HERENCIA de contenido variable-->
 
         <main>
-            <div class="container-fluid"><!--contenedor completo-->
+            <h1 class="display-1">Venta</h1>
+            <div class="container-fluid mb-3"><!--contenedor completo-->
                 <div class="text-center">
-                    <h1 class="display-1">Venta</h1>
+                    
                 </div>
                 <!--BUSCADOR-->
                 <div class="input-group mb-3">
@@ -40,13 +41,13 @@
                             {% endfor %}
                         </div>
                         <input type="number" id="cantidad_seleccionada" class="form-control mb-1">
-                        <button class="btn btn-success mb-2" onclick="agregarItem()" type="button">Agregar a la venta</button>
+                        <button class="btn btn-dark mb-2" onclick="agregarItem()" type="button">Agregar a la venta</button>
 
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="container mb-3">
-                                    <h3>Detalles de la Venta</h3>
+                                    <h3 id="detalles-venta">Detalles de la Venta</h3>
                                     <!-- Tabla con el encabezado fijo -->
                                     <table class="table text-center">
                                         <thead>
@@ -84,14 +85,14 @@
                                 <!--FORMULARIO DE VENTA-->
                                     <h3>Datos Generales</h3>
                                     <div class="col-md-6">
-                                        <label for="consumidor_final" class="form-label">Cliente</label>
+                                        <label for="consumidor_final" class="form-label fs-4">Cliente</label>
                                         <input class="form-control" type="text" value="Consumidor Final" id="cliente-elegido" disabled>
                                     </div>
                                     <div class="col-md-6">
                                         <!--<button class="btn btn-secondary m-2">venta mayorista</button>-->
                                         {{item_mayorista.as_p}}
                                         <!--Boton del Modal-->
-                                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar mayorista</button>
+                                        <button type="button" class="btn btn-outline-dark mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar mayorista</button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -117,23 +118,23 @@
                                         
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label">Comprobante</label>
+                                        <label for="{{venta.tipo_comprobante.id_for_label}}" class="form-label fs-4">Comprobante</label>
                                         {{ venta.tipo_comprobante }}
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="num_comprobante" class="form-label">N° Comprobante</label>
+                                        <label for="num_comprobante" class="form-label fs-4">N° Comprobante</label>
                                         <input type="number" class="form-control" name="numero_de_comprobante" id="num_comprobante" placeholder="99999" disabled>
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="fecha_venta" class="form-label">Fecha</label>
+                                        <label for="fecha_venta" class="form-label fs-4">Fecha</label>
                                         <input type="date" class="form-control" name="fecha_venta" id="fecha_venta" disabled>
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label">Forma de Pago</label>
+                                        <label for="{{venta.forma_de_pago.id_for_label}}" class="form-label fs-4">Forma de Pago</label>
                                         {{venta.forma_de_pago}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="{{venta.observaciones.id_for_label}}" class="form-label">Observaciones</label>
+                                        <label for="{{venta.observaciones.id_for_label}}" class="form-label fs-4">Observaciones (opcional)</label>
                                         {{venta.observaciones}}
                                     </div>
                                     <div>

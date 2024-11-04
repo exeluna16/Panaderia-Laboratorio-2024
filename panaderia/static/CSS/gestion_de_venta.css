@@ -1,19 +1,22 @@
 body{
-    background: #DFD3C3;
     scrollbar-color: #198754 #F8EDE3;
 }
 
 
 main{
-    background: url(../IMG/pan1.jpeg);
+    background: url(../IMG/mostrador-venta.jpg);
     background-size: cover;
     background-repeat: none;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
-#productoSeleccionado h4 span{
-    background: #aaa
+
+#productoSeleccionado h4 span, #detalles-venta {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 5px;
 }
 
 #formset-container{
@@ -23,7 +26,7 @@ main{
 
 /*FORMULARIO de venta*/
 #formulario_venta{
-    background: #F8EDE3;
+    background: #F8EDE3CC;
     border: 3px solid #198754;
 }
 
@@ -46,7 +49,7 @@ max-height: 250px;
 .table thead th, .table tfoot td {
 position: sticky;
 z-index: 1;
-background: #D0B8A8;
+background: #F8EDE3CC;
 }
 
 td{
