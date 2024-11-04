@@ -1,57 +1,62 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Registro de Insumo{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/agregar_insumo.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="container-fluid mt-3">
+<div id="fondo" class="pe-3 ps-3">
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="text-center mb-4">Registro de Insumo</h1>
+            <form method="post" > {% csrf_token %}
+                <!-- Código -->
+                <div class="mb-3">
+                    <label for="{{form.codigo.id_label}}" class="form-label fs-4">Código</label>
+                    {{form.codigo}}
+                    {% if form.codigo.errors %}
+                        <div>
+                            {% for error in form.codigo.errors %}
+                            <p class="text-danger fst-italic">{{ error }}</p>
+                            {% endfor %}
+                        </div> 
+                    {% endif %}
+                </div>
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label for="{{form.nombre.id_label}}" class="form-label fs-4">Nombre</label>
+                    {{form.nombre}}
+                </div>
 
-        <h2 class="mb-4">Registro de Insumo</h2>
-        <form method="post" > {% csrf_token %}
-            <!-- Código -->
-            <div class="mb-3">
-                <label for="{{form.codigo.id_label}}" class="form-label">Código</label>
-                {{form.codigo}}
-                {% if form.codigo.errors %}
-                    <div>
-                        {% for error in form.codigo.errors %}
-                        <p class="text-danger fst-italic">{{ error }}</p>
-                        {% endfor %}
-                    </div> 
-                {% endif %}
-            </div>
-            <!-- Nombre -->
-            <div class="mb-3">
-                <label for="{{form.nombre.id_label}}" class="form-label">Nombre</label>
-                {{form.nombre}}
-            </div>
+                <!-- Cantidad -->
+                <div class="mb-3">
+                    <label for="{{form.cantidad.id_label}}" class="form-label fs-4">Cantidad</label>
+                    {{form.cantidad}}
+                </div>
 
-            <!-- Cantidad -->
-            <div class="mb-3">
-                <label for="{{form.cantidad.id_label}}" class="form-label">Cantidad</label>
-                {{form.cantidad}}
-            </div>
+                <!-- Cantidad Mínima -->
+                <div class="mb-3">
+                    <label for="{{form.cantidad_minima.id_label}}" class="form-label fs-4">Cantidad Mínima</label>
+                    {{form.cantidad_minima}}
+                </div>
 
-            <!-- Cantidad Mínima -->
-            <div class="mb-3">
-                <label for="{{form.cantidad_minima.id_label}}" class="form-label">Cantidad Mínima</label>
-                {{form.cantidad_minima}}
-            </div>
-
-            <!-- Unidad de Medida -->
-            <div class="mb-3">
-                <label for="{{form.unidad_de_medida.id_label}}" class="form-label">Unidad de Medida</label>
-                {{form.unidad_de_medida}}
-            </div>
-            <!-- Ultimo precio de compra -->
-            <div class="mb-3">
-                <label for="{{form.ultimo_precio.id_label}}" class="form-label">Ultimo Precio de compra</label>
-                {{form.ultimo_precio}}
-            </div>
-            <!-- Botón de envío -->
-            <div class="container-fluid">
-                <button type="reset" class="btn btn-danger">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </div>
-        </form>
+                <!-- Unidad de Medida -->
+                <div class="mb-3">
+                    <label for="{{form.unidad_de_medida.id_label}}" class="form-label fs-4">Unidad de Medida</label>
+                    {{form.unidad_de_medida}}
+                </div>
+                <!-- Ultimo precio de compra -->
+                <div class="mb-3">
+                    <label for="{{form.ultimo_precio.id_label}}" class="form-label fs-4">Ultimo Precio de compra</label>
+                    {{form.ultimo_precio}}
+                </div>
+                <!-- Botón de envío -->
+                <div class="container-fluid mb-3">
+                    <button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
     </div>
-
+</div>    
 {% endblock %}
