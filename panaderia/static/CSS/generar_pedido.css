@@ -23,9 +23,24 @@ main{
 }
 
 
+
+#form_pedido{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+label,#lista-insumos{
+    color:#fff;
+}
+
+.fixed-size {
+    width: 100%;
+    height: 150px;
+}
+
 #contenedor_formulario{
 
-    background-color:#D0B8A8;
+    
     max-width: 880px;
 
     font-family: "Fira Sans", sans-serif;

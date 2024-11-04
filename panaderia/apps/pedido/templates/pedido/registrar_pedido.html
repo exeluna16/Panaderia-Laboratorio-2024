@@ -20,12 +20,12 @@
                     </div>
                   {% endfor %}
                 </div>
-                <h3 class="text-center">Formulario para pedido</h3>                
-                <div class="container text-center mt-3">
+                <h2 class="text-light"><span>Formulario para pedido</span></h2>                
+                <div class="container-fluid text-center mt-3">
                   <div class="row">
                     <div class="col-12 col-6 col-sm-6">
                       <!--Boton del Modal-->
-                      <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar Proveedor</button>
+                      <button type="button" class="btn btn-secondary mt-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar Proveedor</button>
                       <!-- Modal -->
                       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -50,47 +50,51 @@
                       </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="proveedor" class="form-label">Proveedor</label>
+                      <label for="proveedor" class="form-label fs-4">Proveedor</label>
                       <input class="form-control" type="text" id='proveedor-elegido' disabled>
                       {{ pedido_form.id_proveedor }}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
 
-                      <label for="{{pedido_form.numero_pedido.id_label}}" class="form-label">Numero de pedido</label>
+                      <label for="{{pedido_form.numero_pedido.id_label}}" class="form-label fs-4">Numero de pedido</label>
                       {{ pedido_form.numero_pedido }}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="{{pedido_form.observacion.id_label}}" class="form-label">Observaciones</label>
+                      <label for="{{pedido_form.observacion.id_label}}" class="form-label fs-4">Observaciones</label>
                       {{ pedido_form.observacion }}
                     </div>
-                    <div class="col-12 col-6 col-sm-6">
-                      
-                      <label for="fecha-pedido" class="form-label">fecha del pedido</label>
-                      <input type="date" id="fecha_pedido" name="fecha_pedido" class="form-control" required>
-
-                    </div>
+                    
                     <div class="col-12 col-6 col-sm-6">
                       <!--barra de busqueda-->
                       <div>
-                        <label for="buscar-insumo" class="form-label">Seleccione un Insumo</label>
+                        <label for="buscar-insumo" class="form-label fs-4">Seleccione un Insumo</label>
                         <input class="form-control me-2" type="text" placeholder="Buscar Insumo..." id="buscar-insumo" onkeyup="buscarInsumo()">
                           <ul id="lista-insumos">
 
                           </ul>
                       </div>
-                    </div>  
+                    </div> 
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="insumo" class="form-label">Insumo</label>
+                      
+                      <label for="fecha-pedido" class="form-label fs-4">fecha del pedido</label>
+                      <input type="date" id="fecha_pedido" name="fecha_pedido" class="form-control" required>
+
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="insumo" class="form-label fs-4">Insumo</label>
                       <input type="text" class="form-control" id="insumo-elegido" disabled>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="cantidad" class="form-label">Cantidad</label>
+                      <label for="cantidad" class="form-label fs-4">Cantidad</label>
                       <input class="form-control" type="number" id="boton-cantidad">
                       
                     </div>
                     <div class="col-12 col-6 col-sm-6">
-                      <label for="" class="form-label"></label>
-                      <input class="form-control btn btn-success" value="AGREGAR" onclick="agregarItemInsumo()">Agregar</inp>
+
+                    </div>
+                    <div class="col-12 col-6 col-sm-6">
+                      <label for="" class="form-label fs-4"></label>
+                      <input class="form-control btn btn-success" value="AGREGAR" onclick="agregarItemInsumo()"></input>
                     </div>
                   </div>
                   <div class="row">
@@ -117,7 +121,7 @@
                       
                     </div>
                   </div>
-                  <div>
+                  <div class="text-start">
                     <button type="reset" name="cancelar" class="btn btn-danger m-2" onclick="fechaActual()">Cancelar</button>
                     <button type="submit" name="enviar" class="btn btn-success m-2">Generar</button>
                   </div>

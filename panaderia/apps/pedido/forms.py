@@ -19,7 +19,7 @@ class RecepcionPedidoForm(forms.ModelForm):
         widgets = {
             'total_pedido':forms.NumberInput(attrs={'class':'form-control'}),
             'numero_comprobante':forms.NumberInput(attrs={'class':'form-control','required':True}),
-            'observaciones':forms.Textarea(attrs={'class':'form-control'}),
+            'observaciones':forms.Textarea(attrs={'class':'form-control fixed-size','palceholder':'Este campo es opcional...'}),
         }
 
 class ItemPedidoForm(forms.ModelForm):
