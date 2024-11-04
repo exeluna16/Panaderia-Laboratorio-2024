@@ -4,7 +4,7 @@ let insumosEnTabla = [];
 let insumoSeleccionado = null;
 let proveedorElegido=null;
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     fetch('../proveedores/ver_proveedores')//se envia la petición
     .then(respuesta => respuesta.json())//transformo la respuesta en un JSON
     .then(datos =>{
