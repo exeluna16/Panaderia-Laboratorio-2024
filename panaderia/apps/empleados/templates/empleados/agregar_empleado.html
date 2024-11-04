@@ -1,67 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/registro_empleados.css' %}">
+{% endblock %}
 {% block title %}Agregar Empleado{% endblock %}
 {% block content %}
-    <main>
-        <div class="container-fluid">
-                <div class="row" id="titulo_empleados">
-                    <div class="col-12">
-                        <h1 class="text-center display-1">Empleados</h1>
-                    </div>
-                </div>
-        </div>
-        <div>
-            <div class="col-12"><h3>Ingrese los datos del empleado</h3></div>
+    <div id="fondo">
+        <h1 class="text-center display-1">Empleados</h1>
+        <div class="container">
+            <div class="row">
+                <h2 class="text-light"><span>Ingrese los datos del empleado</span></h2>
                 <form method="POST" id="formulario_agregar_empleado">
                     {% csrf_token %}
 
                     <div class="mb-3">
-                        <label for="{{formulario.nombre.id_label}}" class="form-label">Nombre</label>
+                        <label for="{{formulario.nombre.id_label}}" class="form-label fs-4">Nombre</label>
                         {{formulario.nombre}}
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{formulario.cuit_cuil.id_label}}" class="form-label">CUIT/CUIL</label>
+                        <label for="{{formulario.cuit_cuil.id_label}}" class="form-label fs-4">CUIT/CUIL</label>
                         {{formulario.cuit_cuil}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.mail.id_label}}" class="form-label">MAIL</label>
+                        <label for="{{formulario.mail.id_label}}" class="form-label fs-4">MAIL</label>
                         {{formulario.mail}}
                     </div>
                     <!--Telefono-->
                     <div class="mb-3">
-                        <label for="{{formulario.telefono.id_label}}" class="form-label">Teléfono</label>
+                        <label for="{{formulario.telefono.id_label}}" class="form-label fs-4">Teléfono</label>
                         {{formulario.telefono}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.fecha_nacido.id_label}}" class="form-label">Fecha de nacimiento</label>
+                        <label for="{{formulario.fecha_nacido.id_label}}" class="form-label fs-4">Fecha de nacimiento</label>
                         {{formulario.fecha_nacido}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.localidad.id_label}}" class="form-label">Localidad</label>
+                        <label for="{{formulario.localidad.id_label}}" class="form-label fs-4">Localidad</label>
                         {{formulario.localidad}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.calle.id_label}}" class="form-label">Calle</label>
+                        <label for="{{formulario.calle.id_label}}" class="form-label fs-4">Calle</label>
                         {{formulario.calle}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.numero_calle.id_label}}" class="form-label">N° Calle</label>
+                        <label for="{{formulario.numero_calle.id_label}}" class="form-label fs-4">N° Calle</label>
                         {{formulario.numero_calle}}
                     </div>
                     <div class="mb-3">
-                        <label for="{{formulario.cargo.id_label}}" class="form-label">Cargo</label>
+                        <label for="{{formulario.cargo.id_label}}" class="form-label fs-4">Cargo</label>
                         {{formulario.cargo}}
                     </div>
                     <!--TIpo de Persona-->
                     {{formulario.tipo_persona}}
-                    <input class="btn btn-danger" type="reset" value="CANCELAR">
-                    <input class="btn btn-success" type="submit" value="GUARDAR">
+                    <div class="mt-3">
+                        <input class="btn btn-danger" type="reset" value="CANCELAR">
+                        <input class="btn btn-success" type="submit" value="GUARDAR">
+                    </div>
                 </form>
+            </div>
         </div>
-    </main>
-    {% block extra_js %}
-        <script src="{% static 'JS/agregar_empleado.js' %}"></script>
-    {% endblock %}
+    </div>
+{% block extra_js %}
+    <script src="{% static 'JS/agregar_empleado.js' %}"></script>
+{% endblock %}
 {% endblock %}

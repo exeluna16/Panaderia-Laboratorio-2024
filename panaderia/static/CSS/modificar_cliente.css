@@ -1,0 +1,23 @@
+main{
+    background-image: url(../IMG/pan3.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+
+}
+
+label{
+    color:#fff;
+}
+
+#container{
+    max-width: 880px;
+    margin-top: 60px;
+    background-color: rgb(0, 0, 0,0.7);
+
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}

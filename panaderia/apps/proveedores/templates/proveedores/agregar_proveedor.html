@@ -1,79 +1,82 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Registrar Proveedor{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/agregar_proveedor.css' %}">
+{% endblock %}
 {% block content %}
     <div class="fondo_pagina">
 
-        <h1 id="titulo">Registrar Proveedor</h1>
+        <h1 class="text-center display-1">Proveedores</h1>
 
         <div class="container">
         <form method="post">{% csrf_token %}
             <fieldset>
-                <legend>Informacion de contacto</legend>
+                <h2 class="text-light"><span>Informacion de contacto</span></h2>
                 <div class="row">
 
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.nombre.id_label}}" class="form-label">Nombre</label>
+                            <label for="{{form.nombre.id_label}}" class="form-label fs-4">Nombre</label>
                             {{form.nombre}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.cuit_cuil.id_label}}" class="form-label">CUIL/CUIT</label>
+                            <label for="{{form.cuit_cuil.id_label}}" class="form-label fs-4">CUIL/CUIT</label>
                             {{form.cuit_cuil}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.tipo_persona.id_label}}" class="form-label">Tipo de Persona</label>
+                            <label for="{{form.tipo_persona.id_label}}" class="form-label fs-4">Tipo de Persona</label>
                             {{form.tipo_persona}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="{{form.mail.id_label}}">Email</label>
+                            <label for="{{form.mail.id_label}}" class="form-label fs-4">Email</label>
                             {{form.mail}}
                         </div>
                     </div>
                     <!--Telefono-->
                     <div class="col-12 col-6 col-sm-6">
-                        <label for="{{form.telefono.id_label}}" class="form-label">Teléfono</label>
+                        <label for="{{form.telefono.id_label}}" class="form-label fs-4">Teléfono</label>
                         {{form.telefono}}
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.localidad.id_label}}" class="form-label">Localidad</label>
+                            <label for="{{form.localidad.id_label}}" class="form-label fs-4">Localidad</label>
                             {{form.localidad}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.calle.id_label}}" class="form-label">Calle</label>
+                            <label for="{{form.calle.id_label}}" class="form-label fs-4">Calle</label>
                             {{form.calle}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                        <label for="{{form.numero_calle.id_label}}" class="form-label">N° Calle</label>
+                        <label for="{{form.numero_calle.id_label}}" class="form-label fs-4">N° Calle</label>
                             {{form.numero_calle}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.dias_de_pedido.id_label}}" class="form-label">Días de Pedidos</label>
+                            <label for="{{form.dias_de_pedido.id_label}}" class="form-label fs-4">Días de Pedidos</label>
                             {{form.dias_de_pedido}}
                         </div>
                     </div>
                     <div class="col-12 col-6 col-sm-6">
                         <div>
-                            <label for="{{form.dias_de_reparto.id_label}}" class="form-label">Días de Reparto</label>
+                            <label for="{{form.dias_de_reparto.id_label}}" class="form-label fs-4">Días de Reparto</label>
                             {{form.dias_de_reparto}}
                         </div>
                     </div>
                 </div>
             </fieldset>
-            <div>
+            <div class="mt-3">
                 <button type="submit" name="registra" class="btn btn-success">Registrar</button>
                 <button type="reset" name="cancelar" class="btn btn-danger">Cancelar</button>
             </div>
