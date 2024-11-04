@@ -26,7 +26,7 @@ def agregar_producto(request):
             medida = request.POST.get('unidad_de_medida')
 
             form_producto.save()#se guarda el producto
-            messages.success(request,'Producto agregado exitosamente')
+            
             return redirect('inventario:stock_productos')
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
 
@@ -38,7 +38,7 @@ def modificar_producto(request,pk):
         formulario = ModificarProductoForm(request.POST,instance=producto)
         if formulario.is_valid():
             formulario.save()
-            print('se guardo correctamente')
+            
             return redirect('inventario:stock_productos')
     formulario = ModificarProductoForm(instance=producto)
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})

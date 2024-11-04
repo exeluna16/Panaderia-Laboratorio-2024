@@ -9,16 +9,10 @@
 <div id="fondo" class="pe-3 ps-3">
     <div class="container-fluid">
 
-            {% if messages %}
-            <div class="alert alert-success" role="alert">
-                {% for message in messages %}
-                <strong>{{ message }}</strong>
-                {% endfor %}
-            </div>
             {% endif %}
             <div class="row">
                 <h1 class="text-center mb-4">Carga de Productos</h1>
-                <form method="post" > {% csrf_token %}
+                <form method="post" id="formulario"> {% csrf_token %}
                     <!-- Código -->
                     <div class="mb-3">
                         <label for="{{form_producto.codigo.id_label}}" class="form-label fs-4">Código</label>
@@ -75,10 +69,13 @@
                     <!-- Botón de envío -->
                     <div class="container-fluid mb-3">
                         <button type="reset" class="btn btn-danger">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="submit" class="btn btn-success" onclick="return validarCampos()">Guardar</button>
                     </div>
                 </form>
             </div>
     </div>
 </div>
+{% block extra_js %}
+    <script src="{% static 'JS/agregar_producto.js' %}"></script>
+{% endblock %}
 {% endblock %}

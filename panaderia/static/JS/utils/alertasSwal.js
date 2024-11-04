@@ -10,8 +10,16 @@ const alertaSwal = (titleText,text,icon,confirmButtonText)=>{
 
 function es_numero_negativo(numero){
     if(numero<0){
-        alertaSwal('Error','Ingrese un numero valido','error','OK!');
+        alertaSwal('Error','Estas ingresando un número negativo','error','OK!');
         return true;
     }
     return false;
+}
+
+function es_numero(numero){
+    if(isNaN(numero)){
+        alertaSwal('Error', numero + ' No es un número. Por favor controlar','error','OK!');
+        return false;
+    }
+    return true;
 }
