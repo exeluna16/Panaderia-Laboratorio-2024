@@ -43,7 +43,7 @@ function seleccionarInsumo(insumo){
 
 function existeCantidadSuficiente(cantidad){
     if (insumoSeleccionado.cantidad < cantidad){
-        alert('NO hay suficiente cantidadad, la cantidad actual es '+ insumoSeleccionado.cantidad);
+        alertaSwal('CUIDADO','No hay suficiente cantidadad, la cantidad actual es '+ insumoSeleccionado.cantidad,'info','Entendido');
         return false;
     }
     return true;
@@ -65,6 +65,7 @@ function agregarItemInsumo(){
         fila.innerHTML = `
         <td>${insumoSeleccionado.id}</td>
         <td>${insumoSeleccionado.nombre}</td>
+        <td>${insumoSeleccionado.unidad_de_medida}</td>
         <td class="fila_cantidad">${cantidad}</td>
         <td>
             <button class="btn btn-danger btn-sm" onclick="eliminarFila(this, ${insumoSeleccionado.id})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">

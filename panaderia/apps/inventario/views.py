@@ -43,6 +43,7 @@ def modificar_producto(request,pk):
     formulario = ModificarProductoForm(instance=producto)
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
 
+@login_required(login_url='usuario:login')
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, id=pk)
     
@@ -56,6 +57,7 @@ def eliminar_producto(request, pk):
         return redirect('inventario:stock_productos')
 
 ##Esta vista enviará al Frontend todos los productos, mediante un JSON
+@login_required(login_url='usuario:login')
 def listar_productos(request): #el request se muestra en otro color porque no se usa, la solicitud siempre es GET
     #Esta funcion solo necesita los productos activos por lo tanto se hace uso de .filter()
     # Obtiene todos los productos y sus datos de unidad de medida usando select_related()
@@ -103,6 +105,7 @@ def modificar_insumo(request,pk):
     form = ModificarInsumoForm(instance=insumo)
     return render(request,'inventario/modificar_insumo.html',{'form':form})
 
+@login_required(login_url='usuario:login')
 def eliminar_insumo(request, pk):
     insumo = get_object_or_404(Insumo, id=pk)
     
@@ -120,7 +123,7 @@ def almacen_insumos(request):
     insumos = Insumo.objects.all()
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})
 
-
+@login_required(login_url='usuario:login')
 def listar_insumos(request):
     insumos = Insumo.objects.filter(estado = True).select_related('unidad_de_medida')
 
@@ -151,5 +154,5 @@ def descontar_insumos(request):
                 
                 insumo.save()#actualizo la cantidad en la BD
                 print(f'la nueva cantidad del insumo es {insumo.cantidad}')
-        
+                redirect('inventario:almacen_insumos')
     return render(request,'inventario/descontar_insumos.html',{'form_set_insumos':form_set_insumos})

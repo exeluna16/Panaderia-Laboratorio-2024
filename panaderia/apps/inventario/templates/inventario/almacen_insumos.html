@@ -79,6 +79,9 @@
             <a class="btn btn-success" role="button" href="{% url 'inventario:agregar_insumo' %}">AGREGAR INSUMO</a>
             {% if perms.inventario.change_inventario %}
             <a class="btn btn-primary" role="button" href="{% url 'inventario:descontar_insumos' %}">RETIRAR INSUMOS</a>
+
+            <a class="btn btn-warning" role="button" href="#" onclick="window.print()">INFORME</a>
+            
             {% endif %}
         </div>
     </main>

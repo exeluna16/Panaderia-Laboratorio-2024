@@ -1,0 +1,30 @@
+#fondo{
+    background-image: url('../IMG/insumos.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+#contenedor_formulario{
+    background: #00000088;
+}  
+
+label, #lista-insumos{
+    color:#fff;
+}
+
+#tabla-insumos{
+    overflow-y: auto;
+    max-height: 250px;
+    width: 100%;
+    padding: 0;
+}
+
+.table thead th{
+    position: sticky;
+    top:0;
+    background: #D0B8A8;
+}

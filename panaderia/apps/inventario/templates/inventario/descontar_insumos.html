@@ -2,10 +2,10 @@
 {% load static %}
 {% block title %}Descontar Insumos{% endblock %}
 {% block extra_css%}
-    <link rel="stylesheet" href="{% static 'CSS/pedidos.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/descontar_insumos.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="fondo_de_pagina">
+    <div id="fondo">
 
         <h1 id="titulo">Descontar Insumos</h1>
         <div class="container-fluid" id="contenedor_formulario" >
@@ -19,12 +19,12 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="container text-center mt-3">
+                <div class="container mt-3">
                     <div class="row">
                         <div class="col-6 mt-3">
                             <!--barra de busqueda-->
                             <div>
-                            <label for="buscar-insumo" class="form-label">Seleccione un Insumo</label>
+                            <label for="buscar-insumo" class="form-label fs-4">Seleccione un Insumo</label>
                             <input class="form-control me-2" type="text" placeholder="Buscar Insumo..." id="buscar-insumo" onkeyup="buscarInsumo()">
                                 <ul id="lista-insumos">
 
@@ -32,26 +32,27 @@
                             </div>
                         </div>  
                         <div class="col-6 mt-3">
-                            <label for="insumo" class="form-label">Insumo</label>
+                            <label for="insumo" class="form-label fs-4">Insumo</label>
                             <input type="text" class="form-control" id="insumo-elegido" disabled>
                         </div>
                         <div class="col-12">
-                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <label for="cantidad" class="form-label fs-4">Cantidad</label>
                             <input class="form-control" type="number" id="boton-cantidad">
                             
                         </div>
-                        <div>
+                        <div class="text-end">
                             <input class="btn btn-success m-2" value="AGREGAR" onclick="agregarItemInsumo()">
                         </div>
                     </div>
                     <div class="row">
                     <div class="container mb-3 mt-3">
                         <!-- Tabla con el encabezado fijo -->
-                        <table class="table text-center">
+                        <table class="table text-center" id="tabla-insumos">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Insumo</th>
+                                <th>Unidad de Medida</th>
                                 <th>Cantidad</th>
                                 <th>Acción</th>
                             </tr>
@@ -67,7 +68,7 @@
                         </div>
                     </div>
                     </div>
-                    <div>
+                    <div class="text-end">
                     <button type="reset" name="cancelar" class="btn btn-danger m-2" onclick="reiniciarTabla()">Cancelar</button>
                     <button type="submit" name="descontar" class="btn btn-success m-2">Descontar</button>
                     </div>

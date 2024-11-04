@@ -46,3 +46,23 @@ form{
     font-weight: bolder;
     background: transparent;
 }
+/*imprimir*/
+@media print {
+    /* Ocultar todo lo que no es la tabla */
+
+    body * {
+        visibility: hidden;
+    }
+
+    /* Mostrar solo la tabla */
+    #tabla_productos, #tabla_productos * {
+        visibility: visible;
+    }
+
+    /* Asegurarse de que la tabla mantenga su posición */
+    #tabla-productos {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
