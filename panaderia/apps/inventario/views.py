@@ -8,11 +8,14 @@ from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
 @login_required(login_url='usuario:login')
+@permission_required('inventario.view_producto',raise_exception=True)
 def stock_productos(request):
     productos = Producto.objects.all()
     return render(request,'inventario/stock_productos.html', {'productos': productos})
 
+
 @login_required(login_url='usuario:login')
+@permission_required('inventario.add_producto',raise_exception=True)
 def agregar_producto(request):
 
     form_producto = AgregarProductoForm() #formulario para producto
@@ -31,6 +34,7 @@ def agregar_producto(request):
     return render(request,'inventario/agregar_producto.html',{'form_producto':form_producto})
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.change_producto',raise_exception=True)
 def modificar_producto(request,pk):
     #Se pasa como dato el modelo (Producto) y se comprara el id con la pk(primary key)
     producto = get_object_or_404(Producto,id=pk)
@@ -44,6 +48,7 @@ def modificar_producto(request,pk):
     return render(request,'inventario/modificar_producto.html',{'form_producto':formulario})
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.delete_producto',raise_exception=True)
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, id=pk)
     
@@ -83,6 +88,7 @@ def listar_productos(request): #el request se muestra en otro color porque no se
     return JsonResponse(lista_productos, safe=False)
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.add_insumo',raise_exception=True)
 def agregar_insumo(request):
     form = AgregarInsumoForm()
     if request.method=='POST':
@@ -95,6 +101,7 @@ def agregar_insumo(request):
     return render(request,'inventario/agregar_insumo.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.change_insumo',raise_exception=True)
 def modificar_insumo(request,pk):
     insumo = get_object_or_404(Insumo,id=pk)
     if request.method == 'POST':
@@ -106,6 +113,7 @@ def modificar_insumo(request,pk):
     return render(request,'inventario/modificar_insumo.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.delete_insumo',raise_exception=True)
 def eliminar_insumo(request, pk):
     insumo = get_object_or_404(Insumo, id=pk)
     
@@ -119,6 +127,7 @@ def eliminar_insumo(request, pk):
         return redirect('inventario:almacen_insumos')
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.view_insumo',raise_exception=True)
 def almacen_insumos(request):
     insumos = Insumo.objects.all()
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})
@@ -141,6 +150,7 @@ def listar_insumos(request):
     return JsonResponse(lista_insumos,safe=False)
 
 @login_required(login_url='usuario:login')
+@permission_required('inventario.change_insumo',raise_exception=True)
 def descontar_insumos(request):
     form_set_insumos = ItemInsumoFormSet()
     if request.method == 'POST':

@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required,permission_required
 # Create your views here.
 @login_required(login_url='usuario:login')
+@permission_required('proveedores.add_proveedores',raise_exception=True)
 def agregar_proveedor(request):
 
     form = AgregarProveedorForm()
@@ -16,7 +17,9 @@ def agregar_proveedor(request):
     
     return render(request,'proveedores/agregar_proveedor.html',{'form':form})
 
+
 @login_required(login_url='usuario:login')
+@permission_required('proveedores.change_proveedores',raise_exception=True)
 def modificar_proveedor(request,pk):
     proveedor = get_object_or_404(Proveedor,id=pk)
     form = ModificarProveedorForm(instance=proveedor)
@@ -29,6 +32,7 @@ def modificar_proveedor(request,pk):
     return render(request,'proveedores/modificar_proveedor.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('proveedores.view_proveedores',raise_exception=True)
 def listar_proveedores(request):
     proveedores=Proveedor.objects.all()
     return render(request,'proveedores/listar_proveedores.html',{'proveedores':proveedores})
