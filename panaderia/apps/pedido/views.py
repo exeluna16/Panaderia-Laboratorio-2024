@@ -2,10 +2,11 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Pedido,ItemPedido
 from ..inventario.models import Insumo
 from .forms import PedidoForm,ItemPedidoFormSet,ItemRecepcionPedidoFormSet,RecepcionPedidoForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
 @login_required(login_url='usuario:login')
+@permission_required('pedido.add_pedido',raise_exception=True)
 def generar_pedido(request):
     #por defecto la peticion es GET asi que instancio un formulario para pedido
     pedido_form = PedidoForm()
@@ -27,12 +28,13 @@ def generar_pedido(request):
                 return redirect('pedido:lista_pedidos')
                 #-----------FALTA REDIRECIONAR A LA PAGINA NECESARIA
     return render(request,'pedido/registrar_pedido.html',{'pedido_form':pedido_form,'form_item_pedido':form_item_pedido})
-
+@permission_required('pedido.view_pedido',raise_exception=True)
 @login_required(login_url='usuario:login')
 def lista_pedidos(request):
     pedidos = Pedido.objects.all().select_related('id_proveedor')
     return render(request,'pedido/lista_pedidos.html',{'pedidos':pedidos})
 
+@permission_required('pedido.change_pedido',raise_exception=True)
 @login_required(login_url='usuario:login')
 def recibir_pedido(request,pk):
     

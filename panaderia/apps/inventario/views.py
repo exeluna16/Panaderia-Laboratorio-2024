@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm,DescontarInsumoForm,ItemInsumoFormSet
 from .models import Producto, Insumo
 from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 
 
 # Create your views here.

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Proveedor
 from .forms import AgregarProveedorForm,ModificarProveedorForm
 from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 # Create your views here.
 @login_required(login_url='usuario:login')
 def agregar_proveedor(request):

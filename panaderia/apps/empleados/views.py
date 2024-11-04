@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import AgregarEmpleadoForm,ModificarEmpleadoForm
 from .models import Empleado
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 
 
 # Create your views here.
