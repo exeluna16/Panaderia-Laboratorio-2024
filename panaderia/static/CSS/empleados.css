@@ -3,14 +3,17 @@ body{
     scrollbar-color: #8D493A #D0B8A8;
 }
 
-#fondo{
-    background: url(../IMG/insumos.jpg);    
+main{
+    background: url(../IMG/panadero_a.jfif);    
     background-size: cover;
     background-repeat: none;
     background-position: center;
     background-attachment: fixed;
 }
 
+h2 span{
+    background: rgb(0, 0, 0,0.7);
+}
 
 #tabla_empleados{
     overflow-y: auto;
