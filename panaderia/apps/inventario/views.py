@@ -137,6 +137,7 @@ def listar_insumos(request):
     ]
     return JsonResponse(lista_insumos,safe=False)
 
+@login_required(login_url='usuario:login')
 def descontar_insumos(request):
     form_set_insumos = ItemInsumoFormSet()
     if request.method == 'POST':
