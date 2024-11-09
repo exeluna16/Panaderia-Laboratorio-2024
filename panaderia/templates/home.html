@@ -2,78 +2,73 @@
 {% load static %}
 {% block title %}Panadería El Maná{% endblock %}
 {% block extra_css %} 
-<link rel="stylesheet" href="{% static 'CSS/home.css' %}"> 
+  <link rel="stylesheet" href="{% static 'CSS/home.css' %}"> 
 {% endblock %}
 {% block content %}
+  <div class="container-fluid" id="contenido">
 
-  <div class="fondo_pagina container-fluid">
+    <h1 id="titulo">BIENVENIDOS <br> PANADERÍA EL MANÁ</h1>
+    
+    <h5 id="descripcion"><small>En Panaderia El Maná, nos enorgullece ofrecer una experiencia única para los amantes del pan y la repostería.
+    Desde el primer aroma de pan recién horneado hasta el último bocado de nuestras deliciosas creaciones 
+    cada momento en nuestra panadería es una celebración del buen gusto y la calidad.</small></h5>
+    
+    <br><br>
 
-    <div class="container" id="contenido">
+    <div class="contenedor_cards" style="margin-top: 70px;">
 
-      <h1 id="titulo">BIENVENIDOS <br> PANADERÍA EL MANÁ</h1>
-      <br><br>
-      <h5 id="descripcion"><small>En Panaderia El Maná, nos enorgullece ofrecer una experiencia única para los amantes del pan y la repostería.
-      Desde el primer aroma de pan recién horneado hasta el último bocado de nuestras deliciosas creaciones 
-      cada momento en nuestra panadería es una celebración del buen gusto y la calidad.</small></h5>
+      <div class="row">
+
+        <h4 style="text-align: center; color: #F8EDE3;">ver más cosas</h4>
+        <br><br><br>
       
-      <br><br>
-
-      <div class="contenedor_cards" style="margin-top: 70px;">
-
-        <div class="row">
-
-          <h4 style="text-align: center; color: #F8EDE3;">ver más cosas</h4>
-          <br><br><br>
-        
-          <div class="col-md-4">
-            <div class="card" style="margin-left: 7px;">
-              <img src="{% static 'IMG/pan8.jpg' %}" class="card-img-top" alt="Imagen Card 1">
-              <div class="card-body">
-                <h5 class="card-title">Stock disponible</h5>
-                <p class="card-text text-dark">aqui encontraras todos los productos disponibles</p>
-                <a href="#" class="btn btn-outline-dark">Ver más</a>
-              </div>
+        <div class="col-md-4">
+          <div class="card" style="margin-left: 7px;">
+            <img src="{% static 'IMG/pan8.jpg' %}" class="card-img-top" alt="Imagen Card 1">
+            <div class="card-body">
+              <h5 class="card-title">Stock disponible</h5>
+              <p class="card-text text-dark">aqui encontraras todos los productos disponibles</p>
+              <a href="#" class="btn btn-outline-dark">Ver más</a>
             </div>
           </div>
-    
-          
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{% static 'IMG/empleado.jpg' %}" class="card-img-top" alt="Imagen Card 2">
-              <div class="card-body">
-                <h5 class="card-title">Empleados</h5>
-                <p class="card-text text-dark">aqui encontraras informacion de nuestros empleados</p>
-                <a href="#" class="btn btn-outline-dark">Ver más</a>
-              </div>
-            </div>
-          </div>
-    
-          
-          <div class="col-md-4">
-            <div class="card" style="margin-right: 7px;">
-              <img src="{% static 'IMG/proveedor.jpg' %}" class="card-img-top" alt="Imagen Card 3">
-              <div class="card-body">
-                <h5 class="card-title">Proveedores</h5>
-                <p class="card-text text-dark">aqui podras ver el listados de los proveedores</p>
-                <a href="#" class="btn btn-outline-dark">Ver más</a>
-              </div>
-            </div>
-          </div>
-
         </div>
-
-        <br><br>
-        <h5></h5>
-
+  
+        
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{% static 'IMG/empleado.jpg' %}" class="card-img-top" alt="Imagen Card 2">
+            <div class="card-body">
+              <h5 class="card-title">Empleados</h5>
+              <p class="card-text text-dark">aqui encontraras informacion de nuestros empleados</p>
+              <a href="#" class="btn btn-outline-dark">Ver más</a>
+            </div>
+          </div>
+        </div>
+  
+        
+        <div class="col-md-4">
+          <div class="card" style="margin-right: 7px;">
+            <img src="{% static 'IMG/proveedor.jpg' %}" class="card-img-top" alt="Imagen Card 3">
+            <div class="card-body">
+              <h5 class="card-title">Proveedores</h5>
+              <p class="card-text text-dark">aqui podras ver el listados de los proveedores</p>
+              <a href="#" class="btn btn-outline-dark">Ver más</a>
+            </div>
+          </div>
+        </div>
 
       </div>
 
-      <br><br><br><br>
+      <br><br>
+      <h5></h5>
 
-      
 
     </div>
 
+    <br><br><br><br>
+
+    
 
   </div>
+
 {% endblock %}
