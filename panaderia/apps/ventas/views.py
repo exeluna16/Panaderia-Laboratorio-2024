@@ -6,6 +6,8 @@ from django.forms import formset_factory,inlineformset_factory ## crea varios fo
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required,permission_required
 from ..inventario.utils import generar_reporte_tabla
+from django.db.models import Sum
+
 # Create your views here.
 @login_required(login_url='usuario:login')
 @permission_required('inventario.add_venta',raise_exception=True)
@@ -54,14 +56,15 @@ def principal(request):
         
     return render(request,'ventas/gestion_de_venta.html',{'venta':venta_form ,'form_item_venta':form_item_venta,'item_mayorista':item_mayorista})
 
+
+@login_required(login_url='usuario:login')
+@permission_required('inventario.view_venta',raise_exception=True)
 def reporte_ventas(request):
     fecha_inicio = request.POST.get('fecha_inicio')
     fecha_fin = request.POST.get('fecha_fin')
     
     ventas = Venta.objects.filter(fecha_venta__range=(fecha_inicio,fecha_fin)).select_related('empleado')
     
-    
-
     datos = [
         ['Fecha','vendedor','Forma de Pago','Total']
     ]
@@ -74,3 +77,22 @@ def reporte_ventas(request):
         ])
 
     return generar_reporte_tabla(datos,"Ventas",nombre_archivo="Registro de Ventas.pdf")
+
+
+def reporte_productos_mas_vendidos(request):
+    fecha_inicio = request.POST.get('fecha_inicio')
+    fecha_fin = request.POST.get('fecha_fin')
+    #consulta para traer los productos vendidos durante el rango de fechas indicado
+    productos = ItemVenta.objects.filter(venta__fecha_venta__range=(fecha_inicio,fecha_fin)).values('producto__nombre').annotate(total_vendido=Sum('cantidad')).order_by('-total_vendido')
+    
+    datos = [
+        ['Producto','Total Vendido']
+    ]
+    
+    for producto in productos:
+        datos.append([
+            producto.get('producto__nombre'),
+            producto.get('total_vendido')
+        ])
+
+    return generar_reporte_tabla(datos,"Productos más vendidos",nombre_archivo="Productos más vendidos.pdf")
