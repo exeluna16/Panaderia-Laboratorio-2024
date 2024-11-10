@@ -22,13 +22,18 @@ def logout_view(request):
     return render(request,'usuario/login.html',{"msj":"deslogueado"})
 
 
-@login_required
+@login_required(login_url='usuario:login')
 def menu_principal(request):
     # Solo los usuarios autenticados pueden acceder a esta vista
     return render(request, 'menu.html')
 
+#es la landing de la pagina asi que no necesita decoradores de autenticacion ni autorizacion
 def home(request):
     if request.user.is_authenticated:
         return render(request,'menu.html')
     else:
         return render(request,'home.html')
+    
+
+def reportes(request):
+    return render(request,'usuario/reportes.html')

@@ -1,0 +1,13 @@
+main{
+    background-image: url(../IMG/pan3.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.row .col-4 .small-box{
+    background-color: antiquewhite;
+    border-radius: 7px;
+}

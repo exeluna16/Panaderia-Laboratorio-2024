@@ -1,12 +1,32 @@
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .forms import AgregarProductoForm, AgregarInsumoForm ,ModificarProductoForm, ModificarInsumoForm,DescontarInsumoForm,ItemInsumoFormSet
 from .models import Producto, Insumo
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required,permission_required
-
+from .utils import generar_reporte_tabla
+from django.db.models import F
 
 # Create your views here.
+@login_required(login_url='usuario:login')
+@permission_required('inventario.view_insumos',raise_exception=True)
+def reporte_insumos_faltantes(request):
+    insumos = Insumo.objects.filter(cantidad__lte = F('cantidad_minima')) #traigo solo a los insumos faltantes
+    
+    datos = [
+        ["CODIGO", "Nombre", "Cantidad", "Cantidad Minima"], #este va a ser el encabezado de la tabla
+    ]
+
+    for insumo in insumos:
+        datos.append([
+            insumo.codigo,
+            insumo.nombre,
+            insumo.cantidad,
+            insumo.cantidad_minima
+        ])
+
+    return generar_reporte_tabla(datos,"Insumos Faltantes", nombre_archivo="insumos_faltantes.pdf")
+
 @login_required(login_url='usuario:login')
 @permission_required('inventario.view_producto',raise_exception=True)
 def stock_productos(request):
@@ -129,7 +149,7 @@ def eliminar_insumo(request, pk):
 @login_required(login_url='usuario:login')
 @permission_required('inventario.view_insumo',raise_exception=True)
 def almacen_insumos(request):
-    insumos = Insumo.objects.all()
+    insumos = Insumo.objects.all().order_by("cantidad")
     return render(request,'inventario/almacen_insumos.html',{'insumos':insumos})
 
 @login_required(login_url='usuario:login')
