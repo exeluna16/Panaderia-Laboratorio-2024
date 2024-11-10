@@ -11,7 +11,7 @@ const alertaSwal = (titleText,text,icon,confirmButtonText)=>{
 
 
 function es_numero_negativo(numero){
-    if(numero<0){
+    if(numero<1){
         alertaSwal('Error','Estas ingresando un número negativo','error','OK!');
         return true;
     }

@@ -99,7 +99,6 @@ def listar_productos(request): #el request se muestra en otro color porque no se
             'unidad_de_medida': producto.unidad_de_medida.unidad_medida_nombre,
             'estado': producto.estado,
             'precio': producto.precio,
-            'precio_mayorista': producto.precio_mayorista,
             'categoria': producto.categoria.id
         }
         #acá recorro cada instancia del Qeryset de productos

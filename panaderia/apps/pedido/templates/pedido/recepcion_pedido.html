@@ -16,7 +16,10 @@
                 </div>
                 <div class="col-6">
                     <label for="{{ recepcion_form.total_pedido.id_label }}" class="form-label">Total del pedido</label>
-                    {{ recepcion_form.total_pedido }}
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        {{ recepcion_form.total_pedido }}
+                    </div>
                 </div>
                 <div class="col-12 mb-5">
                     <label for="{{ recepcion_form.observaciones.id_label }}" class="form-label">Observaciones (opcional)</label>

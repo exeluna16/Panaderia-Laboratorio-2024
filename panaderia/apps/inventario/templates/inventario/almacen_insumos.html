@@ -78,10 +78,7 @@
         <div class="container-fluid pb-2">
             <a class="btn btn-success" role="button" href="{% url 'inventario:agregar_insumo' %}">AGREGAR INSUMO</a>
             {% if perms.inventario.change_inventario %}
-            <a class="btn btn-dark" role="button" href="{% url 'inventario:descontar_insumos' %}">RETIRAR INSUMOS</a>
-
-            <a class="btn btn-warning" role="button" href="#" onclick="window.print()">INFORME</a>
-            
+            <a class="btn btn-dark" role="button" href="{% url 'inventario:descontar_insumos' %}">RETIRAR INSUMOS</a>            
             {% endif %}
         </div>
     </main>

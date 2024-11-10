@@ -70,12 +70,13 @@ function seleccionarProducto(producto) {
 
 }
 
+
 // Esta función para busca productos en el archivo JSON recibido
 function buscarProducto() {
     const query = document.getElementById('search').value.toLowerCase();
     const resultados = document.getElementById('resultados');//me trae la lista de resultados
     resultados.innerHTML = '';
-
+    resultados.style.display = 'block';
     // Filtro los productos que coincidan con la búsqueda
     const productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(query) && !productosEnTabla.includes(p.id));
 
@@ -89,6 +90,12 @@ function buscarProducto() {
     });
 
 }
+
+document.addEventListener('click', function(event) {
+    if (!resultados.contains(event.target)) {
+        resultados.style.display = 'none';
+    }
+})
 
 
 
@@ -121,6 +128,8 @@ function agregarItem(){
     if(existeSuficienteCantidad(cantidad_ingresada) && !es_numero_negativo(cantidad_ingresada)){ 
         agregarProducto(); //al final se agrega el producto a la tabla
     }
+    document.getElementById('cantidad_seleccionada').value = '';
+    
 }
 
 // Función para agregar producto a la tabla de ventas
