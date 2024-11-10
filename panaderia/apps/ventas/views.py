@@ -5,6 +5,7 @@ from .forms import VentaForm, ItemVentaForm, ItemVentaFormSet ,ItemMayoristaForm
 from django.forms import formset_factory,inlineformset_factory ## crea varios formularios del mismo tipo
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required,permission_required
+from ..inventario.utils import generar_reporte_tabla
 # Create your views here.
 @login_required(login_url='usuario:login')
 @permission_required('inventario.add_venta',raise_exception=True)
@@ -53,3 +54,23 @@ def principal(request):
         
     return render(request,'ventas/gestion_de_venta.html',{'venta':venta_form ,'form_item_venta':form_item_venta,'item_mayorista':item_mayorista})
 
+def reporte_ventas(request):
+    fecha_inicio = request.POST.get('fecha_inicio')
+    fecha_fin = request.POST.get('fecha_fin')
+    
+    ventas = Venta.objects.filter(fecha_venta__range=(fecha_inicio,fecha_fin)).select_related('empleado')
+    
+    
+
+    datos = [
+        ['Fecha','vendedor','Forma de Pago','Total']
+    ]
+    for venta in ventas:
+        datos.append([
+            venta.fecha_venta,
+            venta.empleado,
+            venta.forma_de_pago,
+            venta.total_venta
+        ])
+
+    return generar_reporte_tabla(datos,"Ventas",nombre_archivo="Registro de Ventas.pdf")

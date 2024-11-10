@@ -34,6 +34,6 @@ def home(request):
     else:
         return render(request,'home.html')
     
-
+@login_required(login_url='usuario:login')
 def reportes(request):
     return render(request,'usuario/reportes.html')

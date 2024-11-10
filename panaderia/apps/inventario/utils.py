@@ -48,6 +48,3 @@ def generar_reporte_tabla(datos,titulo, nombre_archivo="reporte.pdf"):
     return FileResponse(buffer, as_attachment=True, filename=nombre_archivo)
 
 
-def fecha_actual_strig():
-    fecha = datetime.now()
-    return fecha.strftime('%d/%m/%Y')
