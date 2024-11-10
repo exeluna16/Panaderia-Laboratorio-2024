@@ -8,7 +8,7 @@
 <div id="fondo">
     <h1>Iniciar Sesión</h1>
     {% if msj %}
-    <div>{{ msj }}</div>
+    <div id="mansaje_deslogueo">{{ msj }}</div>
     {% endif %}
     <div class="container-fluid" id="contenedor">
         <div class="row mt-5">
@@ -27,4 +27,7 @@
         </div>
     </div>
 </div>
+{% block extra_js %}
+    <script src="{% static 'JS/login.js' %}"></script>
+{% endblock %}
 {% endblock %}

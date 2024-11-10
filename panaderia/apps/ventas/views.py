@@ -10,7 +10,7 @@ from django.db.models import Sum
 
 # Create your views here.
 @login_required(login_url='usuario:login')
-@permission_required('inventario.add_venta',raise_exception=True)
+@permission_required('ventas.add_venta',raise_exception=True)
 def principal(request):
     #POR defecto el metodo de ingreso es GET por lo tanto debemos crear amos focmularios
     venta_form = VentaForm()  #crea un nuevo formulario
@@ -58,7 +58,7 @@ def principal(request):
 
 
 @login_required(login_url='usuario:login')
-@permission_required('inventario.view_venta',raise_exception=True)
+@permission_required('ventas.view_venta',raise_exception=True)
 def reporte_ventas(request):
     fecha_inicio = request.POST.get('fecha_inicio')
     fecha_fin = request.POST.get('fecha_fin')
@@ -78,7 +78,8 @@ def reporte_ventas(request):
 
     return generar_reporte_tabla(datos,"Ventas",nombre_archivo="Registro de Ventas.pdf")
 
-
+@login_required(login_url='usuario:login')
+@permission_required('inventario.view_venta',raise_exception=True)
 def reporte_productos_mas_vendidos(request):
     fecha_inicio = request.POST.get('fecha_inicio')
     fecha_fin = request.POST.get('fecha_fin')

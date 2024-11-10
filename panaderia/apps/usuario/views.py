@@ -19,7 +19,7 @@ def login_view(request):
 #vista de deslogueo
 def logout_view(request):
     logout(request)
-    return render(request,'usuario/login.html',{"msj":"deslogueado"})
+    return render(request,'usuario/login.html',{"msj":"DESLOGUEADO"})
 
 
 @login_required(login_url='usuario:login')
