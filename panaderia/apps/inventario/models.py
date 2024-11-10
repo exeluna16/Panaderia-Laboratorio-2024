@@ -42,5 +42,4 @@ class Insumo(Articulo):
 '''Se define el modelo Producto'''
 class Producto(Articulo):
     precio = models.DecimalField(decimal_places=2,max_digits=10)
-    precio_mayorista = models.DecimalField(decimal_places=2,max_digits=10)
     categoria = models.ForeignKey(Categoria,on_delete=models.SET_NULL,null=True,related_name='categoria')

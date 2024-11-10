@@ -30,7 +30,6 @@
                             <th>CATEGORÍA</th>
                             <th>CANTIDAD</th>
                             <th>PRECIO</th>
-                            <th>PRECIO MAYORISTA</th>
                             <th>ESTADO</th>
                             <th>ACCIÓN</th>
                         </thead>
@@ -42,7 +41,6 @@
                                 <td>{{producto.categoria.descripcion}}</td>
                                 <td>{{producto.cantidad}}</td>
                                 <td>${{producto.precio}}</td>
-                                <td>${{producto.precio_mayorista}}</td>
                                 {% if producto.estado %}
                                     <td>Activo</td>
                                 {% else %}
