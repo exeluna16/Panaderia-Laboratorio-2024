@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
 @login_required(login_url='usuario:login')
+@permission_required('empleados.add_empleado',raise_exception=True)
 def agregar_empleado(request):
     formulario = AgregarEmpleadoForm()
     if(request.method == 'POST'):
@@ -19,6 +20,7 @@ def agregar_empleado(request):
     return render(request,'empleados/agregar_empleado.html',{'formulario':formulario})
 
 @login_required(login_url='usuario:login')
+@permission_required('empleados.change_empleado',raise_exception=True)
 def modificar_empleado(request,pk):
     empleado = get_object_or_404(Empleado,id=pk)
     if request.method == 'POST':
@@ -32,6 +34,17 @@ def modificar_empleado(request,pk):
     return render(request,'empleados/modificar_empleado.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('empleados.view_empleado',raise_exception=True)
 def lista_empleados(request):
     empleados = Empleado.objects.all()
     return render(request,'empleados/empleados.html',{'empleados':empleados})
+
+@login_required(login_url='usuario:login')
+@permission_required('empleados.delete_empleado',raise_exception=True)
+def eliminar_empleado(request,pk):
+    empleado = get_object_or_404(Empleado,id=pk)
+    if request.method == 'POST':
+        empleado.estado = False
+        empleado.save()
+    
+    return redirect('empleados:lista_empleados')

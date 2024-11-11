@@ -44,6 +44,7 @@ def eliminar_cliente(request,pk):
         messages.error(request, "La cancelación no se pudo completar.")
         return redirect('cliente_mayorista:listado_clientes')
 
+
 @login_required(login_url='usuario:login')
 @permission_required('clientes_mayoristas.view_clientes_mayoristas',raise_exception=True)
 def listar_clientes(request):
