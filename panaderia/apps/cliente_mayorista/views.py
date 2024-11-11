@@ -8,6 +8,7 @@ from django.http import JsonResponse
 # Create your views here.
 #controla que el usuario este logueado, si no lo esta lo redireciona al login
 @login_required(login_url='usuario:login')
+@permission_required('cliente_mayorista.add_cliente_mayorista',raise_exception=True)
 def agregar_cliente_mayorista(request):
     form = ClienteMayoristaForm()
     if request.method=='POST':
@@ -18,6 +19,7 @@ def agregar_cliente_mayorista(request):
     return render(request,'cliente_mayorista/registro_de_mayorista.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('clientes_mayoristas.change_cliente_mayotista',raise_exception=True)
 def modificar_cliente_mayorista(request,pk):
     cliente = get_object_or_404(ClienteMayorista,id=pk)
     if request.method == 'POST':
@@ -29,6 +31,7 @@ def modificar_cliente_mayorista(request,pk):
     return render(request,'cliente_mayorista/modificar_cliente_mayorista.html',{'form':form})
 
 @login_required(login_url='usuario:login')
+@permission_required('clientes_mayoristas.delete_cliente_mayorista',raise_exception=True)
 def eliminar_cliente(request,pk):
     cliente = get_object_or_404(ClienteMayorista, id=pk)
     
@@ -42,6 +45,7 @@ def eliminar_cliente(request,pk):
         return redirect('cliente_mayorista:listado_clientes')
 
 @login_required(login_url='usuario:login')
+@permission_required('clientes_mayoristas.view_clientes_mayoristas',raise_exception=True)
 def listar_clientes(request):
     clientes = ClienteMayorista.objects.all()
     return render(request,'cliente_mayorista/listado_clientes.html',{'clientes':clientes})
