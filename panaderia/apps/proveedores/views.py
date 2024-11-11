@@ -50,3 +50,14 @@ def ver_proveedores(request):
     ]
 
     return JsonResponse(lista_proveedores,safe=False)
+
+@login_required(login_url='usuario:login')
+@permission_required('proveedor.delete_proveedor',raise_exception=True)
+def eliminar_proveedor(request,pk):
+    prov = get_object_or_404(Proveedor,id=pk)
+    
+    if request.method == 'POST':
+        prov.estado = False
+        prov.save()
+    
+    return redirect('proveedor:listar_proveedores')
